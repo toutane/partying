@@ -1,19 +1,32 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from "react";
+import * as Font from "expo-font";
+
+import { AuthProvider } from "./src/contexts/AuthContext";
+import FirebaseInitialization from "./src/firebase/FirebaseInitialization";
 
 export default function App() {
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  useEffect(() => {
+    loadFonts();
+  }, []);
+
+  async function loadFonts() {
+    await Font.loadAsync({
+      "sf-text-regular": require("./assets/fonts/SF-Pro-Text-Regular.otf"),
+      "sf-text-medium": require("./assets/fonts/SF-Pro-Text-Medium.otf"),
+      "sf-text-semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),
+      "sf-display-medium": require("./assets/fonts/SF-Pro-Text-Medium.otf"),
+      "sf-display-semibold": require("./assets/fonts/SF-Pro-Display-Semibold.otf"),
+      "sf-display-bold": require("./assets/fonts/SF-Pro-Display-Bold.otf")
+    });
+    setFontLoaded(true);
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    fontLoaded && (
+      <AuthProvider>
+        <FirebaseInitialization />
+      </AuthProvider>
+    )
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
