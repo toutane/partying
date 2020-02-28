@@ -59,10 +59,10 @@ function Navigation() {
             tabBarIcon: ({ color }) => (
               <Image
                 style={{
-                  width: 30,
-                  height: 30,
+                  width: color === "#1DC161" ? 32 : 30,
+                  height: color === "#1DC161" ? 32 : 30,
                   borderRadius: 50,
-                  borderWidth: 2,
+                  borderWidth: color === "#1DC161" ? 2 : 0,
                   borderColor: color
                 }}
                 source={{
