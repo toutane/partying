@@ -1,83 +1,65 @@
-import * as React from "react";
-import { Image } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React, { useContext } from "react";
+import { createAppContainer } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createStackNavigator } from "react-navigation-stack";
 import { Feather } from "@expo/vector-icons";
 
-import Feed from "../components/views/Feed";
-import Login from "../components/views/Login";
-import Register from "../components/views/Register";
+import BottomTabBar from "./BottomTabBar/BottomTabBar";
+import AuthStack from "./stacks/AuthStack";
 
-const Stack = createStackNavigator();
+import Notifications from "../components/views/NotificationsView";
+import Feed from "../components/views/FeedView";
+import Profile from "../components/views/ProfileView";
 
-const Tab = createBottomTabNavigator();
+const TabBarNavigator = createBottomTabNavigator(
+  {
+    Notifications: { screen: Notifications },
+    Feed: { screen: Feed },
+    Profile: { screen: Profile }
+  },
 
-function Auth() {
-  return (
-    <Stack.Navigator headerMode="none">
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Register" component={Register} />
-    </Stack.Navigator>
-  );
-}
-function Navigation() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-        tabBarOptions={{
-          showLabel: false,
-          inactiveTintColor: "#333333",
-          activeTintColor: "#1DC161"
-        }}
-      >
-        <Tab.Screen
-          name="Notifications"
-          component={Feed}
-          options={{
-            tabBarLabel: "Notifications",
-            tabBarIcon: ({ color }) => (
-              <Feather name="bell" size={25} color={color} />
-            )
-          }}
-        />
-        <Tab.Screen
-          name="Feed"
-          component={Feed}
-          options={{
-            tabBarLabel: "Feed",
-            tabBarIcon: ({ color }) => (
-              <Feather name="grid" size={25} color={color} />
-            )
-          }}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={Auth}
-          options={{
-            tabBarLabel: "Profile",
-            tabBarIcon: ({ color }) => (
-              <Image
-                style={{
-                  width: color === "#1DC161" ? 32 : 30,
-                  height: color === "#1DC161" ? 32 : 30,
-                  borderRadius: 50,
-                  borderWidth: color === "#1DC161" ? 2 : 0,
-                  borderColor: color
-                }}
-                source={{
-                  uri:
-                    "https://scontent-cdt1-1.cdninstagram.com/v/t51.2885-19/s320x320/80847132_1150219625428179_1223222822092931072_n.jpg?_nc_ht=scontent-cdt1-1.cdninstagram.com&_nc_ohc=QRo_CYtfBGIAX8jBYkg&oh=3fa73a07ebc74ed97a0640a90e5dc2ed&oe=5E89B572"
-                  // "https://scontent-cdt1-1.cdninstagram.com/v/t51.2885-19/s320x320/70639440_499542157443515_3701313669351604224_n.jpg?_nc_ht=scontent-cdt1-1.cdninstagram.com&_nc_ohc=YfscEbN7wbkAX-vFG5v&oh=f95ec4ffef70650e15eb936ac99508e2&oe=5E871D55"
-                }}
-              />
-              /* <Feather name="circle" size={25} color={color} /> */
-            )
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-}
+  {
+    defaultNavigationOptions: ({ navigation, screenProps }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        routeName === "Notifications"
+          ? (iconName = `bell`)
+          : routeName === "Feed"
+          ? (iconName = `grid`)
+          : (iconName = `user`);
 
-export default Navigation;
+        return (
+          <Feather
+            name={iconName}
+            size={28}
+            color={tintColor}
+            style={{ marginTop: 10 }}
+          />
+        );
+      }
+    }),
+    initialRouteName: "Feed",
+    tabBarComponent: props => (
+      <BottomTabBar
+        {...props}
+        activeTintColor="rgb(52, 199, 89)"
+        inactiveTintColor="rgb(142, 142, 147)"
+      />
+    )
+  }
+);
+
+const AppNavigator = createStackNavigator(
+  {
+    TabBarNavigator: TabBarNavigator,
+    AuthStack: AuthStack
+  },
+  {
+    headerMode: "none",
+    navigationOptions: {
+      headerVisible: false
+    }
+  }
+);
+
+export default createAppContainer(AppNavigator);

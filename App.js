@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as Font from "expo-font";
 
 import { AuthProvider } from "./src/contexts/AuthContext";
+import { ThemeProvider } from "./src/contexts/ThemeContext";
 import FirebaseInitialization from "./src/firebase/FirebaseInitialization";
 
 export default function App() {
@@ -25,7 +26,9 @@ export default function App() {
   return (
     fontLoaded && (
       <AuthProvider>
-        <FirebaseInitialization />
+        <ThemeProvider>
+          <FirebaseInitialization />
+        </ThemeProvider>
       </AuthProvider>
     )
   );

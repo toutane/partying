@@ -5,9 +5,10 @@ import { View } from "react-native";
 import { AuthContext } from "../contexts/AuthContext";
 import AllContextsProvider from "../contexts/AllContexts";
 import Navigation from "../navigation/Navigation";
+import AuthStack from "../navigation/stacks/AuthStack";
 
 export default function FirebaseInitialized(props) {
-  const { setAuthenticated } = useContext(AuthContext);
+  const { authenticated, setAuthenticated } = useContext(AuthContext);
   const [firebaseInitialized, setFirebaseInitialized] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -30,10 +31,14 @@ export default function FirebaseInitialized(props) {
     });
   }, []);
 
-  return !firebaseInitialized ? (
-    <AllContextsProvider>
-      <Navigation />
-    </AllContextsProvider>
+  return firebaseInitialized !== false ? (
+    authenticated ? (
+      <AllContextsProvider>
+        <Navigation />
+      </AllContextsProvider>
+    ) : (
+      <AuthStack />
+    )
   ) : (
     <View />
   );
