@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
 
-export default Login = props => {
+export default RegisterView = props => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Login</Text>
+      <Text>Register</Text>
       <Button
-        title="Register"
-        onPress={() => props.navigation.navigate("Register")}
+        title="Login"
+        onPress={() => props.navigation.navigate("Login")}
       />
     </View>
   );
