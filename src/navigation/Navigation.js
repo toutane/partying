@@ -38,7 +38,7 @@ const TabBarNavigator = createBottomTabNavigator(
         );
       }
     }),
-    initialRouteName: "Feed",
+    initialRouteName: "Profile",
     tabBarComponent: props => (
       <BottomTabBar
         {...props}
