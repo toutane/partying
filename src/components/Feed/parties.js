@@ -1,12 +1,14 @@
 export const PARTIES = [
   {
     organizer: {
+      uid: "fkVSztZp0pgIQQwXzyKVzOS5Ehz2",
       username: "Alex Kokai",
       avatar: "https://www.abc.net.au/news/image/8094494-3x2-700x467.jpg"
     },
     event: {
       badge: ["party🎉", "holidays🌴"],
-      name: "Friday party",
+      name:
+        "Friday party with my best friends such as Paola, Julie, Victor and also my family you know... my dad",
       time: "12:00",
       date: "24/04",
       location: "25 Mary Street",

@@ -47,7 +47,7 @@ export default FeedView = props => {
         >
           Your Feed
         </Animated.Text>
-        <FeedScrollView />
+        <FeedScrollView {...props} />
       </ScrollView>
       <DefaultHeader {...props} scrollY={scrollY} title="Feed" />
     </View>
