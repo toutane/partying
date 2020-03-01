@@ -20,7 +20,7 @@ export default LoginView = props => {
         style={{
           position: "absolute",
           top: 100,
-          left: 15,
+          left: 25,
           fontSize: 34,
           fontFamily: "sf-display-bold",
           color: theme.fontColor

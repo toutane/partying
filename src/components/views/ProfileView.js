@@ -46,7 +46,7 @@ export default ProfileView = props => {
           style={{
             position: "absolute",
             top: 0,
-            left: 15,
+            left: 25,
             opacity: titleOpacity,
             fontSize: 34,
             fontFamily: "sf-display-bold",

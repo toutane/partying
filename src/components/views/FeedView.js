@@ -5,6 +5,7 @@ import { screenHeight } from "../../utils/dimensions";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
 import DefaultHeader from "../Headers/DefaultHeader";
+import FeedScrollView from "../Feed/FeedScrollView";
 
 export default FeedView = props => {
   const { theme } = useContext(ThemeContext);
@@ -37,15 +38,16 @@ export default FeedView = props => {
       >
         <Animated.Text
           style={{
-            marginLeft: 15,
+            marginLeft: 25,
             opacity: titleOpacity,
             fontSize: 34,
             fontFamily: "sf-display-bold",
             color: theme.fontColor
           }}
         >
-          Feed
+          Your Feed
         </Animated.Text>
+        <FeedScrollView />
       </ScrollView>
       <DefaultHeader {...props} scrollY={scrollY} title="Feed" />
     </View>
