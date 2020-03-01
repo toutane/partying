@@ -11,7 +11,7 @@ import { PARTIES } from "./parties";
 export default function FeedScrollView(props) {
   const { theme } = useContext(ThemeContext);
   return (
-    <ScrollView style={{ marginTop: 30, marginBottom: 250 }}>
+    <ScrollView style={{ marginTop: 30, marginBottom: 200 }}>
       {PARTIES.map((e, i) => (
         <PartyCard key={i} event={e} theme={theme} {...props} />
       ))}

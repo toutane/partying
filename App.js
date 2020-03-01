@@ -19,7 +19,8 @@ export default function App() {
       "sf-text-semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),
       "sf-display-medium": require("./assets/fonts/SF-Pro-Text-Medium.otf"),
       "sf-display-semibold": require("./assets/fonts/SF-Pro-Display-Semibold.otf"),
-      "sf-display-bold": require("./assets/fonts/SF-Pro-Display-Bold.otf")
+      "sf-display-bold": require("./assets/fonts/SF-Pro-Display-Bold.otf"),
+      feather1s: require("./node_modules/react-native-feather1s/Fonts/feather1s.ttf")
     });
     setFontLoaded(true);
   }
