@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { useSafeArea } from "react-native-safe-area-context";
 
 export default BottomTabBar = props => {
   const { theme } = useContext(ThemeContext);
@@ -21,7 +22,7 @@ export default BottomTabBar = props => {
     <View
       style={{
         flexDirection: "row",
-        height: 85,
+        height: 41 + useSafeArea().top,
         backgroundColor:
           theme.theme === "dark" ? "rgb(17, 17, 17)" : "rgb(242, 242, 247)"
       }}

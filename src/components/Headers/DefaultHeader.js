@@ -3,7 +3,7 @@ import { View, Animated, TouchableOpacity } from "react-native";
 import { BlurView } from "expo-blur";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { screenWidth } from "../../utils/dimensions";
-import { Feather } from "@expo/vector-icons";
+import { useSafeArea } from "react-native-safe-area-context";
 
 export default DefaultHeader = props => {
   const { theme } = useContext(ThemeContext);
@@ -46,10 +46,10 @@ export default DefaultHeader = props => {
       >
         <BlurView
           tint={theme.theme}
-          intensity={90}
+          intensity={95}
           style={{
             zIndex: 2,
-            height: 90,
+            height: 46 + useSafeArea().top,
             width: screenWidth
           }}
         />
@@ -57,7 +57,7 @@ export default DefaultHeader = props => {
       <Animated.View
         style={{
           zIndex: 3,
-          height: 90,
+          height: 46 + useSafeArea().top,
           width: screenWidth,
           backgroundColor: theme.backgroundColor,
           position: "absolute",
@@ -68,11 +68,11 @@ export default DefaultHeader = props => {
       <View
         style={{
           zIndex: 4,
-          height: 90,
+          height: 46 + useSafeArea().top,
           width: screenWidth,
           alignItems: "center",
           justifyContent: "center",
-          top: 20,
+          top: (useSafeArea().top - 4) / 2,
           flexDirection: "row"
         }}
       >

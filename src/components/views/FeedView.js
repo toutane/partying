@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { View, ScrollView, Animated } from "react-native";
 import { screenHeight } from "../../utils/dimensions";
+import { useSafeArea } from "react-native-safe-area-context";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 
@@ -31,7 +32,7 @@ export default FeedView = props => {
         onScroll={Animated.event([
           { nativeEvent: { contentOffset: { y: scrollY } } }
         ])}
-        contentContainerStyle={{ marginTop: 100 }}
+        contentContainerStyle={{ marginTop: 56 + useSafeArea().top }}
         scrollEventThrottle={16}
         snapToAlignment={"start"}
         snapToInterval={60}

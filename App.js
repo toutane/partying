@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as Font from "expo-font";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { AuthProvider } from "./src/contexts/AuthContext";
 import { ThemeProvider } from "./src/contexts/ThemeContext";
@@ -28,7 +29,9 @@ export default function App() {
     fontLoaded && (
       <AuthProvider>
         <ThemeProvider>
-          <FirebaseInitialization />
+          <SafeAreaProvider>
+            <FirebaseInitialization />
+          </SafeAreaProvider>
         </ThemeProvider>
       </AuthProvider>
     )
