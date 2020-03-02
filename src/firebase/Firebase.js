@@ -3,14 +3,14 @@ import "firebase/auth";
 import "firebase/firebase-firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBghTn910JHCJ0q_DLRZHtrcamAWNBgzxY",
-  authDomain: "exam-app-23b3f.firebaseapp.com",
-  databaseURL: "https://exam-app-23b3f.firebaseio.com",
-  projectId: "exam-app-23b3f",
-  storageBucket: "exam-app-23b3f.appspot.com",
-  messagingSenderId: "852852370643",
-  appId: "1:852852370643:web:5ad92eb0beb700d5f27826",
-  measurementId: "G-CEMWPYTT0H"
+  apiKey: "AIzaSyCMW36J_ENYvJKUI6Dt3sRAVITkPqJx_VI",
+  authDomain: "partying-9083a.firebaseapp.com",
+  databaseURL: "https://partying-9083a.firebaseio.com",
+  projectId: "partying-9083a",
+  storageBucket: "partying-9083a.appspot.com",
+  messagingSenderId: "603164020847",
+  appId: "1:603164020847:web:0dcbdc3bb4f2d212eefd9a",
+  measurementId: "G-XCE68R536W"
 };
 
 class Firebase {

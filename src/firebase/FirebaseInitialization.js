@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import firebase from "./Firebase";
+import firebase from "./firebase";
 import { View } from "react-native";
 
 import { AuthContext } from "../contexts/AuthContext";

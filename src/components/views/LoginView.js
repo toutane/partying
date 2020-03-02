@@ -31,8 +31,12 @@ export default LoginView = props => {
       <Button
         title="Login"
         onPress={() =>
-          login("email@email.com", "123456").catch(error => console.log(error))
+          login("bob@bob.email", "123456").catch(error => console.log(error))
         }
+      />
+      <Button
+        title="Go to register view"
+        onPress={() => props.navigation.navigate("Register")}
       />
     </View>
   );

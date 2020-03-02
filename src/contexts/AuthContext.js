@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase from "../firebase/Firebase";
+import firebase from "../firebase/firebase";
 
 const AuthContext = React.createContext();
 const { Provider } = AuthContext;
