@@ -1,9 +1,10 @@
 export const PARTIES = [
   {
     organizer: {
-      uid: "fkVSztZp0pgIQQwXzyKVzOS5Ehz2",
+      uid: "XYDAyx9jntbQn0eP0IPCrewBg662",
       username: "Alex Kokai",
-      avatar: "https://www.abc.net.au/news/image/8094494-3x2-700x467.jpg"
+      avatar:
+        "https://66.media.tumblr.com/be81e2a8463ba53f3fbf3de2d965bb10/tumblr_pi0b4w4zem1qb1xe8o1_400.png"
     },
     event: {
       badge: ["party🎉", "holidays🌴"],
