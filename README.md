@@ -1,6 +1,12 @@
-# EXAM
+# Partying
 
-This app brings you the power of self evaluation 😎
+Partying is a mobile app. This app allows to easily create, share and manage events.
+
+This tool therefore allows faster, simpler, more accessible and less time-consuming personal event management.
+
+Its use therefore makes Partying the ultimate application to make organizing a party more enjoyable.
+
+Partying isn't a social network but a platform where create and manage events become accessible.
 
 ## Install
 
