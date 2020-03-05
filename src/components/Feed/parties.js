@@ -2,7 +2,7 @@ export const PARTIES = [
   {
     organizer: {
       uid: "XYDAyx9jntbQn0eP0IPCrewBg662",
-      username: "Alex Kokai",
+      username: "Robert White",
       avatar:
         "https://66.media.tumblr.com/be81e2a8463ba53f3fbf3de2d965bb10/tumblr_pi0b4w4zem1qb1xe8o1_400.png"
     },
@@ -13,7 +13,7 @@ export const PARTIES = [
       time: "12:00",
       date: "24/04",
       start: { date: "24/04", time: "20.30" },
-      end: { date: "25/05", time: "23.00" },
+      end: { date: "25/04", time: "23.00" },
       location: "111 8th Avenue, New York, NY, USA",
       description:
         "Inhabit hearing perhaps on ye do no. It maids decay as there he. Smallest on suitable disposed do although blessing he juvenile in."

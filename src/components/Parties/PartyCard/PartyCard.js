@@ -9,7 +9,7 @@ import { CardFooter } from "./CardFooter/CardFooter";
 
 export default function PartyCard(props) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity activeOpacity={0.5}>
       <Card {...props}>
         <CardHeader {...props} />
         <CardContent {...props} />

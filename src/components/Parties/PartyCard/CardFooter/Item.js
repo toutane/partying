@@ -7,6 +7,7 @@ export const Item = props => {
   const [showed, setShowed] = useState("start");
   return (
     <TouchableOpacity
+      activeOpacity={0.6}
       style={{
         flexDirection: "row",
         alignItems: "center",
