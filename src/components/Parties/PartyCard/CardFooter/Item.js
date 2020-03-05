@@ -1,16 +1,23 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Icon from "react-native-feather1s";
 
 export const Item = props => {
+  const [showed, setShowed] = useState("start");
   return (
-    <View
+    <TouchableOpacity
       style={{
         flexDirection: "row",
         alignItems: "center",
-        width: 100
+        width: props.extd ? "100%" : "33%"
+        // backgroundColor: "red"
       }}
+      onPress={() =>
+        props.title === "Location"
+          ? props.setExtd(!props.extd)
+          : setShowed(showed === "start" ? "end" : "start")
+      }
     >
       <Icon
         name={props.icon}
@@ -37,9 +44,17 @@ export const Item = props => {
           }}
           numberOfLines={1}
         >
-          {props.data}
+          {props.title === "Time"
+            ? showed === "start"
+              ? props.data.start.time
+              : props.data.end.time
+            : props.title === "Date"
+            ? showed === "start"
+              ? props.data.start.date
+              : props.data.end.date
+            : props.data}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
