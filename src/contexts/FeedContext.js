@@ -9,12 +9,16 @@ const { Provider } = FeedContext;
 
 const FeedProvider = props => {
   const { authenticated } = useContext(AuthContext);
-  const { currentUserId, currentUserData } = useContext(UserContext);
+  const { currentUserId } = useContext(UserContext);
   const [parties, setParties] = useState([]);
 
   useEffect(() => {
     currentUserId !== "" && feedListener();
   }, [currentUserId]);
+
+  // useEffect(() => {
+  //   !authenticated && feedListener.stop();
+  // }, [authenticated]);
 
   useEffect(() => {
     console.log(parties);
@@ -23,19 +27,18 @@ const FeedProvider = props => {
   async function feedListener() {
     firebase.db
       .collection("parties")
-      .where("participants", "array-contains", currentUserId)
+      .where("participants_id", "array-contains", currentUserId)
       .onSnapshot(() => loadFeed());
   }
 
   async function loadFeed() {
     const parties = await firebase.db
       .collection("parties")
-      .where("participants", "array-contains", currentUserId)
+      .where("participants_id", "array-contains", currentUserId)
       .get();
     return setParties(
       parties.docs.map(doc => ({
-        ...doc.data(),
-        ...{ id: doc.id }
+        ...doc.data()
       }))
     );
   }
