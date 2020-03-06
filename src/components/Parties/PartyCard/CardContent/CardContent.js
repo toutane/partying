@@ -13,7 +13,7 @@ export const CardContent = props => {
         }}
         numberOfLines={3}
       >
-        {props.event.event.description}
+        {props.event.description}
       </Text>
     </View>
   );

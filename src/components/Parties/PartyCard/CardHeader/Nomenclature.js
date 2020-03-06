@@ -19,14 +19,14 @@ export const Nomenclature = props => {
         }}
         numberOfLines={1}
       >
-        {props.event.event.name}
+        {props.event.name}
       </Text>
       <TouchableOpacity
         onPress={() =>
-          props.event.organizer.uid === props.crntUserId
+          props.event.organizer_id === props.crntUserId
             ? props.navigation.navigate("Profile")
             : props.navigation.navigate("Notifications", {
-                user_uid: props.event.organizer.uid
+                user_uid: props.event.organizer_id
               })
         }
       >

@@ -8,7 +8,7 @@ export const Thumbnails = props => {
     <View style={{ flexDirection: "row" }}>
       <Thumbnail
         user={{
-          uid: props.event.organizer.uid,
+          uid: props.event.organizer_id,
           avatar: props.event.organizer.avatar
         }}
         {...props}
