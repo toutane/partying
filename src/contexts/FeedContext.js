@@ -1,73 +1,54 @@
-// import React, { useState, useEffect, useContext } from "react";
-// import firebase from "../firebase/Firebase";
+import React, { useState, useEffect, useContext } from "react";
+import firebase from "../firebase/Firebase";
 
-// import { AuthContext } from "./AuthContext";
-// import { UserContext } from "./UserContext";
+import { AuthContext } from "./AuthContext";
+import { UserContext } from "./UserContext";
 
-// const FeedContext = React.createContext();
-// const { Provider } = FeedContext;
+const FeedContext = React.createContext();
+const { Provider } = FeedContext;
 
-// const FeedProvider = props => {
-//   const { authenticated } = useContext(AuthContext);
-//   const { currentUserId } = useContext(UserContext);
-//   const [notes, setNotes] = useState([]);
-//   const [loaded, setLoaded] = useState(false);
+const FeedProvider = props => {
+  const { authenticated } = useContext(AuthContext);
+  const { currentUserId, currentUserData } = useContext(UserContext);
+  const [parties, setParties] = useState([]);
 
-//   const [currentNote, setCurrentNote] = useState({ title: "" });
+  useEffect(() => {
+    currentUserId !== "" && feedListener();
+  }, [currentUserId]);
 
-//   useEffect(() => {
-//     authenticated && feedListener();
-//   }, [authenticated]);
+  useEffect(() => {
+    console.log(parties);
+  }, [parties]);
 
-//   async function feedListener() {
-//     firebase.db
-//       .collection("users")
-//       .doc(currentUserId)
-//       .collection("exams")
-//       .onSnapshot(() => loadNotes());
-//   }
+  async function feedListener() {
+    firebase.db
+      .collection("parties")
+      .where("participants", "array-contains", currentUserId)
+      .onSnapshot(() => loadFeed());
+  }
 
-//   async function loadNotes() {
-//     const notes = await firebase.db
-//       .collection("users")
-//       .doc(currentUserId)
-//       .collection("exams")
-//       .get();
-//     return (
-//       setNotes(
-//         notes.docs.map(doc => ({
-//           ...doc.data(),
-//           ...{ id: doc.id }
-//         }))
-//       ),
-//       setLoaded(true)
-//     );
-//   }
+  async function loadFeed() {
+    const parties = await firebase.db
+      .collection("parties")
+      .where("participants", "array-contains", currentUserId)
+      .get();
+    return setParties(
+      parties.docs.map(doc => ({
+        ...doc.data(),
+        ...{ id: doc.id }
+      }))
+    );
+  }
 
-//   async function loadCurrentNote(noteId) {
-//     const note = await firebase.db
-//       .collection("users")
-//       .doc(currentUserId)
-//       .collection("exams")
-//       .doc(noteId)
-//       .get();
-//     return setCurrentNote(note.data());
-//   }
+  return (
+    <Provider
+      value={{
+        parties
+      }}
+    >
+      {props.children}
+    </Provider>
+  );
+};
 
-//   return (
-//     <Provider
-//       value={{
-//         notes,
-//         currentNote,
-//         setNotes,
-//         loadNotes,
-//         loadCurrentNote,
-//         loaded
-//       }}
-//     >
-//       {props.children}
-//     </Provider>
-//   );
-// };
-
-// export { FeedProvider, FeedContext };
+export { FeedProvider, FeedContext };

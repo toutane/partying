@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 8654,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 15594,
+  "expoServerNgrokUrl": "https://p4-fuv.charlesantoineleger.partying.exp.direct",
+  "packagerNgrokUrl": "https://packager.p4-fuv.charlesantoineleger.partying.exp.direct",
+  "ngrokPid": 15616
 }
