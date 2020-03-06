@@ -13,13 +13,13 @@ Partying isn't a social network but a platform where create and manage events be
 Clone this repo to your computer with the command:
 
 ```shell
-git clone git@github.com:toutane/EXAM-app.git
+git clone git@github.com:toutane/partying.git
 ```
 
 Go inside the cloning directory:
 
 ```shell
-cd EXAM-app
+cd partying
 ```
 
 ## Steps - Starting the React Native App
