@@ -8,12 +8,12 @@ export const Thumbnails = props => {
     <View style={{ flexDirection: "row" }}>
       <Thumbnail
         user={{
-          uid: props.event.organizer_id,
-          avatar: props.event.organizer.avatar
+          uid: props.party.organizer_id,
+          avatar: props.party.organizer.avatar
         }}
         {...props}
       />
-      {props.event.participants.length > 0 && (
+      {props.party.participants_id.length > 0 && (
         <TouchableOpacity
           style={{
             borderRadius: 13,
@@ -32,7 +32,7 @@ export const Thumbnails = props => {
               fontSize: 16
             }}
           >
-            +{props.event.participants.length}
+            +{props.party.participants_id.length}
           </Text>
         </TouchableOpacity>
       )}

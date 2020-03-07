@@ -7,7 +7,7 @@ export const Nomenclature = props => {
       style={{
         flex: 1,
         marginLeft: 15,
-        justifyContent: "space-between"
+        justifyContent: "space-around"
       }}
     >
       <Text
@@ -19,15 +19,13 @@ export const Nomenclature = props => {
         }}
         numberOfLines={1}
       >
-        {props.event.name}
+        {props.party.name}
       </Text>
       <TouchableOpacity
         onPress={() =>
-          props.event.organizer_id === props.crntUserId
+          props.party.organizer_id === props.crntUserId
             ? props.navigation.navigate("Profile")
-            : props.navigation.navigate("Notifications", {
-                user_uid: props.event.organizer_id
-              })
+            : props.navigation.navigate("Notifications")
         }
       >
         <Text
@@ -36,7 +34,7 @@ export const Nomenclature = props => {
         >
           {"by "}
           <Text style={{ color: props.theme.gray }}>
-            {props.event.organizer.username}
+            {props.party.organizer.username}
           </Text>
         </Text>
       </TouchableOpacity>

@@ -9,9 +9,7 @@ export const Thumbnail = props => {
       onPress={() =>
         props.user.uid === props.crntUserId
           ? props.navigation.navigate("Profile")
-          : props.navigation.navigate("Notifications", {
-              user_uid: props.user.uid
-            })
+          : props.navigation.navigate("Notifications")
       }
     >
       <Image source={{ uri: props.user.avatar }} />

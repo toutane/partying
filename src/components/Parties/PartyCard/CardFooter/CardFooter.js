@@ -14,15 +14,15 @@ export const CardFooter = props => {
       }}
     >
       {!locationExtended && (
-        <Item title="Time" icon="clock" data={props.event} {...props} />
+        <Item title="Time" icon="clock" data={props.party} {...props} />
       )}
       {!locationExtended && (
-        <Item title="Date" icon="calendar" data={props.event} {...props} />
+        <Item title="Date" icon="calendar" data={props.party} {...props} />
       )}
       <Item
         title="Location"
         icon="map-pin"
-        data={props.event.location}
+        data={props.party.location}
         extd={locationExtended}
         setExtd={setLocationExtended}
         {...props}

@@ -6,7 +6,7 @@ import { Nomenclature } from "./Nomenclature";
 
 import { UserContext } from "../../../../contexts/UserContext";
 
-export default function CardHeader(props) {
+export const CardHeader = props => {
   const { currentUserId } = useContext(UserContext);
   return (
     <View style={{ flexDirection: "row" }}>
@@ -14,4 +14,4 @@ export default function CardHeader(props) {
       <Nomenclature crntUserId={currentUserId} {...props} />
     </View>
   );
-}
+};

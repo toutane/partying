@@ -11,5 +11,5 @@ export const lightTheme = {
   gray5: "rgb(229, 229, 234)",
   gray6: "rgb(242, 242, 247)",
   hr: "rgba(0 ,0 ,0 ,0.1)",
-  green: "rgb(48 ,209 ,88)"
+  green: "rgb(52, 199, 89)"
 };

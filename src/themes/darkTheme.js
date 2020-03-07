@@ -11,5 +11,5 @@ export const darkTheme = {
   gray6: "rgb(28, 28, 30)",
   gray7: "rgb(17, 17, 17)",
   hr: "rgba(255 ,255 ,255 ,0.2)",
-  green: "rgb(48 ,209 ,88)"
+  green: "rgb(52, 199, 89)"
 };

@@ -17,7 +17,7 @@ export default function FeedScrollView(props) {
       style={{ marginTop: useSafeArea().top - 14, marginBottom: 200 }}
     >
       {parties.map((e, i) => (
-        <PartyCard key={i} event={e} theme={theme} {...props} />
+        <PartyCard key={i} party={e} theme={theme} {...props} />
       ))}
     </ScrollView>
   );
