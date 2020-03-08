@@ -25,7 +25,7 @@ export default PartyView = props => {
 
   const titleOpacity = _getTitleOpacity();
   return (
-    <View></View>
+    <View>
       <ScrollView
         style={{
           zIndex: 1,

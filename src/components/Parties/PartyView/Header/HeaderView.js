@@ -3,7 +3,7 @@ import { Animated, View, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { LeftView } from "./LeftView";
-import { BackButton } from "../../../../BackButton/BackButton";
+import { BackButton } from "../../../BackButton/BackButton";
 
 export const HeaderView = props => {
   return (

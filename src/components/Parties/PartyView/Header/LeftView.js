@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { Thumbnail } from "../../../../Thumbnail/Thumbnail";
+import { Thumbnail } from "../../../Thumbnail/Thumbnail";
 
-import { AuthContext } from "../../../../../contexts/AuthContext";
+import { AuthContext } from "../../../../contexts/AuthContext";
 
 export const LeftView = props => {
   const { currentUserId } = useContext(AuthContext);
