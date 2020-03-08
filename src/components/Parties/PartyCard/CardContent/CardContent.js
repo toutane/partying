@@ -9,7 +9,8 @@ export const CardContent = props => {
           fontFamily: "sf-text-regular",
           fontSize: 15,
           color: props.theme.fontColor,
-          lineHeight: 30
+          lineHeight: 30,
+          textAlign: "justify"
         }}
         numberOfLines={3}
       >

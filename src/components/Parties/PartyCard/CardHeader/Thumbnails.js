@@ -15,6 +15,7 @@ export const Thumbnails = props => {
       />
       {props.party.participants_id.length > 0 && (
         <TouchableOpacity
+          activeOpacity={0.5}
           style={{
             borderRadius: 13,
             backgroundColor: "#F9F0DB",

@@ -1,12 +1,29 @@
 import React from "react";
-import { View } from "react-native";
+import { Animated, View } from "react-native";
 
-import { ViewHeader } from "./ViewHeader/ViewHeader";
+import { TopView } from "./Top/TopView";
+import { HeaderView } from "./Top/Header/HeaderView";
 
-export default function PartyCard(props) {
+export default function PartyScreen(props) {
   return (
     <View>
-      <ViewHeader {...props} />
+      {/* <View
+        style={{
+          backgroundColor:
+            props.theme.theme !== "light" ? props.theme.gray6 : "white"
+        }}
+      >
+        <Animated.View
+          style={{
+            opacity: props.titleOpacity,
+            backgroundColor:
+              props.theme.theme !== "light" ? props.theme.gray6 : "white",
+            height: 10
+          }}
+        /> */}
+      <HeaderView {...props} />
+      {/* </View> */}
+      <TopView {...props} />
     </View>
   );
 }

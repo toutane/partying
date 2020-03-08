@@ -6,6 +6,7 @@ import { Image } from "./styles";
 export const Thumbnail = props => {
   return (
     <TouchableOpacity
+      activeOpacity={0.5}
       onPress={() =>
         props.user.uid === props.crntUserId
           ? props.navigation.navigate("Profile")
