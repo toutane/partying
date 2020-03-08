@@ -59,7 +59,12 @@ export default DefaultHeader = props => {
           zIndex: 3,
           height: 46 + useSafeArea().top,
           width: screenWidth,
-          backgroundColor: theme.backgroundColor,
+          backgroundColor:
+            props.isWhiteBackground !== undefined
+              ? theme.theme !== "light"
+                ? theme.gray6
+                : "white"
+              : theme.backgroundColor,
           position: "absolute",
           top: 0,
           opacity: headerBlackOpacity
@@ -73,7 +78,8 @@ export default DefaultHeader = props => {
           alignItems: "center",
           justifyContent: "center",
           top: (useSafeArea().top - 4) / 2,
-          flexDirection: "row"
+          flexDirection: "row",
+          paddingHorizontal: 25
         }}
       >
         <Animated.Text
@@ -83,6 +89,7 @@ export default DefaultHeader = props => {
             color: theme.fontColor,
             opacity: headerTitleOpacity
           }}
+          numberOfLines={1}
         >
           {props.title}
         </Animated.Text>
