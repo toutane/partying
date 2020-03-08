@@ -25,12 +25,12 @@ export default PartyView = props => {
 
   const titleOpacity = _getTitleOpacity();
   return (
-    <View>
+    <View></View>
       <ScrollView
         style={{
           zIndex: 1,
           height: screenHeight,
-          backgroundColor: theme.backgroundColor
+          backgroundColor: theme.theme !== "light" ? theme.gray6 : "white"
         }}
         onScroll={Animated.event([
           { nativeEvent: { contentOffset: { y: scrollY } } }
@@ -47,7 +47,12 @@ export default PartyView = props => {
           {...props}
         />
       </ScrollView>
-      <DefaultHeader {...props} scrollY={scrollY} title={party.name} />
+      <DefaultHeader
+        {...props}
+        scrollY={scrollY}
+        title={`${party.organizer.username} - ${party.name}`}
+        isWhiteBackground={true}
+      />
     </View>
   );
 };
