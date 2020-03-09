@@ -16,7 +16,9 @@ export const LeftView = props => {
       onPress={() =>
         props.party.organizer_id === currentUserId
           ? props.navigation.navigate("Profile")
-          : props.navigation.navigate("Notifications")
+          : props.navigation.navigate("UserView", {
+              user: props.party.organizer
+            })
       }
     >
       <Thumbnail

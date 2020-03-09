@@ -20,9 +20,9 @@ const FeedProvider = props => {
   //   !authenticated && feedListener.stop();
   // }, [authenticated]);
 
-  // useEffect(() => {
-  //   console.log(parties);
-  // }, [parties]);
+  useEffect(() => {
+    console.log(parties);
+  }, [parties]);
 
   async function feedListener() {
     firebase.db

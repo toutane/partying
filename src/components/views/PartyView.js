@@ -14,6 +14,10 @@ export default PartyView = props => {
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
   const [party, setParty] = useState(props.navigation.getParam("party"));
 
+  // useEffect(() => {
+  //   setParty(props.navigation.getParam("party"));
+  // }, [props.navigation.getParam("party")]);
+
   _getTitleOpacity = () => {
     return scrollY.interpolate({
       inputRange: [0, 35, 36, 100],

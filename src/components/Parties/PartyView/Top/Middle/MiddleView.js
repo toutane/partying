@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 
 export const MiddleView = props => {
   return (
-    <View>
+    <View style={{ marginTop: 20, marginBottom: 20 }}>
       <Text
         style={{
           fontFamily: "sf-display-bold",

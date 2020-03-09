@@ -25,7 +25,9 @@ export const Nomenclature = props => {
         onPress={() =>
           props.party.organizer_id === props.crntUserId
             ? props.navigation.navigate("Profile")
-            : props.navigation.navigate("Notifications")
+            : props.navigation.navigate("UserView", {
+                user: props.party.organizer
+              })
         }
       >
         <Text
