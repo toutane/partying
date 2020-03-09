@@ -7,6 +7,7 @@ import { Feather } from "@expo/vector-icons";
 import BottomTabBar from "./BottomTabBar/BottomTabBar";
 import AuthStack from "./stacks/AuthStack";
 import PartyViewStack from "./stacks/PartyViewStack";
+import UserViewStack from "./stacks/UserViewStack";
 
 import Notifications from "../components/views/NotificationsView";
 import Feed from "../components/views/FeedView";
@@ -54,7 +55,8 @@ const AppNavigator = createStackNavigator(
   {
     TabBarNavigator: TabBarNavigator,
     AuthStack: AuthStack,
-    PartyViewStack: PartyViewStack
+    PartyViewStack: PartyViewStack,
+    UserViewStack: UserViewStack
   },
   {
     headerMode: "none",
