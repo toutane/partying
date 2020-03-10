@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { View, Text, Button } from "react-native";
+import { useSafeArea } from "react-native-safe-area-context";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -19,7 +20,7 @@ export default RegisterView = props => {
       <Text
         style={{
           position: "absolute",
-          top: 100,
+          top: 46 + useSafeArea().top,
           left: 25,
           fontSize: 34,
           fontFamily: "sf-display-bold",

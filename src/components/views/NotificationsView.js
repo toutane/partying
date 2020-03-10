@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { View, Text } from "react-native";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { useSafeArea } from "react-native-safe-area-context";
 
 export default NotificationsView = props => {
   const { theme } = useContext(ThemeContext);
@@ -16,7 +17,7 @@ export default NotificationsView = props => {
       <Text
         style={{
           position: "absolute",
-          top: 100,
+          top: 46 + useSafeArea().top,
           left: 25,
           fontSize: 34,
           fontFamily: "sf-display-bold",

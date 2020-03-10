@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { View, ScrollView, Animated, Button } from "react-native";
 import { screenHeight } from "../../utils/dimensions";
+import { useSafeArea } from "react-native-safe-area-context";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -33,10 +34,10 @@ export default ProfileView = props => {
           { nativeEvent: { contentOffset: { y: scrollY } } }
         ])}
         contentContainerStyle={{
-          flex: 1,
-          marginTop: 100,
+          marginTop: 46 + useSafeArea().top,
           justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center",
+          flex: 1
         }}
         scrollEventThrottle={16}
         snapToAlignment={"start"}

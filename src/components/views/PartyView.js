@@ -20,7 +20,7 @@ export default PartyView = props => {
 
   _getTitleOpacity = () => {
     return scrollY.interpolate({
-      inputRange: [0, 35, 36, 100],
+      inputRange: [0, 25, 26, 100],
       outputRange: [1, 1, 0, 0],
       extrapolate: "clamp",
       useNativeDriver: true
@@ -39,7 +39,7 @@ export default PartyView = props => {
         onScroll={Animated.event([
           { nativeEvent: { contentOffset: { y: scrollY } } }
         ])}
-        contentContainerStyle={{ marginTop: 56 + useSafeArea().top }}
+        contentContainerStyle={{ marginTop: 46 + useSafeArea().top }}
         scrollEventThrottle={16}
         snapToAlignment={"start"}
         snapToInterval={60}

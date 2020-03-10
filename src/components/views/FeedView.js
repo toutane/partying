@@ -32,7 +32,7 @@ export default FeedView = props => {
         onScroll={Animated.event([
           { nativeEvent: { contentOffset: { y: scrollY } } }
         ])}
-        contentContainerStyle={{ marginTop: 56 + useSafeArea().top }}
+        contentContainerStyle={{ marginTop: 46 + useSafeArea().top }}
         scrollEventThrottle={16}
         snapToAlignment={"start"}
         snapToInterval={60}

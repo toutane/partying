@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { View, ScrollView, Animated, Button } from "react-native";
 import { screenHeight } from "../../utils/dimensions";
+import { useSafeArea } from "react-native-safe-area-context";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 
@@ -33,8 +34,8 @@ export default UserView = props => {
           { nativeEvent: { contentOffset: { y: scrollY } } }
         ])}
         contentContainerStyle={{
+          marginTop: 46 + useSafeArea().top,
           flex: 1,
-          marginTop: 100,
           justifyContent: "center",
           alignItems: "center"
         }}
