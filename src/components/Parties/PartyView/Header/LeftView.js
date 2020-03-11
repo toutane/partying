@@ -14,21 +14,14 @@ export const LeftView = props => {
         alignItems: "center"
       }}
       onPress={() =>
-        props.party.organizer_id === currentUserId
+        props.party.organizer.user_id === currentUserId
           ? props.navigation.navigate("Profile")
           : props.navigation.navigate("UserView", {
               user: props.party.organizer
             })
       }
     >
-      <Thumbnail
-        user={{
-          uid: props.party.organizer_id,
-          avatar: props.party.organizer.avatar
-        }}
-        crntUserId={currentUserId}
-        {...props}
-      />
+      <Thumbnail user={props.party.organizer} {...props} />
       <View
         style={{
           height: 45,
@@ -40,7 +33,7 @@ export const LeftView = props => {
           style={{
             color: props.theme.fontColor,
             fontSize: 17,
-            fontFamily: "sf-text-semibold",
+            fontFamily: "sf-text-bold",
             flexShrink: 1
           }}
           numberOfLines={1}

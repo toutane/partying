@@ -4,19 +4,22 @@ import { screenHeight } from "../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { FeedContext } from "../../contexts/FeedContext";
 
 import DefaultHeader from "../Headers/DefaultHeader";
 import PartyScreen from "../Parties/PartyView/PartyScreen";
 
 export default PartyView = props => {
   const { theme, switchTheme } = useContext(ThemeContext);
+  const { loadParticipants } = useContext(FeedContext);
 
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
   const [party, setParty] = useState(props.navigation.getParam("party"));
+  const [participants, setParticipants] = useState([]);
 
-  // useEffect(() => {
-  //   setParty(props.navigation.getParam("party"));
-  // }, [props.navigation.getParam("party")]);
+  useEffect(() => {
+    loadParticipants(party.party_id).then(arr => setParticipants(arr));
+  }, []);
 
   _getTitleOpacity = () => {
     return scrollY.interpolate({
@@ -39,7 +42,9 @@ export default PartyView = props => {
         onScroll={Animated.event([
           { nativeEvent: { contentOffset: { y: scrollY } } }
         ])}
-        contentContainerStyle={{ marginTop: 46 + useSafeArea().top }}
+        contentContainerStyle={{
+          marginTop: 46 + useSafeArea().top
+        }}
         scrollEventThrottle={16}
         snapToAlignment={"start"}
         snapToInterval={60}
@@ -47,6 +52,7 @@ export default PartyView = props => {
         <PartyScreen
           theme={theme}
           party={party}
+          participants={participants}
           titleOpacity={titleOpacity}
           {...props}
         />

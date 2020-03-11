@@ -18,6 +18,7 @@ export default function App() {
       "sf-text-regular": require("./assets/fonts/SF-Pro-Text-Regular.otf"),
       "sf-text-medium": require("./assets/fonts/SF-Pro-Text-Medium.otf"),
       "sf-text-semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),
+      "sf-text-bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
       "sf-display-medium": require("./assets/fonts/SF-Pro-Text-Medium.otf"),
       "sf-display-semibold": require("./assets/fonts/SF-Pro-Display-Semibold.otf"),
       "sf-display-bold": require("./assets/fonts/SF-Pro-Display-Bold.otf"),
