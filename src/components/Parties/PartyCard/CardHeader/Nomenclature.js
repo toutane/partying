@@ -14,7 +14,7 @@ export const Nomenclature = props => {
         style={{
           color: props.theme.fontColor,
           fontSize: 17,
-          fontFamily: "sf-text-semibold",
+          fontFamily: "sf-text-bold",
           flexShrink: 1
         }}
         numberOfLines={1}
@@ -23,7 +23,7 @@ export const Nomenclature = props => {
       </Text>
       <TouchableOpacity
         onPress={() =>
-          props.party.organizer_id === props.crntUserId
+          props.party.organizer.user_id === props.crntUserId
             ? props.navigation.navigate("Profile")
             : props.navigation.navigate("UserView", {
                 user: props.party.organizer
@@ -31,7 +31,11 @@ export const Nomenclature = props => {
         }
       >
         <Text
-          style={{ fontSize: 15, color: props.theme.gray }}
+          style={{
+            fontSize: 15,
+            color: props.theme.gray,
+            fontFamily: "sf-text-semibold"
+          }}
           numberOfLines={1}
         >
           {"by "}

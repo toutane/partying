@@ -10,7 +10,7 @@ export const CardHeader = props => {
   const { currentUserId } = useContext(UserContext);
   return (
     <View style={{ flexDirection: "row" }}>
-      <Thumbnails crntUserId={currentUserId} {...props} />
+      <Thumbnails {...props} />
       <Nomenclature crntUserId={currentUserId} {...props} />
     </View>
   );

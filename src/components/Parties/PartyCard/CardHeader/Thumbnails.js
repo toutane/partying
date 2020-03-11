@@ -6,13 +6,7 @@ import { Thumbnail } from "../../../Thumbnail/Thumbnail";
 export const Thumbnails = props => {
   return (
     <View style={{ flexDirection: "row" }}>
-      <Thumbnail
-        user={{
-          uid: props.party.organizer_id,
-          avatar: props.party.organizer.avatar
-        }}
-        {...props}
-      />
+      <Thumbnail user={props.party.organizer} {...props} />
       {props.party.participants_id.length > 0 && (
         <TouchableOpacity
           activeOpacity={0.5}
