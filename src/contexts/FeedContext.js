@@ -20,9 +20,9 @@ const FeedProvider = props => {
   //   !authenticated && feedListener.stop();
   // }, [authenticated]);
 
-  // useEffect(() => {
-  //   console.log(parties);
-  // }, [parties]);
+  useEffect(() => {
+    console.log(parties);
+  }, [parties]);
 
   async function feedListener() {
     firebase.db
@@ -43,10 +43,21 @@ const FeedProvider = props => {
     );
   }
 
+  async function loadParticipants(party_id) {
+    const participants = await firebase.db
+      .collection("parties")
+      .doc(party_id)
+      .collection("participants")
+      .get();
+    return participants.docs.map(doc => ({
+      ...doc.data()
+    }));
+  }
   return (
     <Provider
       value={{
-        parties
+        parties,
+        loadParticipants
       }}
     >
       {props.children}
