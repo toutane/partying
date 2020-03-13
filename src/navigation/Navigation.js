@@ -11,13 +11,13 @@ import UserViewStack from "./stacks/UserViewStack";
 
 import Notifications from "../components/views/NotificationsView";
 import Feed from "../components/views/FeedView";
-import Profile from "../components/views/ProfileView";
+import Account from "../components/views/AccountView";
 
 const TabBarNavigator = createBottomTabNavigator(
   {
     Notifications: { screen: Notifications },
     Feed: { screen: Feed },
-    Profile: { screen: Profile }
+    Account: { screen: Account }
   },
 
   {
@@ -40,7 +40,7 @@ const TabBarNavigator = createBottomTabNavigator(
         );
       }
     }),
-    initialRouteName: "Feed",
+    initialRouteName: "Account",
     tabBarComponent: props => (
       <BottomTabBar
         {...props}

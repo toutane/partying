@@ -27,12 +27,15 @@ export default RegisterView = props => {
           color: theme.fontColor
         }}
       >
-        Register
+        Register!
       </Text>
       <Button
         title="Register"
         onPress={() =>
-          register("bob", "bob@bob.email", "123456").catch(error =>
+          // register("bob", "bob@bob.email", "123456").catch(error =>
+          //   console.log(error)
+          // )
+          register("Elton John", "elton@john.email", "123456").catch(error =>
             console.log(error)
           )
         }

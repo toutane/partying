@@ -10,7 +10,7 @@ export const Thumbnail = props => {
       activeOpacity={0.5}
       onPress={() =>
         props.user.user_id === currentUserId
-          ? props.navigation.navigate("Profile")
+          ? props.navigation.navigate("Account")
           : props.navigation.navigate("UserView", {
               user: props.user
             })

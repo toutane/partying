@@ -32,7 +32,8 @@ export default LoginView = props => {
       <Button
         title="Login"
         onPress={() =>
-          login("bob@bob.email", "123456").catch(error => console.log(error))
+          // login("bob@bob.email", "123456").catch(error => console.log(error))
+          login("elton@john.email", "123456").catch(error => console.log(error))
         }
       />
       <Button
