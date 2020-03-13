@@ -5,13 +5,19 @@ import { useSafeArea } from "react-native-safe-area-context";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
+import { UserContext } from "../../contexts/UserContext";
 
 import DefaultHeader from "../Headers/DefaultHeader";
+import AccountScreen from "../AccountView/AccoutScreen";
+import { HeaderView } from "../AccountView/Header/HeaderView";
 
-export default ProfileView = props => {
-  const { logout } = useContext(AuthContext);
+export default AccountView = props => {
+  const { currentUserData } = useContext(UserContext);
+  // const { logout } = useContext(AuthContext);
   const { theme, switchTheme } = useContext(ThemeContext);
+
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
+
   _getTitleOpacity = () => {
     return scrollY.interpolate({
       inputRange: [0, 35, 36, 100],
@@ -34,34 +40,25 @@ export default ProfileView = props => {
           { nativeEvent: { contentOffset: { y: scrollY } } }
         ])}
         contentContainerStyle={{
-          marginTop: 46 + useSafeArea().top,
-          justifyContent: "center",
-          alignItems: "center",
-          flex: 1
+          marginTop: 46 + useSafeArea().top
         }}
         scrollEventThrottle={16}
         snapToAlignment={"start"}
         snapToInterval={60}
       >
-        <Animated.Text
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 25,
-            opacity: titleOpacity,
-            fontSize: 34,
-            fontFamily: "sf-display-bold",
-            color: theme.fontColor
-          }}
-        >
-          Profile
-        </Animated.Text>
-        <View style={{ marginBottom: 100 }}>
+        <HeaderView
+          {...props}
+          theme={theme}
+          titleOpacity={titleOpacity}
+          user={currentUserData}
+        />
+        <AccountScreen {...props} theme={theme} user={currentUserData} />
+        {/* <View style={{ marginBottom: 100 }}>
           <Button title="Switch theme" onPress={() => switchTheme()} />
           <Button title="Logout" onPress={() => logout()} />
-        </View>
+        </View> */}
       </ScrollView>
-      <DefaultHeader {...props} scrollY={scrollY} title="Profile" />
+      <DefaultHeader {...props} scrollY={scrollY} title="Your profile" />
     </View>
   );
 };
