@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Thumbnail } from "../../../Thumbnail/Thumbnail";
 
-import { AuthContext } from "../../../../contexts/AuthContext";
+import { UserContext } from "../../../../contexts/UserContext";
 
 export const LeftView = props => {
-  const { currentUserId } = useContext(AuthContext);
+  const { currentUserId } = useContext(UserContext);
   return (
     <TouchableOpacity
       activeOpacity={0.5}

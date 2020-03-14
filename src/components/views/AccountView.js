@@ -13,7 +13,7 @@ import { HeaderView } from "../AccountView/Header/HeaderView";
 
 export default AccountView = props => {
   const { currentUserData } = useContext(UserContext);
-  // const { logout } = useContext(AuthContext);
+  const { login, logout } = useContext(AuthContext);
   const { theme, switchTheme } = useContext(ThemeContext);
 
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
@@ -53,10 +53,8 @@ export default AccountView = props => {
           user={currentUserData}
         />
         <AccountScreen {...props} theme={theme} user={currentUserData} />
-        {/* <View style={{ marginBottom: 100 }}>
-          <Button title="Switch theme" onPress={() => switchTheme()} />
-          <Button title="Logout" onPress={() => logout()} />
-        </View> */}
+        {/* <Button title="Switch theme" onPress={() => switchTheme()} />
+        <Button title="Logout" onPress={() => logout()} /> */}
       </ScrollView>
       <DefaultHeader {...props} scrollY={scrollY} title="Your profile" />
     </View>

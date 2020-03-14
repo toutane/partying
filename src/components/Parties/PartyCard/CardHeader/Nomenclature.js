@@ -24,7 +24,7 @@ export const Nomenclature = props => {
       <TouchableOpacity
         onPress={() =>
           props.party.organizer.user_id === props.crntUserId
-            ? props.navigation.navigate("Profile")
+            ? props.navigation.navigate("Account")
             : props.navigation.navigate("UserView", {
                 user: props.party.organizer
               })
