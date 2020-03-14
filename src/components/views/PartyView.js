@@ -23,7 +23,7 @@ export default PartyView = props => {
 
   _getTitleOpacity = () => {
     return scrollY.interpolate({
-      inputRange: [0, 25, 26, 100],
+      inputRange: [0, 35, 36, 100],
       outputRange: [1, 1, 0, 0],
       extrapolate: "clamp",
       useNativeDriver: true

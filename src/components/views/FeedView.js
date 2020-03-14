@@ -46,11 +46,11 @@ export default FeedView = props => {
             color: theme.fontColor
           }}
         >
-          Your Feed
+          Your feed
         </Animated.Text>
         <FeedScrollView {...props} />
       </ScrollView>
-      <DefaultHeader {...props} scrollY={scrollY} title="Feed" />
+      <DefaultHeader {...props} scrollY={scrollY} title="Your feed" />
     </View>
   );
 };
