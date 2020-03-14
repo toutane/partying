@@ -9,6 +9,7 @@ const UserProvider = props => {
   const { authenticated } = useContext(AuthContext);
   const [currentUserData, setCurrentUserData] = useState({});
   const [currentUserId, setCurrentUserId] = useState("");
+  const [currentUserParties, setCurrentUserParties] = useState([]);
 
   useEffect(() => {
     authenticated
@@ -16,6 +17,10 @@ const UserProvider = props => {
         setCurrentUserId(firebase.auth.currentUser.uid))
       : setCurrentUserId("");
   }, [authenticated]);
+
+  useEffect(() => {
+    currentUserId !== "" && userPartiesListener();
+  }, [currentUserId]);
 
   function listenUserData(uid) {
     firebase.db
@@ -30,11 +35,32 @@ const UserProvider = props => {
       .get();
     return setCurrentUserData(user.data());
   }
+
+  async function userPartiesListener() {
+    firebase.db
+      .collection("parties")
+      .where("organizer_id", "==", currentUserId)
+      .onSnapshot(() => loadUserParties());
+  }
+
+  async function loadUserParties() {
+    const parties = await firebase.db
+      .collection("parties")
+      .where("organizer_id", "==", currentUserId)
+      .get();
+    return setCurrentUserParties(
+      parties.docs.map(doc => ({
+        ...doc.data()
+      }))
+    );
+  }
+
   return (
     <Provider
       value={{
         currentUserId,
-        currentUserData
+        currentUserData,
+        currentUserParties
       }}
     >
       {props.children}
