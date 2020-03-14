@@ -12,12 +12,14 @@ import UserViewStack from "./stacks/UserViewStack";
 import Notifications from "../components/views/NotificationsView";
 import Feed from "../components/views/FeedView";
 import Account from "../components/views/AccountView";
+import NewPartyView from "../components/views/NewPartyView";
 
 const TabBarNavigator = createBottomTabNavigator(
   {
     Notifications: { screen: Notifications },
     Feed: { screen: Feed },
-    Account: { screen: Account }
+    Account: { screen: Account },
+    NewParty: { screen: NewPartyView }
   },
 
   {
@@ -28,7 +30,9 @@ const TabBarNavigator = createBottomTabNavigator(
           ? (iconName = `bell`)
           : routeName === "Feed"
           ? (iconName = `grid`)
-          : (iconName = `user`);
+          : routeName === "Account"
+          ? (iconName = `user`)
+          : (iconName = `plus-circle`);
 
         return (
           <Feather
@@ -40,7 +44,7 @@ const TabBarNavigator = createBottomTabNavigator(
         );
       }
     }),
-    initialRouteName: "Account",
+    initialRouteName: "NewParty",
     tabBarComponent: props => (
       <BottomTabBar
         {...props}

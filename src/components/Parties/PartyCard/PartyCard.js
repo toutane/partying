@@ -6,6 +6,7 @@ import { Hr } from "../../hr";
 import { CardHeader } from "./CardHeader/CardHeader";
 import { CardContent } from "./CardContent/CardContent";
 import { CardFooter } from "./CardFooter/CardFooter";
+import { screenWidth } from "../../../utils/dimensions";
 
 export default function PartyCard(props) {
   return (
@@ -15,7 +16,7 @@ export default function PartyCard(props) {
         props.navigation.navigate("PartyView", { party: props.party })
       }
     >
-      <Card {...props}>
+      <Card {...props} style={{ width: screenWidth - 50 }}>
         <CardHeader {...props} />
         <CardContent {...props} />
         <Hr {...props} />
