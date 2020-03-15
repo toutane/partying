@@ -21,7 +21,7 @@ export const MiddleInputs = props => {
         onChangeText={name => setPartyName(name)}
       />
       <TextInput
-        multiline={true}
+        multiline={false}
         style={{
           marginTop: 5,
           fontFamily: "sf-text-regular",
