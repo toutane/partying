@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import firebase from "../firebase/Firebase";
-
 import { AuthContext } from "./AuthContext";
 import { UserContext } from "./UserContext";
+
+const moment = require("moment");
 
 const CreatePartyContext = React.createContext();
 const { Provider } = CreatePartyContext;
@@ -14,6 +15,10 @@ const CreatePartyProvider = props => {
   const [canContinue, setCanContinue] = useState(false);
   const [partyName, setPartyName] = useState("");
   const [partyDescription, setPartyDescription] = useState("");
+  const [partyStarts, setPartyStarts] = useState({
+    date: new Date(),
+    time: new Date()
+  });
 
   useEffect(() => {
     console.log(`${partyName} - ${partyDescription}`);
@@ -40,7 +45,10 @@ const CreatePartyProvider = props => {
         description: partyDescription,
         guests_id: [],
         participants_id: [],
-        start: { date: "", time: "" },
+        start: {
+          date: moment(partyStarts.date).format("ll"),
+          time: moment(partyStarts.date).format("LT")
+        },
         end: { date: "", time: "" },
         location: ""
       })
@@ -51,7 +59,14 @@ const CreatePartyProvider = props => {
 
   return (
     <Provider
-      value={{ canContinue, setPartyName, setPartyDescription, createParty }}
+      value={{
+        canContinue,
+        setPartyName,
+        setPartyDescription,
+        partyStarts,
+        setPartyStarts,
+        createParty
+      }}
     >
       {props.children}
     </Provider>

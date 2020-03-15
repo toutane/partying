@@ -44,7 +44,7 @@ const TabBarNavigator = createBottomTabNavigator(
         );
       }
     }),
-    initialRouteName: "NewParty",
+    initialRouteName: "Account",
     tabBarComponent: props => (
       <BottomTabBar
         {...props}
