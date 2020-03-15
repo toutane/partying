@@ -53,8 +53,8 @@ export default AccountView = props => {
           user={currentUserData}
         />
         <AccountScreen {...props} theme={theme} user={currentUserData} />
-        {/* <Button title="Switch theme" onPress={() => switchTheme()} />
-        <Button title="Logout" onPress={() => logout()} /> */}
+        <Button title="Switch theme" onPress={() => switchTheme()} />
+        {/*<Button title="Logout" onPress={() => logout()} /> */}
       </ScrollView>
       <DefaultHeader {...props} scrollY={scrollY} title="Your profile" />
     </View>
