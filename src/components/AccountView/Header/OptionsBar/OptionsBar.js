@@ -20,7 +20,7 @@ export const OptionsBar = props => {
       >
         <Text
           style={{
-            color: props.theme.backgroundColor,
+            color: "white",
             fontSize: 15,
             fontFamily: "sf-text-semibold"
           }}
@@ -35,7 +35,7 @@ export const OptionsBar = props => {
       >
         <Text
           style={{
-            color: props.theme.backgroundColor,
+            color: "white",
             fontSize: 15,
             fontFamily: "sf-text-semibold"
           }}

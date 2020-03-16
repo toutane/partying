@@ -9,7 +9,7 @@ export const NumbersBar = props => {
         flexDirection: "row",
         paddingHorizontal: 25,
         marginTop: 20,
-        justifyContent: "space-around"
+        justifyContent: "space-between"
       }}
     >
       <Item {...props} intro="You have" data={357} type="friends" />
