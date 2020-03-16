@@ -85,16 +85,16 @@ const CreatePartyProvider = props => {
       .collection("parties")
       .doc(party_id)
       .delete()
-      // .then(() =>
-      //   firebase.db
-      //     .collection("users")
-      //     .doc(currentUserId)
-      //     .update({
-      //       party_created: currentUserData.party_created.filter(
-      //         id => id !== party_id
-      //       )
-      //     })
-      // )
+      .then(() =>
+        firebase.db
+          .collection("users")
+          .doc(currentUserId)
+          .update({
+            party_created: currentUserData.party_created.filter(
+              id => id !== party_id
+            )
+          })
+      )
       .catch(error => console.log(error));
   }
 
