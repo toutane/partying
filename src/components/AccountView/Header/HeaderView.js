@@ -44,7 +44,7 @@ export const HeaderView = props => {
         <Avatar uri={props.user.avatar} />
       </Animated.View>
       <NumbersBar {...props} />
-      {/* <OptionsBar {...props} /> */}
+      <OptionsBar {...props} />
     </View>
   );
 };

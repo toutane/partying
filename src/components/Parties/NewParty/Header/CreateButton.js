@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import uuid from "uuid";
 
 import { CreatePartyContext } from "../../../../contexts/CreatePartyContext";
 
@@ -22,7 +23,7 @@ export const CreateButton = props => {
         paddingHorizontal: 15,
         height: 50
       }}
-      onPress={() => canContinue && createParty(props)}
+      onPress={() => canContinue && createParty(uuid.v4(), props)}
     >
       <Text
         style={{

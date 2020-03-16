@@ -10,8 +10,7 @@ export default function AccountScreen(props) {
   return (
     <View
       style={{
-        marginTop: useSafeArea().top - 14,
-        marginBottom: 200
+        marginTop: useSafeArea().top - 14
       }}
     >
       <MyPartiesScrollView {...props} parties={currentUserParties} />

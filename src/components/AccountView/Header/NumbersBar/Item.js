@@ -17,7 +17,7 @@ export const Item = props => {
         <Text
           style={{
             color: props.theme.fontColor,
-            fontSize: 22,
+            fontSize: 24,
             fontFamily: "sf-text-bold"
           }}
         >
