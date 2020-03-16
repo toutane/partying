@@ -14,7 +14,12 @@ export const NumbersBar = props => {
     >
       <Item {...props} intro="You have" data={357} type="friends" />
       <Item {...props} intro="You went to" data={20} type="parties" />
-      <Item {...props} intro="You created" data={5} type="parties" />
+      <Item
+        {...props}
+        intro="You created"
+        data={props.user.party_created.length}
+        type="parties"
+      />
     </View>
   );
 };
