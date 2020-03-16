@@ -11,7 +11,13 @@ export const Debug_delete_button = props => {
       style={{ height: 30, width: 30 }}
       onPress={() => deleteParty(props.party.party_id)}
     >
-      <Feather color={props.theme.gray6} size={25} name="x" />
+      <Feather
+        color={
+          props.theme.theme === "light" ? props.theme.gray6 : props.theme.gray7
+        }
+        size={25}
+        name="x"
+      />
     </TouchableOpacity>
   );
 };
