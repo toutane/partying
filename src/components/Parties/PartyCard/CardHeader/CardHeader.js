@@ -6,6 +6,7 @@ import { Nomenclature } from "./Nomenclature";
 
 import { UserContext } from "../../../../contexts/UserContext";
 import { Debug_delete_button } from "./debug_delete_bnt";
+import { Debug_id_button } from "./debug_id_button";
 
 export const CardHeader = props => {
   const { currentUserId } = useContext(UserContext);
@@ -21,7 +22,10 @@ export const CardHeader = props => {
         <Thumbnails {...props} />
         <Nomenclature crntUserId={currentUserId} {...props} />
       </View>
-      <Debug_delete_button {...props} />
+      <View flexDirection="row">
+        <Debug_id_button {...props} />
+        <Debug_delete_button {...props} />
+      </View>
     </View>
   );
 };

@@ -56,7 +56,7 @@ const CreatePartyProvider = props => {
       .then(doc => {
         firebase.db
           .collection("parties")
-          .where("party_id", "==", `${uuid}`)
+          .where("party_id", "==", uuid)
           .get()
           .then(() =>
             firebase.db
@@ -65,8 +65,17 @@ const CreatePartyProvider = props => {
               .update({
                 party_id: doc.id
               })
-          );
+          )
+          .then(() => {
+            firebase.db
+              .collection("users")
+              .doc(currentUserId)
+              .update({
+                party_created: currentUserData.party_created.concat([doc.id])
+              });
+          });
       })
+
       .then(() => props.navigation.navigate("Account"))
       .catch(error => error);
   }
@@ -76,7 +85,17 @@ const CreatePartyProvider = props => {
       .collection("parties")
       .doc(party_id)
       .delete()
-      .then(e => console.log(e));
+      // .then(() =>
+      //   firebase.db
+      //     .collection("users")
+      //     .doc(currentUserId)
+      //     .update({
+      //       party_created: currentUserData.party_created.filter(
+      //         id => id !== party_id
+      //       )
+      //     })
+      // )
+      .catch(error => console.log(error));
   }
 
   return (
