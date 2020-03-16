@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { Item } from "./Item";
-
 import { OptionalView } from "./OptionalView";
+
+const moment = require("moment");
 
 export const FooterView = props => {
   return (
@@ -22,13 +23,21 @@ export const FooterView = props => {
         <Item
           title="Time"
           icon="clock"
-          data={`${props.party.start.time} - ${props.party.end.time}`}
+          data={`${moment(props.party.start.time)
+            .format("LT")
+            .slice(0, -3)} - ${moment(props.party.end.time)
+            .format("LT")
+            .slice(0, -3)}`}
           {...props}
         />
         <Item
           title="Date"
           icon="calendar"
-          data={`${props.party.start.date} - ${props.party.end.date}`}
+          data={`${moment(props.party.start.date)
+            .format("L")
+            .slice(0, 5)} - ${moment(props.party.end.date)
+            .format("L")
+            .slice(0, 5)}`}
           {...props}
         />
       </View>

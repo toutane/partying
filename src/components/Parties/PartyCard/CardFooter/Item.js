@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Icon from "react-native-feather1s";
 
+const moment = require("moment");
+
 export const Item = props => {
   const [showed, setShowed] = useState("start");
   return (
@@ -48,12 +50,20 @@ export const Item = props => {
         >
           {props.title === "Time"
             ? showed === "start"
-              ? props.data.start.time
-              : props.data.end.time
+              ? moment(props.data.start.time)
+                  .format("LT")
+                  .slice(0, -3)
+              : moment(props.data.end.time)
+                  .format("LT")
+                  .slice(0, -3)
             : props.title === "Date"
             ? showed === "start"
-              ? props.data.start.date
-              : props.data.end.date
+              ? moment(props.data.start.date)
+                  .format("L")
+                  .slice(0, 5)
+              : moment(props.data.end.date)
+                  .format("L")
+                  .slice(0, 5)
             : props.data}
         </Text>
       </View>
