@@ -16,8 +16,8 @@ const CreatePartyProvider = props => {
   const [partyName, setPartyName] = useState("");
   const [partyDescription, setPartyDescription] = useState("");
   const [partyStarts, setPartyStarts] = useState({
-    date: new Date(),
-    time: new Date()
+    date: moment().format(),
+    time: moment().format()
   });
 
   useEffect(() => {
@@ -30,11 +30,12 @@ const CreatePartyProvider = props => {
       : setCanContinue(false);
   }, [partyName, partyDescription]);
 
-  async function createParty(props) {
+  async function createParty(uuid, props) {
     await firebase.db
       .collection("parties")
       .add({
-        party_id: "",
+        party_id: uuid,
+        create_At: moment().format(),
         organizer_id: currentUserId,
         organizer: {
           user_id: currentUserId,
@@ -46,15 +47,36 @@ const CreatePartyProvider = props => {
         guests_id: [],
         participants_id: [],
         start: {
-          date: moment(partyStarts.date).format("ll"),
-          time: moment(partyStarts.date).format("LT")
+          date: partyStarts.date,
+          time: partyStarts.time
         },
-        end: { date: "", time: "" },
-        location: ""
+        end: { date: partyStarts.date, time: partyStarts.time },
+        location: "20525 Mariani Avenue"
       })
-      .then(e => {
-        props.navigation.navigate("Account");
-      });
+      .then(doc => {
+        firebase.db
+          .collection("parties")
+          .where("party_id", "==", `${uuid}`)
+          .get()
+          .then(() =>
+            firebase.db
+              .collection("parties")
+              .doc(doc.id)
+              .update({
+                party_id: doc.id
+              })
+          );
+      })
+      .then(() => props.navigation.navigate("Account"))
+      .catch(error => error);
+  }
+
+  async function deleteParty(party_id) {
+    await firebase.db
+      .collection("parties")
+      .doc(party_id)
+      .delete()
+      .then(e => console.log(e));
   }
 
   return (
@@ -65,7 +87,8 @@ const CreatePartyProvider = props => {
         setPartyDescription,
         partyStarts,
         setPartyStarts,
-        createParty
+        createParty,
+        deleteParty
       }}
     >
       {props.children}
