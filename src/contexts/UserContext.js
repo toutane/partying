@@ -22,12 +22,15 @@ const UserProvider = props => {
     currentUserId !== "" && userPartiesListener();
   }, [currentUserId]);
 
+  // useEffect(() => console.log(currentUserData)), [currentUserData];
+
   function listenUserData(uid) {
     firebase.db
       .collection("users")
       .doc(uid)
       .onSnapshot(() => loadUserData(uid));
   }
+
   async function loadUserData(uid) {
     const user = await firebase.db
       .collection("users")
