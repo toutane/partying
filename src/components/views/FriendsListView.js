@@ -1,17 +1,99 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { View, ScrollView, Animated, Button } from "react-native";
 import { screenHeight } from "../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
+import firebase from "../../firebase/Firebase";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { FriendsContext } from "../../contexts/FriendsContext";
 
 import DefaultHeader from "../Headers/DefaultHeader";
-import { FriendsListScreen } from "../User/Friends/FriendsList/FriendsListScreen";
+import { FriendsFlatList } from "../User/Friends/FriendsList/FriendsFlatList";
 
 export default FriendsListView = props => {
-  const [scrollY, setScrollY] = useState(new Animated.Value(0));
   const { theme } = useContext(ThemeContext);
+  const { loadFriends } = useContext(FriendsContext);
+
+  const [scrollY, setScrollY] = useState(new Animated.Value(0));
   const [user, setUser] = useState(props.navigation.getParam("user"));
+
+  const [friends, setFriends] = useState([]);
+  const [limit, setLimit] = useState(2);
+  const [lastVisibleState, setLastVisible] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {
+    try {
+      // Cloud Firestore: Initial Query
+      retrieveData(user.user_id);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  retrieveData = async user_id => {
+    try {
+      // Set State: Loading
+      setLoading(true);
+      console.log("Retrieving Data");
+      // Cloud Firestore: Query
+      let initialQuery = await firebase.db
+        .collection("users")
+        .doc(user_id)
+        .collection("friends")
+        .where("id", "<=", 4)
+        .orderBy("id")
+        .limit(limit);
+      // Cloud Firestore: Query Snapshot
+      let documentSnapshots = await initialQuery.get();
+      // Cloud Firestore: Document Data
+      let documentData = documentSnapshots.docs.map(document =>
+        document.data()
+      );
+      // Cloud Firestore: Last Visible Document (Document ID To Start From For Proceeding Queries)
+      let lastVisible = documentData[documentData.length - 1].id;
+      // Set State
+      setFriends(documentData);
+      setLastVisible(lastVisible);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Retrieve More
+  retrieveMore = async user_id => {
+    try {
+      // Set State: Refreshing
+      setRefreshing(true);
+      console.log("Retrieving additional Data");
+      // Cloud Firestore: Query (Additional Query)
+      let additionalQuery = await firebase.db
+        .collection("users")
+        .doc(user_id)
+        .collection("friends")
+        .where("id", "<=", 4)
+        .orderBy("id")
+        .startAfter(lastVisibleState)
+        .limit(limit);
+      // Cloud Firestore: Query Snapshot
+      let documentSnapshots = await additionalQuery.get();
+      // Cloud Firestore: Document Data
+      let documentData = documentSnapshots.docs.map(document =>
+        document.data()
+      );
+      // Cloud Firestore: Last Visible Document (Document ID To Start From For Proceeding Queries)
+      let lastVisible = documentData[documentData.length - 1].id;
+      // Set State
+      setFriends([...friends, ...documentData]);
+      setLastVisible(lastVisible);
+      setRefreshing(false);
+      //
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   _getTitleOpacity = () => {
     return scrollY.interpolate({
@@ -23,9 +105,11 @@ export default FriendsListView = props => {
   };
 
   const titleOpacity = _getTitleOpacity();
+
+  // useEffect(() => loadFriends(user.user_id).then(res => setFriends(res)), []);
   return (
-    <View>
-      <ScrollView
+    <View style={{ marginTop: 46 + useSafeArea().top }}>
+      {/* <ScrollView
         style={{
           zIndex: 1,
           height: screenHeight,
@@ -40,14 +124,23 @@ export default FriendsListView = props => {
         scrollEventThrottle={16}
         snapToAlignment={"start"}
         snapToInterval={60}
-      >
-        <FriendsListScreen theme={theme} user={user} {...props} />
-      </ScrollView>
-      <DefaultHeader
+      > */}
+      <FriendsFlatList
+        theme={theme}
+        user={user}
+        friends={friends}
+        retrieveMore={retrieveMore}
+        refreshing={refreshing}
+        loading={loading}
+        {...props}
+      />
+      {/* </ScrollView> */}
+
+      {/* <DefaultHeader
         {...props}
         scrollY={scrollY}
-        title={`${user.friends_id.length} fiends`}
-      />
+        title={`${user.friends_id.length} friends`}
+      /> */}
     </View>
   );
 };
