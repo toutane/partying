@@ -1,5 +1,4 @@
 import React from "react";
-import { screenWidth } from "../../../utils/dimensions";
 import { Animated, View, Text, Image } from "react-native";
 import { Avatar } from "./Avatar";
 import { OptionsBar } from "./OptionsBar/OptionsBar";
@@ -20,13 +19,13 @@ export const HeaderView = props => {
         <View style={{ flexDirection: "column", flexShrink: 1 }}>
           <Text
             style={{
-              fontSize: 34,
+              fontSize: 28,
               fontFamily: "sf-display-bold",
               color: props.theme.fontColor
             }}
             numberOfLines={1}
           >
-            {props.user.username}
+            {props.user.name}
           </Text>
           <Text
             style={{

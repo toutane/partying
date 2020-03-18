@@ -1,8 +1,8 @@
 import React from "react";
 import { View, ScrollView, Text } from "react-native";
 
-import PartyCard from "../../../Parties/PartyCard/PartyCard";
-import { screenWidth } from "../../../../utils/dimensions";
+import PartyCard from "../../../../../Parties/PartyCard/PartyCard";
+import { screenWidth } from "../../../../../../utils/dimensions";
 
 export const MyPartiesScrollView = props => {
   return (

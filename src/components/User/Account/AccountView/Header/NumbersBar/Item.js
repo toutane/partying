@@ -1,9 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { TouchableOpacity, View, Text } from "react-native";
 
 export const Item = props => {
   return (
-    <View>
+    <TouchableOpacity
+      onPress={() =>
+        props.type === "friends" &&
+        props.navigation.navigate("FriendsList", { user: props.user })
+      }
+    >
       <Text
         style={{
           color: props.theme.gray,
@@ -34,6 +39,6 @@ export const Item = props => {
           {props.type}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
