@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import firebase from "../firebase/Firebase";
+
 import { AuthContext } from "./AuthContext";
 import { UserContext } from "./UserContext";
+import { PartyContext } from "./PartyContext";
 
 const moment = require("moment");
 
@@ -11,6 +13,7 @@ const { Provider } = CreatePartyContext;
 const CreatePartyProvider = props => {
   const { authenticated } = useContext(AuthContext);
   const { currentUserId, currentUserData } = useContext(UserContext);
+  const { deleteParty } = useContext(PartyContext);
 
   const [canContinue, setCanContinue] = useState(false);
   const [partyName, setPartyName] = useState("");
@@ -71,31 +74,13 @@ const CreatePartyProvider = props => {
               .collection("users")
               .doc(currentUserId)
               .update({
-                party_created: currentUserData.party_created.concat([doc.id])
+                parties_id: currentUserData.parties_id.concat([doc.id])
               });
           });
       })
 
       .then(() => props.navigation.navigate("Account"))
       .catch(error => error);
-  }
-
-  async function deleteParty(party_id) {
-    await firebase.db
-      .collection("parties")
-      .doc(party_id)
-      .delete()
-      .then(() =>
-        firebase.db
-          .collection("users")
-          .doc(currentUserId)
-          .update({
-            party_created: currentUserData.party_created.filter(
-              id => id !== party_id
-            )
-          })
-      )
-      .catch(error => console.log(error));
   }
 
   return (
@@ -106,8 +91,7 @@ const CreatePartyProvider = props => {
         setPartyDescription,
         partyStarts,
         setPartyStarts,
-        createParty,
-        deleteParty
+        createParty
       }}
     >
       {props.children}

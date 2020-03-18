@@ -8,8 +8,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { UserContext } from "../../contexts/UserContext";
 
 import DefaultHeader from "../Headers/DefaultHeader";
-import AccountScreen from "../AccountView/AccoutScreen";
-import { HeaderView } from "../AccountView/Header/HeaderView";
+import AccountScreen from "../User/Account/AccountView/AccoutScreen";
+import { HeaderView } from "../User/Account/AccountView/Header/HeaderView";
 
 export default AccountView = props => {
   const { currentUserData } = useContext(UserContext);
@@ -56,7 +56,11 @@ export default AccountView = props => {
         {/* <Button title="Switch theme" onPress={() => switchTheme()} /> */}
         {/*<Button title="Logout" onPress={() => logout()} /> */}
       </ScrollView>
-      <DefaultHeader {...props} scrollY={scrollY} title="Your profile" />
+      <DefaultHeader
+        {...props}
+        scrollY={scrollY}
+        title={`${currentUserData.username} profile`}
+      />
     </View>
   );
 };
