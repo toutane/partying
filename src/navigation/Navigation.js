@@ -8,6 +8,7 @@ import BottomTabBar from "./BottomTabBar/BottomTabBar";
 import AuthStack from "./stacks/AuthStack";
 import PartyViewStack from "./stacks/PartyViewStack";
 import UserViewStack from "./stacks/UserViewStack";
+import AccountStack from "./stacks/AccountStack";
 
 import Notifications from "../components/views/NotificationsView";
 import Feed from "../components/views/FeedView";
@@ -60,7 +61,8 @@ const AppNavigator = createStackNavigator(
     TabBarNavigator: TabBarNavigator,
     AuthStack: AuthStack,
     PartyViewStack: PartyViewStack,
-    UserViewStack: UserViewStack
+    UserViewStack: UserViewStack,
+    AccountStack
   },
   {
     headerMode: "none",
