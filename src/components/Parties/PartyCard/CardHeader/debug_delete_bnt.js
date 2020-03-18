@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-import { CreatePartyContext } from "../../../../contexts/CreatePartyContext";
+import { PartyContext } from "../../../../contexts/PartyContext";
 
 export const Debug_delete_button = props => {
-  const { deleteParty } = useContext(CreatePartyContext);
+  const { deleteParty } = useContext(PartyContext);
   return (
     <TouchableOpacity
       style={{ height: 30, width: 30 }}
