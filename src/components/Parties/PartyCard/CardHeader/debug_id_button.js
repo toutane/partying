@@ -6,7 +6,7 @@ export const Debug_id_button = props => {
   return (
     <TouchableOpacity
       style={{ height: 30, width: 30, marginRight: 5 }}
-      onPress={() => alert(`debug : doc id : ${props.party.party_id}`)}
+      onPress={() => alert(`ID : ${props.party.party_id}`)}
     >
       <Feather
         color={
