@@ -11,16 +11,6 @@ import FeedScrollView from "../Feed/FeedScrollView";
 export default FeedView = props => {
   const { theme } = useContext(ThemeContext);
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
-  _getTitleOpacity = () => {
-    return scrollY.interpolate({
-      inputRange: [0, 35, 36, 100],
-      outputRange: [1, 1, 0, 0],
-      extrapolate: "clamp",
-      useNativeDriver: true
-    });
-  };
-
-  const titleOpacity = _getTitleOpacity();
   return (
     <View>
       <ScrollView
@@ -40,7 +30,6 @@ export default FeedView = props => {
         <Animated.Text
           style={{
             marginLeft: 25,
-            opacity: titleOpacity,
             fontSize: 34,
             fontFamily: "sf-display-bold",
             color: theme.fontColor

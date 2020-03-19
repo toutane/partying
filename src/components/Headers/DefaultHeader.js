@@ -25,7 +25,7 @@ export default DefaultHeader = props => {
   };
   _getHeaderTitleOpacity = () => {
     return props.scrollY.interpolate({
-      inputRange: [0, 12, 30, 70],
+      inputRange: [0, 30, 35, 70],
       outputRange: [0, 0, 1, 1],
       extrapolate: "clamp",
       useNativeDriver: true
@@ -40,13 +40,12 @@ export default DefaultHeader = props => {
         style={{
           zIndex: 2,
           position: "absolute",
-          top: 0,
-          opacity: headerOpacity
+          top: 0
         }}
       >
         <BlurView
           tint={theme.theme}
-          intensity={95}
+          intensity={100}
           style={{
             zIndex: 2,
             height: 46 + useSafeArea().top,

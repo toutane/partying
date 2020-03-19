@@ -12,16 +12,6 @@ export default UserView = props => {
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
   const [user, setUser] = useState(props.navigation.getParam("user"));
 
-  _getTitleOpacity = () => {
-    return scrollY.interpolate({
-      inputRange: [0, 35, 36, 100],
-      outputRange: [1, 1, 0, 0],
-      extrapolate: "clamp",
-      useNativeDriver: true
-    });
-  };
-
-  const titleOpacity = _getTitleOpacity();
   return (
     <View>
       <ScrollView
@@ -48,7 +38,6 @@ export default UserView = props => {
             position: "absolute",
             top: 0,
             left: 25,
-            opacity: titleOpacity,
             fontSize: 34,
             fontFamily: "sf-display-bold",
             color: theme.fontColor

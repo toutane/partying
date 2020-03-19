@@ -21,16 +21,6 @@ export default PartyView = props => {
     loadParticipants(party.party_id).then(arr => setParticipants(arr));
   }, []);
 
-  _getTitleOpacity = () => {
-    return scrollY.interpolate({
-      inputRange: [0, 35, 36, 100],
-      outputRange: [1, 1, 0, 0],
-      extrapolate: "clamp",
-      useNativeDriver: true
-    });
-  };
-
-  const titleOpacity = _getTitleOpacity();
   return (
     <View>
       <ScrollView
@@ -53,7 +43,6 @@ export default PartyView = props => {
           theme={theme}
           party={party}
           participants={participants}
-          titleOpacity={titleOpacity}
           {...props}
         />
       </ScrollView>
