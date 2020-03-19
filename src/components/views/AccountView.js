@@ -10,6 +10,7 @@ import { UserContext } from "../../contexts/UserContext";
 import DefaultHeader from "../Headers/DefaultHeader";
 import AccountScreen from "../User/Account/AccountView/AccoutScreen";
 import { HeaderView } from "../User/Account/AccountView/Header/HeaderView";
+import { TopHeader } from "../User/Account/AccountView/TopHeader/TopHeader";
 
 export default AccountView = props => {
   const { currentUserData } = useContext(UserContext);
@@ -18,23 +19,18 @@ export default AccountView = props => {
 
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
-  _getTitleOpacity = () => {
-    return scrollY.interpolate({
-      inputRange: [0, 35, 36, 100],
-      outputRange: [1, 1, 0, 0],
-      extrapolate: "clamp",
-      useNativeDriver: true
-    });
-  };
-
-  const titleOpacity = _getTitleOpacity();
   return (
-    <View>
+    <View
+      style={{
+        backgroundColor: theme.theme === "light" ? "white" : theme.gray6
+      }}
+    >
+      <TopHeader theme={theme} {...props} />
       <ScrollView
         style={{
           zIndex: 1,
-          height: screenHeight,
-          backgroundColor: theme.backgroundColor
+          height: screenHeight
+          // backgroundColor: theme.backgroundColor
         }}
         onScroll={Animated.event([
           { nativeEvent: { contentOffset: { y: scrollY } } }
@@ -46,20 +42,22 @@ export default AccountView = props => {
         snapToAlignment={"start"}
         snapToInterval={60}
       >
-        <HeaderView
-          {...props}
-          theme={theme}
-          titleOpacity={titleOpacity}
-          user={currentUserData}
-        />
-        <AccountScreen {...props} theme={theme} user={currentUserData} />
-        {/* <Button title="Switch theme" onPress={() => switchTheme()} /> */}
+        <View
+          style={{
+            backgroundColor: theme.backgroundColor
+          }}
+        >
+          <HeaderView {...props} theme={theme} user={currentUserData} />
+          {/* <Button title="Switch theme" onPress={() => switchTheme()} /> */}
+          <AccountScreen {...props} theme={theme} user={currentUserData} />
+        </View>
         {/*<Button title="Logout" onPress={() => logout()} /> */}
       </ScrollView>
       <DefaultHeader
         {...props}
         scrollY={scrollY}
-        title={`${currentUserData.username} profile`}
+        title={currentUserData.username}
+        isWhiteBackground={true}
       />
     </View>
   );
