@@ -3,23 +3,24 @@ import { Animated, View, Text, Image } from "react-native";
 import { Avatar } from "./Avatar";
 import { OptionsBar } from "./OptionsBar/OptionsBar";
 import { NumbersBar } from "./NumbersBar/NumbersBar";
+import { TopViewCard } from "./styles";
 
 export const HeaderView = props => {
   return (
-    <View>
+    <TopViewCard {...props}>
       <Animated.View
         style={{
-          paddingHorizontal: 25,
-          opacity: props.titleOpacity,
           flexDirection: "row",
-          justifyContent: "space-between",
           alignItems: "center"
         }}
       >
-        <View style={{ flexDirection: "column", flexShrink: 1 }}>
+        <Avatar uri={props.user.avatar} />
+        <View
+          style={{ flexDirection: "column", flexShrink: 1, marginLeft: 15 }}
+        >
           <Text
             style={{
-              fontSize: 28,
+              fontSize: 24,
               fontFamily: "sf-display-bold",
               color: props.theme.fontColor
             }}
@@ -31,7 +32,7 @@ export const HeaderView = props => {
             style={{
               marginRight: 15,
               fontSize: 15,
-              fontFamily: "sf-text-semibold",
+              fontFamily: "sf-text-medium",
               color: props.theme.gray,
               textAlign: "justify"
             }}
@@ -40,10 +41,9 @@ export const HeaderView = props => {
             {props.user.bio}
           </Text>
         </View>
-        <Avatar uri={props.user.avatar} />
       </Animated.View>
       <NumbersBar {...props} />
-      <OptionsBar {...props} />
-    </View>
+      {/* <OptionsBar {...props} /> */}
+    </TopViewCard>
   );
 };

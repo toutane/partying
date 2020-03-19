@@ -7,7 +7,6 @@ export const NumbersBar = props => {
     <View
       style={{
         flexDirection: "row",
-        paddingHorizontal: 25,
         marginTop: 20,
         justifyContent: "space-between"
       }}

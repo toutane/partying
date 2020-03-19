@@ -13,7 +13,7 @@ export const Item = props => {
         style={{
           color: props.theme.gray,
           fontSize: 13,
-          fontFamily: "sf-text-regular"
+          fontFamily: "sf-text-medium"
         }}
       >
         {props.intro}
@@ -22,7 +22,7 @@ export const Item = props => {
         <Text
           style={{
             color: props.theme.fontColor,
-            fontSize: 24,
+            fontSize: 22,
             fontFamily: "sf-text-bold"
           }}
         >
@@ -32,7 +32,7 @@ export const Item = props => {
           style={{
             color: props.theme.gray,
             fontSize: 13,
-            fontFamily: "sf-text-regular"
+            fontFamily: "sf-text-medium"
           }}
         >
           {" "}

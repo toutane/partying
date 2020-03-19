@@ -9,13 +9,12 @@ export const OptionsBar = props => {
       style={{
         flexDirection: "row",
         justifyContent: "space-between",
-        marginTop: 20,
-        paddingHorizontal: 25
+        marginTop: 20
       }}
     >
       <Button
         {...props}
-        style={{ width: screenWidth / 2 - 32.5 }}
+        style={{ width: screenWidth / 2 - 42.5 }}
         activeOpacity={0.5}
       >
         <Text
@@ -30,7 +29,7 @@ export const OptionsBar = props => {
       </Button>
       <Button
         {...props}
-        style={{ width: screenWidth / 2 - 32.5 }}
+        style={{ width: screenWidth / 2 - 42.5 }}
         activeOpacity={0.5}
       >
         <Text
