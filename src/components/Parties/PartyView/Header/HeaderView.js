@@ -14,8 +14,7 @@ export const HeaderView = props => {
           props.theme.theme !== "light" ? props.theme.gray6 : "white",
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingHorizontal: 25,
-        opacity: props.titleOpacity
+        paddingHorizontal: 25
       }}
     >
       <LeftView {...props} />
