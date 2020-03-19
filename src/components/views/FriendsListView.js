@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { View, ScrollView, Animated, Button } from "react-native";
-import { screenHeight } from "../../utils/dimensions";
-import { useSafeArea } from "react-native-safe-area-context";
 import firebase from "../../firebase/Firebase";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -14,7 +12,7 @@ export default FriendsListView = props => {
   const { theme } = useContext(ThemeContext);
   const { loadFriends } = useContext(FriendsContext);
 
-  const [scrollY, setScrollY] = useState(new Animated.Value(0));
+  const [scrollY, setScrollY] = useState(new Animated.Value(100));
   const [user, setUser] = useState(props.navigation.getParam("user"));
 
   const [friends, setFriends] = useState([]);
@@ -94,26 +92,14 @@ export default FriendsListView = props => {
       console.log(error);
     }
   };
-
-  _getTitleOpacity = () => {
-    return scrollY.interpolate({
-      inputRange: [0, 35, 36, 100],
-      outputRange: [1, 1, 0, 0],
-      extrapolate: "clamp",
-      useNativeDriver: true
-    });
-  };
-
-  const titleOpacity = _getTitleOpacity();
-
   // useEffect(() => loadFriends(user.user_id).then(res => setFriends(res)), []);
   return (
-    <View style={{ marginTop: 46 + useSafeArea().top }}>
+    <View style={{ backgroundColor: theme.backgroundColor }}>
       {/* <ScrollView
         style={{
           zIndex: 1,
           height: screenHeight,
-          backgroundColor: theme.backgroundColor
+          
         }}
         onScroll={Animated.event([
           { nativeEvent: { contentOffset: { y: scrollY } } }
@@ -135,12 +121,11 @@ export default FriendsListView = props => {
         {...props}
       />
       {/* </ScrollView> */}
-
-      {/* <DefaultHeader
+      <DefaultHeader
         {...props}
         scrollY={scrollY}
         title={`${user.friends_id.length} friends`}
-      /> */}
+      />
     </View>
   );
 };
