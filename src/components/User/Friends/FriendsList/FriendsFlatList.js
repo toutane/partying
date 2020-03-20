@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ActivityIndicator, FlatList, View } from "react-native";
 import { Item } from "./Item";
-import { screenHeight } from "../../../../utils/dimensions";
+import { screenHeight, screenWidth } from "../../../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
 
 export const FriendsFlatList = props => {
@@ -10,22 +10,25 @@ export const FriendsFlatList = props => {
   return (
     <FlatList
       style={{
-        paddingHorizontal: 25,
-        height: screenHeight
+        height: screenHeight,
+        paddingHorizontal: 15,
+        paddingTop: margin,
+        paddingVertical: 10
       }}
       data={props.friends}
       renderItem={({ item, index }) => (
-        <View
-          style={{
-            height: screenHeight / 2,
-            marginTop: index === 0 ? margin : 0
-          }}
-        >
-          <Item friend={item} {...props} />
-        </View>
+        <Item friend={item} index={index} margin={margin} {...props} />
       )}
       ListFooterComponent={
-        <View>{props.loading && <ActivityIndicator />}</View>
+        <View
+          style={{
+            height: 100,
+            marginTop: props.loading ? 20 : 10,
+            marginBottom: props.loading ? 30 : 0
+          }}
+        >
+          {props.loading && <ActivityIndicator />}
+        </View>
       }
       keyExtractor={(item, index) => index.toString()}
       onEndReached={() => props.retrieveMore(props.user.user_id)}
