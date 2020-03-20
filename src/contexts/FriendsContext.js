@@ -7,7 +7,7 @@ const { Provider } = FriendsContext;
 
 const FriendsProvider = props => {
   const [friends, setFriends] = useState([]);
-  const [limit, setLimit] = useState(2);
+  const [limit, setLimit] = useState(13);
   const [lastVisibleState, setLastVisible] = useState(null);
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -21,7 +21,7 @@ const FriendsProvider = props => {
         .collection("users")
         .doc(user_id)
         .collection("friends")
-        .where("id", "<=", 4)
+        .where("id", "<=", 16)
         .orderBy("id")
         .limit(limit);
       // Cloud Firestore: Query Snapshot
@@ -52,7 +52,7 @@ const FriendsProvider = props => {
         .collection("users")
         .doc(user_id)
         .collection("friends")
-        .where("id", "<=", 4)
+        .where("id", "<=", 16)
         .orderBy("id")
         .startAfter(lastVisibleState)
         .limit(limit);
