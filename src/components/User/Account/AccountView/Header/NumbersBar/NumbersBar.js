@@ -11,7 +11,14 @@ export const NumbersBar = props => {
         justifyContent: "space-between"
       }}
     >
-      <Item {...props} intro="You have" data={357} type="friends" />
+      <Item
+        {...props}
+        intro="You have"
+        data={
+          props.user.friends_id !== undefined && props.user.friends_id.length
+        }
+        type="friends"
+      />
       <Item {...props} intro="You went to" data={20} type="parties" />
       <Item
         {...props}
