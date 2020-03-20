@@ -1,7 +1,6 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Thumbnail } from "../../../Thumbnail/Thumbnail";
-import { screenWidth } from "../../../../utils/dimensions";
+import { TouchableOpacity, View, Text } from "react-native";
+import { Thumbnail } from "./Thumbnail";
 
 export const Item = props => {
   return (
@@ -12,8 +11,13 @@ export const Item = props => {
         marginTop: 20
       }}
     >
-      <Thumbnail user={props.friend} {...props} uri={props.friend.avatar} />
-      <View style={{ flex: 1, marginLeft: 15, justifyContent: "center" }}>
+      <Thumbnail {...props} />
+      <TouchableOpacity
+        style={{ flex: 1, marginLeft: 15, justifyContent: "center" }}
+        onPress={() =>
+          props.navigation.navigate("UserView", { user: props.friend })
+        }
+      >
         <Text
           style={{
             color: props.theme.fontColor,
@@ -32,7 +36,7 @@ export const Item = props => {
         >
           {props.friend.name}
         </Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

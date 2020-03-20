@@ -18,7 +18,7 @@ export const Thumbnail = props => {
     >
       <Image
         source={{
-          uri: props.uri !== undefined ? props.uri : props.user.avatar
+          uri: props.user.avatar
         }}
       />
     </TouchableOpacity>

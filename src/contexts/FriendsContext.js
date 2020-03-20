@@ -73,6 +73,7 @@ const FriendsProvider = props => {
       console.log(error);
     }
   };
+
   return (
     <Provider
       value={{

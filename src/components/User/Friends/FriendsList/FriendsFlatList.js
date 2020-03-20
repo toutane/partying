@@ -5,8 +5,8 @@ import { screenHeight, screenWidth } from "../../../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
 
 export const FriendsFlatList = props => {
-  useEffect(() => console.log(props.friends), [props.friends]);
-  const margin = 46 + useSafeArea().top;
+  // useEffect(() => console.log(props.friends), [props.friends]);
+  const margin = 96 + useSafeArea().top;
   return (
     <FlatList
       style={{
@@ -22,9 +22,7 @@ export const FriendsFlatList = props => {
       ListFooterComponent={
         <View
           style={{
-            height: 100,
-            marginTop: props.loading ? 20 : 10,
-            marginBottom: props.loading ? 30 : 0
+            height: 160
           }}
         >
           {props.loading && <ActivityIndicator />}
