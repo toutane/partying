@@ -16,7 +16,11 @@ export const Thumbnail = props => {
             })
       }
     >
-      <Image source={{ uri: props.user.avatar }} />
+      <Image
+        source={{
+          uri: props.uri !== undefined ? props.uri : props.user.avatar
+        }}
+      />
     </TouchableOpacity>
   );
 };
