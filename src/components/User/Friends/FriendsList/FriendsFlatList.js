@@ -22,7 +22,7 @@ export const FriendsFlatList = props => {
       ListFooterComponent={
         <View
           style={{
-            height: 160
+            height: 130 + useSafeArea().top
           }}
         >
           {props.loading && <ActivityIndicator />}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { View, ScrollView, Animated, Button } from "react-native";
-import firebase from "../../firebase/Firebase";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FriendsContext } from "../../contexts/FriendsContext";
