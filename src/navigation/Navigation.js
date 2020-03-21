@@ -9,6 +9,7 @@ import AuthStack from "./stacks/AuthStack";
 import PartyViewStack from "./stacks/PartyViewStack";
 import UserViewStack from "./stacks/UserViewStack";
 import AccountStack from "./stacks/AccountStack";
+import SettingsStack from "./stacks/SettingsStack";
 
 import Notifications from "../components/views/NotificationsView";
 import Feed from "../components/views/FeedView";
@@ -62,7 +63,8 @@ const AppNavigator = createStackNavigator(
     AuthStack: AuthStack,
     PartyViewStack: PartyViewStack,
     UserViewStack: UserViewStack,
-    AccountStack
+    AccountStack: AccountStack,
+    SettingsStack: SettingsStack
   },
   {
     headerMode: "none",
