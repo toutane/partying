@@ -9,8 +9,8 @@ export const SettingsCard = props => {
         onPress={() => props.navigation.navigate("Appearance")}
         activeOpacity={0.5}
         style={{
-          borderTopLeftRadius: 17,
-          borderTopRightRadius: 17,
+          borderTopLeftRadius: 13,
+          borderTopRightRadius: 13,
           backgroundColor:
             props.theme.theme !== "light" ? props.theme.gray6 : "white",
           paddingHorizontal: 20,

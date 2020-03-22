@@ -3,6 +3,7 @@ import { ScrollView, TouchableOpacity, Text, Button } from "react-native";
 import { screenHeight } from "../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
 import { SettingsCard } from "./SettingsCard";
+import { SignOutButton } from "./SignOut/SignOutButton";
 
 export const SettingsScroll = props => {
   return (
@@ -14,6 +15,7 @@ export const SettingsScroll = props => {
       }}
     >
       <SettingsCard {...props} />
+      <SignOutButton {...props} />
       {/* <Button
         title="Go to appearance"
         onPress={() => props.navigation.navigate("Appearance")}
