@@ -14,46 +14,30 @@ export const DarkItem = props => {
           props.theme.theme !== "light" ? props.theme.gray6 : "white"
       }}
     >
-      <View>
-        <View
+      <View
+        style={{
+          paddingVertical: 15,
+          paddingHorizontal: 20,
+          justifyContent: "space-between",
+          flexDirection: "row"
+        }}
+      >
+        <Text
           style={{
-            borderColor: props.theme.gray5,
-            borderWidth: 0.4,
-            marginLeft: 20
-          }}
-        />
-        <View
-          style={{
-            borderColor: props.theme.gray5,
-            borderWidth: 0.4,
-            marginLeft: 20
-          }}
-        />
-        <View
-          style={{
-            paddingVertical: 15,
-            paddingHorizontal: 20,
-            justifyContent: "space-between",
-            flexDirection: "row"
+            color: props.theme.fontColor,
+            fontSize: 17,
+            fontFamily: "sf-text-regular"
           }}
         >
-          <Text
-            style={{
-              color: props.theme.fontColor,
-              fontSize: 17,
-              fontFamily: "sf-text-regular"
-            }}
-          >
-            Dark
-          </Text>
-          <View style={{ flexDirection: "row" }}>
-            <ToggleButton
-              backgroundColor={
-                props.theme.theme !== "light" ? props.theme.gray6 : "white"
-              }
-              {...props}
-            />
-          </View>
+          Dark
+        </Text>
+        <View style={{ flexDirection: "row" }}>
+          <ToggleButton
+            backgroundColor={
+              props.theme.theme !== "light" ? props.theme.gray6 : "white"
+            }
+            {...props}
+          />
         </View>
       </View>
     </TouchableOpacity>

@@ -8,6 +8,7 @@ export const LightItem = props => {
       onPress={() => props.setThemeState("light")}
       activeOpacity={0.5}
       style={{
+        zIndex: 10,
         backgroundColor:
           props.theme.theme !== "light" ? props.theme.gray6 : "white"
       }}
@@ -46,6 +47,21 @@ export const LightItem = props => {
             />
           </View>
         </View>
+        <View
+          style={{
+            borderColor:
+              props.theme.theme !== "light" ? props.theme.gray6 : "white",
+            borderWidth: 0.4,
+            marginLeft: 20
+          }}
+        />
+        <View
+          style={{
+            borderColor: props.theme.gray5,
+            borderWidth: 0.4,
+            marginLeft: 20
+          }}
+        />
       </View>
     </TouchableOpacity>
   );
