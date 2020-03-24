@@ -8,12 +8,16 @@ import DefaultHeader from "../../Headers/DefaultHeader";
 import { AppearanceCard } from "./AppearanceCard";
 
 export default AppearanceView = props => {
-  const { theme, switchTheme } = useContext(ThemeContext);
+  const { theme, themeState, setThemeState } = useContext(ThemeContext);
   const [scrollY, setScrollY] = useState(new Animated.Value(100));
 
   return (
     <View style={{ backgroundColor: theme.backgroundColor }}>
-      <AppearanceCard theme={theme} switchTheme={switchTheme} />
+      <AppearanceCard
+        theme={theme}
+        themeState={themeState}
+        setThemeState={setThemeState}
+      />
       <DefaultHeader
         // theme={theme}
         scrollY={scrollY}
