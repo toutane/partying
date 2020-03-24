@@ -8,7 +8,7 @@ import DefaultHeader from "../Headers/DefaultHeader";
 import { SettingsScroll } from "../Settings/SettingsScroll";
 
 export default SettingsView = props => {
-  const { theme } = useContext(ThemeContext);
+  const { theme, themeState } = useContext(ThemeContext);
   const { currentUserData } = useContext(UserContext);
   const [scrollY, setScrollY] = useState(new Animated.Value(100));
 
@@ -17,6 +17,7 @@ export default SettingsView = props => {
       <SettingsScroll
         {...props}
         theme={theme}
+        themeState={themeState}
         currentUserData={currentUserData}
       />
       <DefaultHeader {...props} scrollY={scrollY} title="Settings" />

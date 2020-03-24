@@ -39,8 +39,8 @@ export const AppearanceItem = props => {
               fontFamily: "sf-text-regular"
             }}
           >
-            {props.theme.theme.charAt(0).toUpperCase() +
-              props.theme.theme.slice(1)}{" "}
+            {props.themeState.charAt(0).toUpperCase() +
+              props.themeState.slice(1)}{" "}
           </Text>
           <Ionicons
             style={{ marginLeft: 5 }}
