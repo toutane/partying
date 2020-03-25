@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
+import { PushNotificationsContext } from "../../../contexts/PushNotificationsContext";
+
 export const PushNotificationsItem = props => {
+  const { isPushNotifActive } = useContext(PushNotificationsContext);
+
   return (
     <TouchableOpacity
-      onPress={() => props.navigation.navigate("Appearance")}
+      onPress={() => props.navigation.navigate("PushNotifications")}
       activeOpacity={0.5}
       style={{
         borderBottomLeftRadius: 13,
@@ -47,7 +51,7 @@ export const PushNotificationsItem = props => {
                 fontFamily: "sf-text-regular"
               }}
             >
-              Disabled
+              {isPushNotifActive ? "Direct Mentions" : "Disabled"}
             </Text>
             <Ionicons
               style={{ marginLeft: 5 }}
