@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
-import { View, Animated, Button } from "react-native";
-import { screenHeight } from "../../../utils/dimensions";
+import React, { useContext } from "react";
+import { View } from "react-native";
 
 import { ThemeContext } from "../../../contexts/ThemeContext";
 
-import DefaultHeader from "../../Headers/DefaultHeader";
+import FixeHeader from "../../Headers/FixeHeader";
 import { AppearanceCard } from "./AppearanceCard";
 
 export default AppearanceView = props => {
   const { theme, themeState, setThemeState } = useContext(ThemeContext);
-  const [scrollY, setScrollY] = useState(new Animated.Value(100));
 
   return (
     <View style={{ backgroundColor: theme.backgroundColor }}>
@@ -18,11 +16,7 @@ export default AppearanceView = props => {
         themeState={themeState}
         setThemeState={setThemeState}
       />
-      <DefaultHeader
-        // theme={theme}
-        scrollY={scrollY}
-        title="Appearance"
-      />
+      <FixeHeader title="Appearance" backView="Settings" {...props} />
     </View>
   );
 };

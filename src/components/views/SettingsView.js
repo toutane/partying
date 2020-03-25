@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
-import { View, ScrollView, Animated, Button } from "react-native";
+import React, { useContext } from "react";
+import { View } from "react-native";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { UserContext } from "../../contexts/UserContext";
 
-import DefaultHeader from "../Headers/DefaultHeader";
+import FixeHeader from "../Headers/FixeHeader";
 import { SettingsScroll } from "../Settings/SettingsScroll";
 
 export default SettingsView = props => {
   const { theme, themeState } = useContext(ThemeContext);
   const { currentUserData } = useContext(UserContext);
-  const [scrollY, setScrollY] = useState(new Animated.Value(100));
 
   return (
     <View style={{ backgroundColor: theme.backgroundColor }}>
@@ -20,7 +19,7 @@ export default SettingsView = props => {
         themeState={themeState}
         currentUserData={currentUserData}
       />
-      <DefaultHeader {...props} scrollY={scrollY} title="Settings" />
+      <FixeHeader title="Settings" backView="Profile" {...props} />
     </View>
   );
 };
