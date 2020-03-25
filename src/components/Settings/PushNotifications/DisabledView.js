@@ -1,10 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, TouchableOpacity, Text, Linking } from "react-native";
 
 export const DisabledView = props => {
   return (
     <View>
-      <View
+      <TouchableOpacity
+        onPress={() => Linking.openURL("app-settings:")}
+        activeOpacity={0.5}
         style={{
           borderRadius: 13,
           backgroundColor:
@@ -23,8 +25,8 @@ export const DisabledView = props => {
         >
           Open Settings.app
         </Text>
-      </View>
-      <View style={{ paddingHorizontal: 20, marginTop: 10 }}>
+      </TouchableOpacity>
+      <View style={{ paddingHorizontal: 15, marginTop: 10 }}>
         <Text
           style={{
             fontFamily: "sf-text-regular",

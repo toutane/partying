@@ -14,9 +14,9 @@ const PushNotificationsProvider = props => {
     checkNotificationsPermissionsStatus();
   }, [appState]);
 
-  useEffect(() => {
-    console.log(appState);
-  }, [appState]);
+  // useEffect(() => {
+  //   console.log(appState);
+  // }, [appState]);
 
   useEffect(() => {
     AppState.addEventListener("change", _handleAppStateChange);
