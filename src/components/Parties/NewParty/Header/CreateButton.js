@@ -19,21 +19,22 @@ export const CreateButton = props => {
           : props.theme.gray6,
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: 100,
-        paddingHorizontal: 15,
-        height: 50
+        borderRadius: 10,
+        paddingHorizontal: 5,
+        height: 35,
+        marginRight: 20
       }}
       onPress={() => canContinue && createParty(uuid.v4(), props)}
     >
       <Text
         style={{
+          marginLeft: 5,
           color: canContinue ? "white" : props.theme.gray,
           fontSize: 17,
-          fontFamily: "sf-text-bold",
-          flexShrink: 1
+          fontFamily: "sf-text-medium"
         }}
       >
-        Continue{" "}
+        Continue
       </Text>
       <Feather
         name="arrow-right"
@@ -43,3 +44,22 @@ export const CreateButton = props => {
     </TouchableOpacity>
   );
 };
+
+{
+  /* <TouchableOpacity
+  style={{
+    width: 35,
+    borderRadius: 10,
+    backgroundColor: theme.gray5,
+    alignItems: "center"
+  }}
+  onPress={() => props.navigation.pop()}
+>
+  <Ionicons
+    name="ios-arrow-round-back"
+    size={30}
+    style={{ top: 2 }}
+    color={theme.fontColor}
+  />
+</TouchableOpacity>; */
+}
