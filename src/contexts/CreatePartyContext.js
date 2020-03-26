@@ -30,7 +30,7 @@ const CreatePartyProvider = props => {
   useEffect(() => {
     partyName !== "" && partyDescription !== ""
       ? setCanContinue(true)
-      : setCanContinue(false);
+      : setCanContinue(true);
   }, [partyName, partyDescription]);
 
   async function createParty(uuid, props) {

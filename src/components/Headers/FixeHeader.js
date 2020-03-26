@@ -4,7 +4,8 @@ import { BlurView } from "expo-blur";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { screenWidth } from "../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+import { CreateButton } from "../Parties/NewParty/Header/CreateButton";
 
 export default FixeHeader = props => {
   const { theme } = useContext(ThemeContext);
@@ -68,9 +69,9 @@ export default FixeHeader = props => {
               : props.navigation.pop()
           }
         >
-          <Ionicons
-            style={{ marginLeft: 15, marginRight: 5, marginTop: 2 }}
-            name="ios-arrow-back"
+          <Feather
+            style={{ marginLeft: 15 }}
+            name="chevron-left"
             size={25}
             color={theme.green}
           />

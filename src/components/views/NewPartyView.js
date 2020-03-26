@@ -4,11 +4,10 @@ import { screenHeight } from "../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { AuthContext } from "../../contexts/AuthContext";
 import { UserContext } from "../../contexts/UserContext";
 
-import DefaultHeader from "../Headers/DefaultHeader";
 import NewPartyScreen from "../Parties/NewParty/NewPartyScreen";
+import HeaderView from "../Parties/NewParty/Header/HeaderView";
 
 export default NewPartyView = props => {
   const { currentUserData } = useContext(UserContext);
@@ -51,7 +50,7 @@ export default NewPartyView = props => {
           titleOpacity={titleOpacity}
         />
       </ScrollView>
-      <DefaultHeader {...props} scrollY={scrollY} title="New party" />
+      <HeaderView theme={theme} {...props} />
     </View>
   );
 };

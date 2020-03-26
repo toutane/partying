@@ -14,14 +14,15 @@ export const MiddleInputs = props => {
           color: props.theme.fontColor,
           fontFamily: "sf-display-bold"
         }}
-        placeholder="Party name"
+        placeholder="Party title"
         autoFocus={true}
         returnKeyType="next"
         selectionColor={"#1DC161"}
         onChangeText={name => setPartyName(name)}
+        placeholderTextColor={props.theme.gray4}
       />
       <TextInput
-        multiline={false}
+        multiline={true}
         style={{
           marginTop: 5,
           fontFamily: "sf-text-regular",
@@ -35,6 +36,7 @@ export const MiddleInputs = props => {
         returnKeyType="next"
         selectionColor={"#1DC161"}
         onChangeText={description => setPartyDescription(description)}
+        placeholderTextColor={props.theme.gray4}
       />
     </View>
   );
