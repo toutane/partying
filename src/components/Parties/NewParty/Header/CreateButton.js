@@ -10,6 +10,7 @@ export const CreateButton = props => {
   return (
     <TouchableOpacity
       activeOpacity={0.5}
+      exp
       style={{
         flexDirection: "row",
         backgroundColor: canContinue
@@ -19,10 +20,9 @@ export const CreateButton = props => {
           : props.theme.gray6,
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: 10,
-        paddingHorizontal: 5,
-        height: 35,
-        marginRight: 20
+        borderRadius: 100,
+        paddingHorizontal: 15,
+        height: 40
       }}
       onPress={() => canContinue && createParty(uuid.v4(), props)}
     >
@@ -34,13 +34,13 @@ export const CreateButton = props => {
           fontFamily: "sf-text-medium"
         }}
       >
-        Continue
+        Let's go !
       </Text>
-      <Feather
-        name="arrow-right"
+      {/* <Feather
+        name="chevron-right"
         size={25}
         color={canContinue ? "white" : props.theme.gray}
-      />
+      /> */}
     </TouchableOpacity>
   );
 };

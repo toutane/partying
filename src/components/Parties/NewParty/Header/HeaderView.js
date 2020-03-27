@@ -53,7 +53,7 @@ export default HeaderView = props => {
           flexDirection: "row"
         }}
       >
-        <Animated.Text
+        {/* <Animated.Text
           style={{
             fontSize: 17,
             fontFamily: "sf-text-semibold",
@@ -69,9 +69,9 @@ export default HeaderView = props => {
             right: 0,
             position: "absolute"
           }}
-        >
-          <CreateButton {...props} />
-        </View>
+        > */}
+        <CreateButton {...props} />
+        {/* </View> */}
       </View>
     </View>
   );
