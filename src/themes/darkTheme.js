@@ -6,6 +6,7 @@ export const darkTheme = {
   red: "rgb(255, 45, 85)",
   gray: "rgb(142,142,147)",
   gray2: "rgb(174, 174, 178)",
+  gray3: "rgb(72, 72, 74)",
   gray4: "rgb(99, 99, 102)",
   gray5: "rgb(44 ,44 ,46)",
   gray6: "rgb(28, 28, 30)",
