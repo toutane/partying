@@ -89,6 +89,7 @@ const CreatePartyProvider = props => {
         canContinue,
         setPartyName,
         setPartyDescription,
+        partyDescription,
         partyStarts,
         setPartyStarts,
         createParty
