@@ -6,8 +6,8 @@ const Card = styled.View`
   shadow-opacity: 0.07;
   shadow-radius: 20px;
   shadow-color: ${({ theme }) => theme.fontColor};
-  padding-vertical: 25px;
-  padding-horizontal: 25px;
+  padding-vertical: 20px;
+  padding-horizontal: 20px;
   border-radius: 17px;
 `;
 

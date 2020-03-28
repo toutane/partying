@@ -23,16 +23,16 @@ export const Inputs = props => {
             fontFamily: "sf-text-medium"
           }}
         >
-          TITLE :{" "}
+          Title :{" "}
         </Text>
         <TextInput
           keyboardAppearance={props.theme.theme}
           multiline={true}
           style={{
-            marginTop: 10,
-            fontSize: 22,
+            marginTop: 5,
+            fontSize: 24,
             color: props.theme.fontColor,
-            fontFamily: "sf-display-bold"
+            fontFamily: "sf-display-semibold"
           }}
           placeholder="Party title"
           autoFocus={true}
@@ -42,7 +42,6 @@ export const Inputs = props => {
           placeholderTextColor={props.theme.gray4}
         />
       </View>
-      <Hr {...props} style={{ marginTop: 15 }} />
       <View style={{ marginTop: 15 }}>
         <Text
           style={{
@@ -51,7 +50,7 @@ export const Inputs = props => {
             fontFamily: "sf-text-medium"
           }}
         >
-          DESCRIPTION :{" "}
+          Description :{" "}
         </Text>
         <TextInput
           keyboardAppearance={props.theme.theme}
