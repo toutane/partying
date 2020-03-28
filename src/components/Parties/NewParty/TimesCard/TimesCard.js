@@ -2,6 +2,9 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Card } from "../../../Card/styles";
 import { DateInput } from "./DateInput";
+import { Hr } from "../../../hr";
+import { TimeInput } from "./TimeInput";
+import { SeveralDays } from "./SeveralDays";
 
 export const TimesCard = props => {
   return (
@@ -11,13 +14,17 @@ export const TimesCard = props => {
           style={{
             marginBottom: 15,
             fontFamily: "sf-text-semibold",
-            fontSize: 15,
+            fontSize: 17,
             color: props.theme.fontColor
           }}
         >
-          SET THE TIMES :
+          Set the times
         </Text>
+        <SeveralDays {...props} />
+        <Hr {...props} style={{ marginBottom: 15 }} />
+        {/* <Hr {...props} style={{ marginBottom: 15 }} /> */}
         <DateInput {...props} />
+        <TimeInput {...props} />
       </Card>
     </View>
   );
