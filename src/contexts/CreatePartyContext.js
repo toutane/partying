@@ -18,14 +18,19 @@ const CreatePartyProvider = props => {
   const [canContinue, setCanContinue] = useState(false);
   const [partyName, setPartyName] = useState("");
   const [partyDescription, setPartyDescription] = useState("");
+  const [severalDays, setSeveralDays] = useState(false);
   const [partyStarts, setPartyStarts] = useState({
     date: moment().format(),
     time: moment().format()
   });
+  const [partyEnds, setPartyEnds] = useState({
+    date: moment().format(),
+    time: moment().format()
+  });
 
-  useEffect(() => {
-    console.log(`${partyName} - ${partyDescription}`);
-  }, [partyName, partyDescription]);
+  // useEffect(() => {
+  //   console.log(`${partyName} - ${partyDescription}`);
+  // }, [partyName, partyDescription]);
 
   useEffect(() => {
     partyName !== "" && partyDescription !== ""
@@ -47,13 +52,14 @@ const CreatePartyProvider = props => {
         },
         name: partyName,
         description: partyDescription,
+        severalDays: severalDays,
         guests_id: [],
         participants_id: [],
         start: {
           date: partyStarts.date,
           time: partyStarts.time
         },
-        end: { date: partyStarts.date, time: partyStarts.time },
+        end: { date: partyEnds.date, time: partyEnds.time },
         location: "20525 Mariani Avenue"
       })
       .then(doc => {
@@ -90,8 +96,12 @@ const CreatePartyProvider = props => {
         setPartyName,
         setPartyDescription,
         partyDescription,
+        severalDays,
+        setSeveralDays,
         partyStarts,
         setPartyStarts,
+        partyEnds,
+        setPartyEnds,
         createParty
       }}
     >
