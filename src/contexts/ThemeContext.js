@@ -59,6 +59,7 @@ const ThemeProvider = props => {
   return (
     <Provider
       value={{
+        colorScheme,
         theme,
         themeState,
         setThemeState
