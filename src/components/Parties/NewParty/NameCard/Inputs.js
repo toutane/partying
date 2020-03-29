@@ -1,11 +1,5 @@
 import React, { useContext } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  DrawerLayoutAndroidComponent
-} from "react-native";
-import { Hr } from "../../../hr";
+import { View, Text, TextInput } from "react-native";
 
 import { CreatePartyContext } from "../../../../contexts/CreatePartyContext";
 
@@ -35,7 +29,7 @@ export const Inputs = props => {
             fontFamily: "sf-display-semibold"
           }}
           placeholder="Party title"
-          autoFocus={true}
+          autoFocus={false}
           returnKeyType="next"
           selectionColor={"#1DC161"}
           onChangeText={name => setPartyName(name)}

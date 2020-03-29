@@ -9,29 +9,20 @@ export const NameCard = props => {
   return (
     <View style={{ marginTop: 30, marginBottom: 30, paddingHorizontal: 25 }}>
       <Card {...props}>
-        {/* <Text
-          style={{
-            marginBottom: 15,
-            fontFamily: "sf-text-semibold",
-            fontSize: 15
-          }}
-        >
-          NAME YOUR EVENT :
-        </Text> */}
-        <Text
-          style={{
-            marginBottom: 5,
-            fontFamily: "sf-text-semibold",
-            fontSize: 17,
-            color: props.theme.fontColor
-          }}
-        >
-          Name your party
-        </Text>
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => setShwoInfo(prvState => !prvState)}
         >
+          <Text
+            style={{
+              marginBottom: 5,
+              fontFamily: "sf-text-semibold",
+              fontSize: 17,
+              color: props.theme.fontColor
+            }}
+          >
+            Name your party
+          </Text>
           <Text
             style={{
               marginBottom: 15,
