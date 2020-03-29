@@ -22,10 +22,10 @@ export const CardHeader = props => {
         <Thumbnails {...props} />
         <Nomenclature crntUserId={currentUserId} {...props} />
       </View>
-      {/* <View flexDirection="row">
-        <Debug_id_button {...props} />
+      <View flexDirection="row">
+        {/* <Debug_id_button {...props} /> */}
         <Debug_delete_button {...props} />
-      </View> */}
+      </View>
     </View>
   );
 };

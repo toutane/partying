@@ -9,7 +9,7 @@ export const Debug_delete_button = props => {
   return (
     <TouchableOpacity
       style={{ height: 30, width: 30 }}
-      onPress={() => deleteParty(props.party.party_id)}
+      onLongPress={() => deleteParty(props.party.party_id)}
     >
       <Feather
         color={
