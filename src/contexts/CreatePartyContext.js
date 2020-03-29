@@ -20,22 +20,26 @@ const CreatePartyProvider = props => {
   const [partyDescription, setPartyDescription] = useState("");
   const [severalDays, setSeveralDays] = useState(false);
   const [partyStarts, setPartyStarts] = useState({
-    date: moment().format(),
+    date: new Date(),
     time: moment().format()
   });
   const [partyEnds, setPartyEnds] = useState({
-    date: moment().format(),
+    date: new Date(
+      new Date(partyStarts.date).setDate(
+        new Date(partyStarts.date).getDate() + 1
+      )
+    ),
     time: moment().format()
   });
 
-  // useEffect(() => {
-  //   console.log(`${partyName} - ${partyDescription}`);
-  // }, [partyName, partyDescription]);
+  useEffect(() => {
+    console.log(partyEnds.date, partyStarts.date);
+  }, [partyEnds.date]);
 
   useEffect(() => {
     partyName !== "" && partyDescription !== ""
       ? setCanContinue(true)
-      : setCanContinue(true);
+      : setCanContinue(false);
   }, [partyName, partyDescription]);
 
   async function createParty(uuid, props) {
@@ -56,10 +60,10 @@ const CreatePartyProvider = props => {
         guests_id: [],
         participants_id: [],
         start: {
-          date: partyStarts.date,
+          date: moment(partyStarts.date).format(),
           time: partyStarts.time
         },
-        end: { date: partyEnds.date, time: partyEnds.time },
+        end: { date: moment(partyEnds.date).format(), time: partyEnds.time },
         location: "20525 Mariani Avenue"
       })
       .then(doc => {
