@@ -4,6 +4,7 @@ import { screenHeight } from "../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
 import { SettingsCard } from "./SettingsCard";
 import { SignOutButton } from "./SignOut/SignOutButton";
+import { Version } from "./Version";
 
 export const SettingsScroll = props => {
   return (
@@ -16,6 +17,7 @@ export const SettingsScroll = props => {
     >
       <SettingsCard {...props} />
       <SignOutButton {...props} />
+      <Version {...props} />
     </ScrollView>
   );
 };

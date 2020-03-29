@@ -26,7 +26,7 @@ export const DisabledView = props => {
           Open Settings.app
         </Text>
       </TouchableOpacity>
-      <View style={{ paddingHorizontal: 15, marginTop: 10 }}>
+      <View style={{ paddingHorizontal: 10, marginTop: 10 }}>
         <Text
           style={{
             fontFamily: "sf-text-regular",

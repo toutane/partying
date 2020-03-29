@@ -28,7 +28,7 @@ export const PushNotificationsItem = props => {
         />
         <View
           style={{
-            paddingVertical: 15,
+            paddingVertical: 17.5,
             paddingHorizontal: 20,
             justifyContent: "space-between",
             flexDirection: "row"

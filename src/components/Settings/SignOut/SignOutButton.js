@@ -15,7 +15,7 @@ export const SignOutButton = props => {
           backgroundColor:
             props.theme.theme !== "light" ? props.theme.gray6 : "white",
           paddingHorizontal: 20,
-          paddingVertical: 15
+          paddingVertical: 17.5
         }}
       >
         <Text

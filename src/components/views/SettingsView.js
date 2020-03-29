@@ -19,7 +19,11 @@ export default SettingsView = props => {
         themeState={themeState}
         currentUserData={currentUserData}
       />
-      <FixeHeader title="Settings" backView="Profile" {...props} />
+      <FixeHeader
+        title="Settings"
+        backView={currentUserData.username}
+        {...props}
+      />
     </View>
   );
 };
