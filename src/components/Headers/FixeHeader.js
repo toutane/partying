@@ -61,7 +61,8 @@ export default FixeHeader = props => {
             flexDirection: "row",
             left: 0,
             position: "absolute",
-            alignItems: "center"
+            alignItems: "center",
+            justifyContent: "center"
           }}
           onPress={() =>
             props.backView === "Profile"
@@ -70,13 +71,15 @@ export default FixeHeader = props => {
           }
         >
           <Feather
-            style={{ marginLeft: 15 }}
+            style={{ marginLeft: 5 }}
             name="chevron-left"
-            size={25}
+            size={35}
             color={theme.green}
           />
           <Text
             style={{
+              top: 1,
+              right: 5,
               color: theme.green,
               fontSize: 17,
               fontFamily: "sf-text-regular"
