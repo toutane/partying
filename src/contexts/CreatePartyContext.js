@@ -63,9 +63,16 @@ const CreatePartyProvider = props => {
         participants_id: [],
         start: {
           date: moment(partyStarts.date).format(),
-          time: partyStarts.time
+          time: moment(partyStarts.time).format()
         },
-        end: { date: moment(partyEnds.date).format(), time: partyEnds.time },
+        end: {
+          date: severalDays
+            ? moment(partyEnds.date).format()
+            : moment(partyStarts.date).format(),
+          time: severalDays
+            ? moment(partyEnds.time).format()
+            : moment(partyStarts.time).format()
+        },
         location: "20525 Mariani Avenue"
       })
       .then(doc => {
