@@ -1,5 +1,7 @@
 # Partying
 
+[![runs with expo](https://img.shields.io/badge/Runs%20with%20Expo-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.io/)
+
 Partying is a mobile app. This app allows to easily create, share and manage events.
 
 This tool therefore allows faster, simpler, more accessible and less time-consuming personal event management.
