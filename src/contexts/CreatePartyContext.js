@@ -21,7 +21,7 @@ const CreatePartyProvider = props => {
   const [severalDays, setSeveralDays] = useState(false);
   const [partyStarts, setPartyStarts] = useState({
     date: new Date(),
-    time: moment().format()
+    time: new Date()
   });
   const [partyEnds, setPartyEnds] = useState({
     date: new Date(
@@ -29,12 +29,14 @@ const CreatePartyProvider = props => {
         new Date(partyStarts.date).getDate() + 1
       )
     ),
-    time: moment().format()
+    time: new Date(
+      new Date(partyStarts.time).setHours(partyStarts.time.getHours() + 1)
+    )
   });
 
-  useEffect(() => {
-    console.log(partyEnds.date, partyStarts.date);
-  }, [partyEnds.date]);
+  // useEffect(() => {
+  //   console.log(partyEnds.time < partyStarts.time);
+  // }, [partyEnds]);
 
   useEffect(() => {
     partyName !== "" && partyDescription !== ""
