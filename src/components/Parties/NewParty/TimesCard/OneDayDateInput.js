@@ -20,10 +20,10 @@ export const OneDayDateInput = props => {
       date: selectedDate,
       time: partyStarts.time
     });
-    setPartyEnds({
-      date: new Date(newdate.setDate(newdate.getDate() + 1)),
-      time: partyEnds.time
-    });
+    // setPartyEnds({
+    //   date: new Date(newdate.setDate(newdate.getDate() + 1)),
+    //   time: partyEnds.time
+    // });
     setShow(false);
   };
 
