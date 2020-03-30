@@ -15,6 +15,7 @@ export const OneDayDateInput = props => {
 
   const handleConfirm = selectedDate => {
     let newdate = new Date(selectedDate);
+
     setPartyStarts({
       date: selectedDate,
       time: partyStarts.time
