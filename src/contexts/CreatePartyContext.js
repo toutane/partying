@@ -33,10 +33,43 @@ const CreatePartyProvider = props => {
       new Date(partyStarts.time).setHours(partyStarts.time.getHours() + 1)
     )
   });
+  const [dateDiff, setDateDiff] = useState(
+    Math.floor(
+      (Date.UTC(
+        partyEnds.date.getFullYear(),
+        partyEnds.date.getMonth(),
+        partyEnds.date.getDate()
+      ) -
+        Date.UTC(
+          partyStarts.date.getFullYear(),
+          partyStarts.date.getMonth(),
+          partyStarts.date.getDate()
+        )) /
+        (1000 * 60 * 60 * 24)
+    )
+  );
 
   // useEffect(() => {
   //   console.log(partyEnds.time < partyStarts.time);
   // }, [partyEnds]);
+
+  useEffect(() => {
+    setDateDiff(
+      Math.floor(
+        (Date.UTC(
+          partyEnds.date.getFullYear(),
+          partyEnds.date.getMonth(),
+          partyEnds.date.getDate()
+        ) -
+          Date.UTC(
+            partyStarts.date.getFullYear(),
+            partyStarts.date.getMonth(),
+            partyStarts.date.getDate()
+          )) /
+          (1000 * 60 * 60 * 24)
+      )
+    );
+  }, [partyStarts, partyEnds]);
 
   useEffect(() => {
     partyName !== "" && partyDescription !== ""
@@ -59,6 +92,7 @@ const CreatePartyProvider = props => {
         name: partyName,
         description: partyDescription,
         severalDays: severalDays,
+        duration: dateDiff,
         guests_id: [],
         participants_id: [],
         start: {
@@ -111,6 +145,7 @@ const CreatePartyProvider = props => {
         partyDescription,
         severalDays,
         setSeveralDays,
+        dateDiff,
         partyStarts,
         setPartyStarts,
         partyEnds,
