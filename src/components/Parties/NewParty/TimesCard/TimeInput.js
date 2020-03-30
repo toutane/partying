@@ -2,13 +2,36 @@ import React, { useState, useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-feather1s";
 import { CreatePartyContext } from "../../../../contexts/CreatePartyContext";
+import { ThemeContext } from "../../../../contexts/ThemeContext";
+import DateTimePicker from "react-native-modal-datetime-picker";
 
 const moment = require("moment");
 
 export const TimeInput = props => {
+  const { theme } = useContext(ThemeContext);
   const { partyStarts, setPartyStarts, partyEnds, setPartyEnds } = useContext(
     CreatePartyContext
   );
+  const [pickerMode, setPickerMode] = useState("");
+  const [show, setShow] = useState(false);
+
+  const handleConfirm = selectedDate => {
+    let newdate = new Date(selectedDate);
+    pickerMode == "starts"
+      ? setPartyStarts({
+          date: partyStarts.date,
+          time: selectedDate
+        })
+      : // setPartyEnds(prvState => ({
+        //   date: partyStarts.date,
+        //   time:
+        //     // prvState.time < selectedDate
+        //     //   ? new Date(newdate.setHours(newdate.getHours() + 1))
+        //     //   : prvState.time
+        // }))
+        setPartyEnds({ date: partyEnds.date, time: selectedDate });
+    setShow(false);
+  };
   return (
     <View
       style={{
@@ -63,31 +86,59 @@ export const TimeInput = props => {
           <View
             style={{ flexDirection: "column", marginLeft: 10, marginTop: 1 }}
           >
-            <Text
-              style={{
-                fontFamily: "sf-text-semibold",
-                fontSize: 17,
-                color: props.theme.fontColor,
-                marginBottom: 10
+            <TouchableOpacity
+              onPress={() => {
+                setShow(prvState => !prvState), setPickerMode("starts");
               }}
-              numberOfLines={2}
             >
-              {moment(partyStarts.time).format("LT")}
-            </Text>
-
-            <Text
-              style={{
-                fontFamily: "sf-text-semibold",
-                fontSize: 17,
-                color: props.theme.fontColor
+              <Text
+                style={{
+                  fontFamily: "sf-text-semibold",
+                  fontSize: 17,
+                  color: props.theme.fontColor,
+                  marginBottom: 10
+                }}
+                numberOfLines={2}
+              >
+                {moment(partyStarts.time).format("LT")}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setShow(prvState => !prvState), setPickerMode("ends");
               }}
-              numberOfLines={2}
             >
-              {moment(partyEnds.time).format("LT")}
-            </Text>
+              <Text
+                style={{
+                  fontFamily: "sf-text-semibold",
+                  fontSize: 17,
+                  color: props.theme.fontColor
+                }}
+                numberOfLines={2}
+              >
+                {moment(partyEnds.time).format("LT")}
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
+      <DateTimePicker
+        isDarkModeEnabled={theme.theme === "dark"}
+        // for expo SDK 37
+        textColor="red"
+        mode="time"
+        isVisible={show}
+        date={
+          pickerMode !== ""
+            ? pickerMode === "starts"
+              ? partyStarts.time
+              : partyEnds.time
+            : new Date()
+        }
+        onConfirm={date => handleConfirm(date)}
+        onCancel={() => setShow(false)}
+        confirmButtonStyles={{ text: { color: "red" } }}
+      />
     </View>
   );
 };
