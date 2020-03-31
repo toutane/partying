@@ -5,13 +5,13 @@ import { Inputs } from "./Inputs";
 import { Hr } from "../../../hr";
 
 export const NameCard = props => {
-  const [showInfo, setShwoInfo] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
   return (
     <View style={{ marginTop: 30, marginBottom: 30, paddingHorizontal: 25 }}>
       <Card {...props}>
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() => setShwoInfo(prvState => !prvState)}
+          onPress={() => setShowInfo(prvState => !prvState)}
         >
           <Text
             style={{

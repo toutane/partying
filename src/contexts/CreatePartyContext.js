@@ -48,6 +48,7 @@ const CreatePartyProvider = props => {
         (1000 * 60 * 60 * 24)
     )
   );
+  const [location, setLocation] = useState({});
 
   // useEffect(() => {
   //   console.log(partyEnds.time < partyStarts.time);
@@ -107,7 +108,7 @@ const CreatePartyProvider = props => {
             ? moment(partyEnds.time).format()
             : moment(partyStarts.time).format()
         },
-        location: "20525 Mariani Avenue"
+        location: location
       })
       .then(doc => {
         firebase.db

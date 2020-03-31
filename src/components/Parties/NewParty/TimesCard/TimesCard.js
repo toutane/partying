@@ -11,7 +11,7 @@ import { SeveralDays } from "./SeveralDays";
 export const TimesCard = props => {
   const { severalDays, dateDiff } = useContext(CreatePartyContext);
   return (
-    <View style={{ marginBottom: 30, paddingHorizontal: 25 }}>
+    <View style={{ paddingHorizontal: 25 }}>
       <Card {...props}>
         <View
           style={{
