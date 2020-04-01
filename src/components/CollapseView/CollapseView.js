@@ -5,7 +5,7 @@ export const CollapseView = props => {
   const [heightAnim] = useState(new Animated.Value(props.minHeight));
 
   useEffect(() => {
-    console.log(props.collapse);
+    // console.log(props.collapse);
     !props.collapse
       ? Animated.timing(heightAnim, {
           toValue: props.minHeight,
