@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Card } from "../../../Card/styles";
 import { Hr } from "../../../hr";
 import { Map } from "./Map";
+import { LocationContext } from "../../../../contexts/LocationContext";
 
 export const LocationCard = props => {
+  const { location, address } = useContext(LocationContext);
   const [showInfo, setShowInfo] = useState(false);
   return (
     <View style={{ marginTop: 30, marginBottom: 210, paddingHorizontal: 25 }}>
