@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import { View } from "react-native";
 import { GoogleAutocomplete } from "./GoogleAutocomplete";
 import { LocationContext } from "./../../../../../contexts/LocationContext";
 
