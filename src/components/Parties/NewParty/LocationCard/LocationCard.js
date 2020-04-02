@@ -4,6 +4,7 @@ import { Card } from "../../../Card/styles";
 import { Hr } from "../../../hr";
 import { Map } from "./Map";
 import { LocationContext } from "../../../../contexts/LocationContext";
+import { LocationSearchView } from "./LocationSearch/LocationSearchView";
 
 export const LocationCard = props => {
   const { location, address } = useContext(LocationContext);
@@ -39,6 +40,8 @@ export const LocationCard = props => {
             detail information about this place.
           </Text>
         </TouchableOpacity>
+        <Hr {...props} style={{ marginLeft: 25, marginRight: 25 }} />
+        <LocationSearchView {...props} />
         <Hr {...props} />
         <Map />
         <Hr {...props} />
