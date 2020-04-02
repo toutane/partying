@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { View, ScrollView, Animated, Button } from "react-native";
 import { screenHeight } from "../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { UserContext } from "../../contexts/UserContext";
@@ -27,7 +28,12 @@ export default NewPartyView = props => {
   const titleOpacity = _getTitleOpacity();
   return (
     <View>
-      <ScrollView
+      <KeyboardAwareScrollView
+        enableResetScrollToCoords={false}
+        viewIsInsideTabBar={true}
+        keyboardOpeningTime={150}
+        extraScrollHeight={300}
+        keyboardShouldPersistTaps="handled"
         style={{
           zIndex: 1,
           height: screenHeight,
@@ -41,7 +47,7 @@ export default NewPartyView = props => {
         }}
         scrollEventThrottle={16}
         snapToAlignment={"start"}
-        snapToInterval={60}
+        snapToInterval={40}
       >
         <NewPartyScreen
           {...props}
@@ -49,7 +55,7 @@ export default NewPartyView = props => {
           user={currentUserData}
           titleOpacity={titleOpacity}
         />
-      </ScrollView>
+      </KeyboardAwareScrollView>
       <HeaderView theme={theme} {...props} />
     </View>
   );
