@@ -131,6 +131,9 @@ export default SearchBarHeader = props => {
           selectionColor={"#1DC161"}
           autoCapitalize="none"
           placeholder={"search"}
+          placeholderTextColor={
+            theme.theme === "light" ? theme.gray2 : theme.gray3
+          }
           autoFocus={false}
           returnKeyType="next"
           value={props.search}
