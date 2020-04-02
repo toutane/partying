@@ -17,9 +17,14 @@ const LocationProvider = props => {
   ]);
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState([{ name: "8 rue Alphonse XIII" }]);
+  const [searchingLocation, setSearchingLocation] = useState({
+    description: "search location"
+  });
   const [errorMessage, setErroMessage] = useState(null);
 
-  // useEffect(() => console.log(location, address), [location, address]);
+  useEffect(() => console.log(searchingLocation.description), [
+    searchingLocation
+  ]);
 
   useEffect(() => {
     appState == "active" && checkLocationPermissionsStatus();
@@ -50,6 +55,8 @@ const LocationProvider = props => {
   return (
     <Provider
       value={{
+        searchingLocation,
+        setSearchingLocation,
         location,
         setLocation,
         currentPosition,

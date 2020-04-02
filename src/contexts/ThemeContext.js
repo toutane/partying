@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useColorScheme } from "react-native-appearance";
+import { Appearance, useColorScheme } from "react-native-appearance";
 import { AsyncStorage } from "react-native";
 
 import { darkTheme } from "../themes/darkTheme";
