@@ -4,6 +4,7 @@ import firebase from "../firebase/Firebase";
 import { AuthContext } from "./AuthContext";
 import { UserContext } from "./UserContext";
 import { PartyContext } from "./PartyContext";
+import { LocationContext } from "./LocationContext";
 
 const moment = require("moment");
 
@@ -14,6 +15,8 @@ const CreatePartyProvider = props => {
   const { authenticated } = useContext(AuthContext);
   const { currentUserId, currentUserData } = useContext(UserContext);
   const { deleteParty } = useContext(PartyContext);
+
+  const { searchingLocation } = useContext(LocationContext);
 
   const [canContinue, setCanContinue] = useState(false);
   const [partyName, setPartyName] = useState("");
@@ -50,9 +53,9 @@ const CreatePartyProvider = props => {
   );
   const [location, setLocation] = useState({});
 
-  // useEffect(() => {
-  //   console.log(partyEnds.time < partyStarts.time);
-  // }, [partyEnds]);
+  useEffect(() => {
+    setLocation(searchingLocation);
+  }, [searchingLocation]);
 
   useEffect(() => {
     setDateDiff(
