@@ -23,7 +23,7 @@ export const CardFooter = props => {
       <Item
         title="Location"
         icon="map-pin"
-        data={props.party.location}
+        data={props.party.location.description}
         extd={locationExtended}
         setExtd={setLocationExtended}
         {...props}

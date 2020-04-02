@@ -57,7 +57,7 @@ export const FooterView = props => {
         <Item
           title="Location"
           icon="map-pin"
-          data={props.party.location}
+          data={props.party.location.description}
           isFullWidth={true}
           {...props}
         />
