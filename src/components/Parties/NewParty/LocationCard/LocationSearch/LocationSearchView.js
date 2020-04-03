@@ -4,15 +4,18 @@ import { GoogleAutocomplete } from "./GoogleAutocomplete";
 import { LocationContext } from "./../../../../../contexts/LocationContext";
 
 export const LocationSearchView = props => {
-  const { searchingLocation, setSearchingLocation } = useContext(
-    LocationContext
-  );
+  const {
+    searchingLocation,
+    setSearchingLocation,
+    _getCoordsAsync
+  } = useContext(LocationContext);
   return (
     <View style={{ paddingVertical: 10 }}>
       <GoogleAutocomplete
         {...props}
         location={searchingLocation}
-        setLocation={setSearchingLocation}
+        // setLocation={setSearchingLocation}
+        _getCoordsAsync={_getCoordsAsync}
       />
     </View>
   );

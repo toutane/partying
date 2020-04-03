@@ -67,7 +67,7 @@ export const GoogleAutocomplete = props => {
           </View>
         )}
         onPress={(data, details = null) => {
-          props.setLocation(data);
+          props._getCoordsAsync(data);
         }}
         query={{
           key: "AIzaSyC0sHR1_1gzomu8AmunFtdBFuygRxU8iAY",
