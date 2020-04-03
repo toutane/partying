@@ -1,30 +1,32 @@
-import React, { useContext } from "react";
-import { View, Text } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import React, { useState, useEffect, useContext } from "react";
+import { View } from "react-native";
+import MapView, { Marker, AnimatedRegion, Animated } from "react-native-maps";
 import { LocationContext } from "../../../../contexts/LocationContext";
 
 export const Map = props => {
-  const { currentPosition, currentPositionAddress } = useContext(
+  const { location, currentPosition, _getAddressAsync } = useContext(
     LocationContext
   );
 
   return (
     <View>
-      {currentPosition !== null ? (
+      {location !== null ? (
         <MapView
           style={{ height: 400, width: "100%" }}
-          initialRegion={{
-            latitude: currentPosition.coords.latitude,
-            longitude: currentPosition.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421
+          region={{
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01
           }}
         >
           <Marker
-            coordinate={currentPosition.coords}
+            coordinate={location.coords}
             title="Your position"
             pinColor="red"
-            description={`near ${currentPositionAddress[0].name}`}
+            description={`near ${
+              location.name !== undefined ? location.name : location.description
+            }`}
           >
             {/* <View style={{ backgroundColor: "red" }}>
               <Text>{currentAddress[0].name}</Text>
