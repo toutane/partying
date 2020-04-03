@@ -12,19 +12,26 @@ const LocationProvider = props => {
   const { appState } = useContext(AppContext);
 
   const [currentPosition, setCurrentPosition] = useState(null);
-  const [currentPositionAddress, setCurrentPositionAddress] = useState([
-    { name: "8 rue Alphonse XIII" }
-  ]);
-  const [location, setLocation] = useState(null);
-  const [address, setAddress] = useState([{ name: "8 rue Alphonse XIII" }]);
   const [searchingLocation, setSearchingLocation] = useState({
     description: "search location"
   });
+  const [location, setLocation] = useState(null);
+
   const [errorMessage, setErroMessage] = useState(null);
 
-  useEffect(() => console.log(searchingLocation.description), [
-    searchingLocation
-  ]);
+  // useEffect(() => console.log(location), [location]);
+  // useEffect(() => console.log(searchingLocation), [searchingLocation]);
+  // useEffect(() => console.log(currentPosition), [currentPosition]);
+
+  useEffect(() => {
+    searchingLocation.coords !== undefined
+      ? setLocation(searchingLocation)
+      : null;
+  }, [searchingLocation]);
+
+  useEffect(() => {
+    setLocation(currentPosition);
+  }, [currentPosition]);
 
   useEffect(() => {
     appState == "active" && checkLocationPermissionsStatus();
@@ -32,7 +39,9 @@ const LocationProvider = props => {
 
   async function checkLocationPermissionsStatus() {
     const { status } = await Permissions.askAsync(Permissions.LOCATION);
-    status === "granted" && _getLocationAsync();
+    status === "granted"
+      ? _getLocationAsync()
+      : console.log("Location permission not allowed");
   }
 
   async function _getLocationAsync() {
@@ -48,8 +57,14 @@ const LocationProvider = props => {
   async function _getAddressAsync(location, mode) {
     let address = await Location.reverseGeocodeAsync(location.coords);
     mode === "current"
-      ? setCurrentPositionAddress(address)
+      ? setCurrentPosition({ ...location, ...address[0] })
       : setAddress(address);
+  }
+
+  async function _getCoordsAsync(address) {
+    let coordinates = await Location.geocodeAsync(address.description);
+    let coords = Object.assign({}, ...coordinates);
+    setSearchingLocation({ ...address, coords });
   }
 
   return (
@@ -60,9 +75,8 @@ const LocationProvider = props => {
         location,
         setLocation,
         currentPosition,
-        currentPositionAddress,
-        address,
         _getAddressAsync,
+        _getCoordsAsync,
         errorMessage
       }}
     >
