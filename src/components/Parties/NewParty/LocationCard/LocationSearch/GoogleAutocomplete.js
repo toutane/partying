@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { View, Text, YellowBox } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { screenWidth } from "../../../../../utils/dimensions";
+import { CurrentPositionBtn } from "./CurrentPositionBtn";
 
 // const homePlace = {
 //   description: "Home",
@@ -12,14 +13,14 @@ import { screenWidth } from "../../../../../utils/dimensions";
 //   geometry: { location: { lat: 48.8496818, lng: 2.2940881 } }
 // };
 
-export const GoogleAutocomplete = props => {
+export const GoogleAutocomplete = (props) => {
   useEffect(() => {
     YellowBox.ignoreWarnings(["VirtualizedLists should never be nested"]); // TODO: Remove when fixed ]);
     console.ignoredYellowBox = ["Warning: Each", "Warning: Failed"];
     console.disableYellowBox = true;
   }, []);
   return (
-    <View>
+    <View stysle={{ flex: 1, flexDirection: "row" }}>
       <GooglePlacesAutocomplete
         location={props.location}
         isRowScrollable={false}
@@ -39,13 +40,13 @@ export const GoogleAutocomplete = props => {
         keyboardAppearance={props.theme.theme}
         listViewDisplayed="auto"
         fetchDetails={true}
-        renderRow={row => (
+        renderRow={(row) => (
           <View style={{ justifyContent: "center" }}>
             <Text
               style={{
                 fontFamily: "sf-text-regular",
                 fontSize: 16,
-                color: props.theme.fontColor
+                color: props.theme.fontColor,
               }}
               numberOfLines={1}
             >
@@ -55,7 +56,7 @@ export const GoogleAutocomplete = props => {
               style={{
                 fontFamily: "sf-text-regular",
                 fontSize: 14,
-                color: props.theme.gray2
+                color: props.theme.gray2,
               }}
               numberOfLines={1}
             >
@@ -72,7 +73,7 @@ export const GoogleAutocomplete = props => {
         query={{
           key: "AIzaSyC0sHR1_1gzomu8AmunFtdBFuygRxU8iAY",
           language: "en",
-          type: "geocode"
+          type: "geocode",
         }}
         styles={{
           poweredContainer: { height: 0, opacity: 0 },
@@ -82,14 +83,15 @@ export const GoogleAutocomplete = props => {
             borderBottomWidth: 0,
             paddingHorizontal: 15,
             backgroundColor:
-              props.theme.theme !== "light" ? props.theme.gray6 : "white"
+              props.theme.theme !== "light" ? props.theme.gray6 : "white",
           },
           textInput: {
             height: 35,
             backgroundColor: props.theme.gray5,
             borderRadius: 10,
             fontSize: 18,
-            color: props.theme.fontColor
+            color: props.theme.fontColor,
+            marginRight: 50,
           },
           row: {
             // backgroundColor: "red",
@@ -98,16 +100,16 @@ export const GoogleAutocomplete = props => {
             marginBottom: 10,
             marginLeft: 30,
             width: screenWidth - 135,
-            height: 35
+            height: 35,
           },
           separator: {
             marginLeft: 25,
             marginRight: 25,
-            backgroundColor: props.theme.gray5
+            backgroundColor: props.theme.gray5,
           },
           predefinedPlacesDescription: {
-            color: "#1faadb"
-          }
+            color: "#1faadb",
+          },
         }}
         currentLocation={false} // Will add a 'Current location' button at the top of the predefined places list
         currentLocationLabel="Current location"
@@ -120,15 +122,15 @@ export const GoogleAutocomplete = props => {
         GooglePlacesSearchQuery={{
           // available options for GooglePlacesSearch API : https://developers.google.com/places/web-service/search
           rankby: "distance",
-          type: "cafe"
+          type: "cafe",
         }}
         GooglePlacesDetailsQuery={{
           // available options for GooglePlacesDetails API : https://developers.google.com/places/web-service/details
-          fields: "formatted_address"
+          fields: "formatted_address",
         }}
         filterReverseGeocodingByTypes={[
           "locality",
-          "administrative_area_level_3"
+          "administrative_area_level_3",
         ]} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities
         // predefinedPlaces={[homePlace, workPlace]}
         debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
@@ -138,6 +140,19 @@ export const GoogleAutocomplete = props => {
         // )}
         // renderRightButton={() => <Text>Custom text after the input</Text>}
       />
+      <View
+        style={{
+          position: "absolute",
+          left: screenWidth - 105,
+          top: 7.5,
+          height: 35,
+          width: 35,
+          borderRadius: 10,
+          // backgroundColor: "red",
+        }}
+      >
+        <CurrentPositionBtn {...props} />
+      </View>
     </View>
   );
 };

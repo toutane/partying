@@ -3,11 +3,11 @@ import { View } from "react-native";
 import { GoogleAutocomplete } from "./GoogleAutocomplete";
 import { LocationContext } from "./../../../../../contexts/LocationContext";
 
-export const LocationSearchView = props => {
+export const LocationSearchView = (props) => {
   const {
     searchingLocation,
     setSearchingLocation,
-    _getCoordsAsync
+    _getCoordsAsync,
   } = useContext(LocationContext);
   return (
     <View style={{ paddingVertical: 10 }}>
