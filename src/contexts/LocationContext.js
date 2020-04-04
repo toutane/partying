@@ -8,12 +8,12 @@ import { AppContext } from "./AppContext";
 const LocationContext = React.createContext();
 const { Provider } = LocationContext;
 
-const LocationProvider = props => {
+const LocationProvider = (props) => {
   const { appState } = useContext(AppContext);
 
   const [currentPosition, setCurrentPosition] = useState(null);
   const [searchingLocation, setSearchingLocation] = useState({
-    description: "search location"
+    description: "search location",
   });
   const [location, setLocation] = useState(null);
 
@@ -51,14 +51,13 @@ const LocationProvider = props => {
           "Oops, this will not work on Sketch in an Android emulator. Try it on your device!"
         )
       : (setCurrentPosition(currentPosition),
-        _getAddressAsync(currentPosition, "current"));
+        _getAddressAsync(currentPosition, "setLocation"));
   }
 
-  async function _getAddressAsync(location, mode) {
+  async function _getAddressAsync(location, details) {
     let address = await Location.reverseGeocodeAsync(location.coords);
-    mode === "current"
-      ? setCurrentPosition({ ...location, ...address[0] })
-      : setAddress(address);
+    setCurrentPosition({ ...location, ...address[0] });
+    details !== undefined ? setLocation({ ...location, ...address[0] }) : null;
   }
 
   async function _getCoordsAsync(address) {
@@ -75,9 +74,10 @@ const LocationProvider = props => {
         location,
         setLocation,
         currentPosition,
+        _getLocationAsync,
         _getAddressAsync,
         _getCoordsAsync,
-        errorMessage
+        errorMessage,
       }}
     >
       {props.children}
