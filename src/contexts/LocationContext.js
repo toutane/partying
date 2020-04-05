@@ -16,6 +16,7 @@ const LocationProvider = (props) => {
     description: "search location",
   });
   const [location, setLocation] = useState(null);
+  const [sentLocation, setSentLocation] = useState(null);
 
   const [errorMessage, setErroMessage] = useState(null);
 
@@ -25,12 +26,12 @@ const LocationProvider = (props) => {
 
   useEffect(() => {
     searchingLocation.coords !== undefined
-      ? setLocation(searchingLocation)
+      ? (setLocation(searchingLocation), setSentLocation(searchingLocation))
       : null;
   }, [searchingLocation]);
 
   useEffect(() => {
-    setLocation(currentPosition);
+    setLocation(currentPosition), setSentLocation(searchingLocation);
   }, [currentPosition]);
 
   useEffect(() => {
@@ -57,7 +58,11 @@ const LocationProvider = (props) => {
   async function _getAddressAsync(location, details) {
     let address = await Location.reverseGeocodeAsync(location.coords);
     setCurrentPosition({ ...location, ...address[0] });
-    details !== undefined ? setLocation({ ...location, ...address[0] }) : null;
+    let description = { description: address[0].name };
+    details !== undefined
+      ? (setLocation({ ...location, ...address[0] }),
+        setSentLocation({ ...location, ...address[0], ...description }))
+      : null;
   }
 
   async function _getCoordsAsync(address) {
@@ -72,6 +77,7 @@ const LocationProvider = (props) => {
         searchingLocation,
         setSearchingLocation,
         location,
+        sentLocation,
         setLocation,
         currentPosition,
         _getLocationAsync,
