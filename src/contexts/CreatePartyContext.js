@@ -11,12 +11,12 @@ const moment = require("moment");
 const CreatePartyContext = React.createContext();
 const { Provider } = CreatePartyContext;
 
-const CreatePartyProvider = props => {
+const CreatePartyProvider = (props) => {
   const { authenticated } = useContext(AuthContext);
   const { currentUserId, currentUserData } = useContext(UserContext);
   const { deleteParty } = useContext(PartyContext);
 
-  const { searchingLocation } = useContext(LocationContext);
+  const { sentLocation } = useContext(LocationContext);
 
   const [canContinue, setCanContinue] = useState(false);
   const [partyName, setPartyName] = useState("");
@@ -24,7 +24,7 @@ const CreatePartyProvider = props => {
   const [severalDays, setSeveralDays] = useState(false);
   const [partyStarts, setPartyStarts] = useState({
     date: new Date(),
-    time: new Date()
+    time: new Date(),
   });
   const [partyEnds, setPartyEnds] = useState({
     date: new Date(
@@ -34,7 +34,7 @@ const CreatePartyProvider = props => {
     ),
     time: new Date(
       new Date(partyStarts.time).setHours(partyStarts.time.getHours() + 1)
-    )
+    ),
   });
   const [dateDiff, setDateDiff] = useState(
     Math.floor(
@@ -52,10 +52,13 @@ const CreatePartyProvider = props => {
     )
   );
   const [location, setLocation] = useState({});
+  const [interphone, setInterphone] = useState("");
+  const [entry_code, setEntry_code] = useState("");
 
   useEffect(() => {
-    setLocation(searchingLocation);
-  }, [searchingLocation]);
+    setLocation(sentLocation);
+    console.log(sentLocation);
+  }, [sentLocation]);
 
   useEffect(() => {
     setDateDiff(
@@ -91,7 +94,7 @@ const CreatePartyProvider = props => {
         organizer: {
           user_id: currentUserId,
           username: currentUserData.username,
-          avatar: currentUserData.avatar
+          avatar: currentUserData.avatar,
         },
         name: partyName,
         description: partyDescription,
@@ -101,7 +104,7 @@ const CreatePartyProvider = props => {
         participants_id: [],
         start: {
           date: moment(partyStarts.date).format(),
-          time: moment(partyStarts.time).format()
+          time: moment(partyStarts.time).format(),
         },
         end: {
           date: severalDays
@@ -109,35 +112,35 @@ const CreatePartyProvider = props => {
             : moment(partyStarts.date).format(),
           time: severalDays
             ? moment(partyEnds.time).format()
-            : moment(partyStarts.time).format()
+            : moment(partyStarts.time).format(),
         },
-        location: location
+        location: location,
+        entry_code: entry_code,
+        interphone: interphone,
+        house: "",
       })
-      .then(doc => {
+      .then((doc) => {
         firebase.db
           .collection("parties")
           .where("party_id", "==", uuid)
           .get()
           .then(() =>
-            firebase.db
-              .collection("parties")
-              .doc(doc.id)
-              .update({
-                party_id: doc.id
-              })
+            firebase.db.collection("parties").doc(doc.id).update({
+              party_id: doc.id,
+            })
           )
           .then(() => {
             firebase.db
               .collection("users")
               .doc(currentUserId)
               .update({
-                parties_id: currentUserData.parties_id.concat([doc.id])
+                parties_id: currentUserData.parties_id.concat([doc.id]),
               });
           });
       })
 
       .then(() => props.navigation.navigate("Account"))
-      .catch(error => error);
+      .catch((error) => error);
   }
 
   return (
@@ -154,7 +157,11 @@ const CreatePartyProvider = props => {
         setPartyStarts,
         partyEnds,
         setPartyEnds,
-        createParty
+        entry_code,
+        interphone,
+        setEntry_code,
+        setInterphone,
+        createParty,
       }}
     >
       {props.children}
