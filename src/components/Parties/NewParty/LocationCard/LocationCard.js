@@ -4,8 +4,9 @@ import { Card } from "../../../Card/styles";
 import { Hr } from "../../../hr";
 import { Map } from "./Map";
 import { LocationSearchView } from "./LocationSearch/LocationSearchView";
+import { OptionsInputs } from "./OptionsInputs";
 
-export const LocationCard = props => {
+export const LocationCard = (props) => {
   const [showInfo, setShowInfo] = useState(false);
   return (
     <View style={{ marginTop: 30, marginBottom: 210, paddingHorizontal: 25 }}>
@@ -13,14 +14,14 @@ export const LocationCard = props => {
         <TouchableOpacity
           style={{ paddingHorizontal: 20 }}
           activeOpacity={0.7}
-          onPress={() => setShowInfo(prvState => !prvState)}
+          onPress={() => setShowInfo((prvState) => !prvState)}
         >
           <Text
             style={{
               marginBottom: 5,
               fontFamily: "sf-text-semibold",
               fontSize: 17,
-              color: props.theme.fontColor
+              color: props.theme.fontColor,
             }}
           >
             Set the location
@@ -30,7 +31,7 @@ export const LocationCard = props => {
               marginBottom: 15,
               fontFamily: "sf-text-regular",
               fontSize: 13,
-              color: props.theme.gray2
+              color: props.theme.gray2,
             }}
             numberOfLines={showInfo ? 10 : 1}
           >
@@ -39,6 +40,8 @@ export const LocationCard = props => {
             detail information about this place. */}
           </Text>
         </TouchableOpacity>
+        <Hr {...props} style={{ marginLeft: 25, marginRight: 25 }} />
+        <OptionsInputs {...props} />
         <Hr {...props} style={{ marginLeft: 25, marginRight: 25 }} />
         <LocationSearchView {...props} />
         <Hr {...props} />
