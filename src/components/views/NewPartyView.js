@@ -10,7 +10,7 @@ import { UserContext } from "../../contexts/UserContext";
 import NewPartyScreen from "../Parties/NewParty/NewPartyScreen";
 import HeaderView from "../Parties/NewParty/Header/HeaderView";
 
-export default NewPartyView = props => {
+export default NewPartyView = (props) => {
   const { currentUserData } = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
 
@@ -21,7 +21,7 @@ export default NewPartyView = props => {
       inputRange: [0, 35, 36, 100],
       outputRange: [1, 1, 0, 0],
       extrapolate: "clamp",
-      useNativeDriver: true
+      useNativeDriver: true,
     });
   };
 
@@ -37,13 +37,13 @@ export default NewPartyView = props => {
         style={{
           zIndex: 1,
           height: screenHeight,
-          backgroundColor: theme.backgroundColor
+          backgroundColor: theme.backgroundColor,
         }}
         onScroll={Animated.event([
-          { nativeEvent: { contentOffset: { y: scrollY } } }
+          { nativeEvent: { contentOffset: { y: scrollY } } },
         ])}
         contentContainerStyle={{
-          marginTop: 46 + useSafeArea().top
+          marginTop: 46 + useSafeArea().top,
         }}
         scrollEventThrottle={16}
         snapToAlignment={"start"}

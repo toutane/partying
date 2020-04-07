@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 38756,
-  "expoServerNgrokUrl": "https://m8-c9f.charlesantoineleger.partying.exp.direct",
-  "packagerNgrokUrl": "https://packager.m8-c9f.charlesantoineleger.partying.exp.direct",
-  "ngrokPid": 38778
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
