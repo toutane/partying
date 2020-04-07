@@ -7,14 +7,14 @@ import { FriendsContext } from "../../contexts/FriendsContext";
 import SearchBarHeader from "../Headers/SearchBarHeader";
 import { FriendsFlatList } from "../User/Friends/FriendsList/FriendsFlatList";
 
-export default FriendsListView = props => {
+export default FriendsListView = (props) => {
   const { theme } = useContext(ThemeContext);
   const {
     friends,
     loading,
     refreshing,
     retrieveData,
-    retrieveMore
+    retrieveMore,
   } = useContext(FriendsContext);
 
   const [scrollY, setScrollY] = useState(new Animated.Value(100));
@@ -29,7 +29,7 @@ export default FriendsListView = props => {
     }
   }, [search]);
 
-  const searchedFriends = friends.filter(user =>
+  const searchedFriends = friends.filter((user) =>
     user.username.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -47,7 +47,7 @@ export default FriendsListView = props => {
       <SearchBarHeader
         {...props}
         scrollY={scrollY}
-        title={`${user.friends_id.length} friends`}
+        title={`${user.friends_id.length} Friends`}
         search={search}
         setSearch={setSearch}
       />
