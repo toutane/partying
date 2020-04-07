@@ -21,6 +21,10 @@ const CreatePartyProvider = (props) => {
   const [canContinue, setCanContinue] = useState(false);
   const [partyName, setPartyName] = useState("");
   const [partyDescription, setPartyDescription] = useState("");
+  const [guests_id, setGuests_id] = useState([
+    // "LQGwToCjxKQJajXB5Yrr",
+    // "YYAQCJnmQMY1JpTG6Gda",
+  ]);
   const [severalDays, setSeveralDays] = useState(false);
   const [partyStarts, setPartyStarts] = useState({
     date: new Date(),
@@ -54,11 +58,12 @@ const CreatePartyProvider = (props) => {
   const [location, setLocation] = useState({});
   const [interphone, setInterphone] = useState("");
   const [entry_code, setEntry_code] = useState("");
+  const [house, setHouse] = useState("");
 
-  useEffect(() => {
-    setLocation(sentLocation);
-    console.log(sentLocation);
-  }, [sentLocation]);
+  // useEffect(() => {
+  // setLocation(sentLocation);
+  //   console.log(sentLocation);
+  // }, [sentLocation]);
 
   useEffect(() => {
     setDateDiff(
@@ -77,6 +82,10 @@ const CreatePartyProvider = (props) => {
       )
     );
   }, [partyStarts, partyEnds]);
+
+  useEffect(() => {
+    Math.sign(dateDiff) === -1 && setDateDiff((prvState) => 365 + prvState);
+  }, [dateDiff]);
 
   useEffect(() => {
     partyName !== "" && partyDescription !== ""
@@ -100,7 +109,7 @@ const CreatePartyProvider = (props) => {
         description: partyDescription,
         severalDays: severalDays,
         duration: dateDiff,
-        guests_id: [],
+        guests_id: guests_id,
         participants_id: [],
         start: {
           date: moment(partyStarts.date).format(),
@@ -117,7 +126,7 @@ const CreatePartyProvider = (props) => {
         location: location,
         entry_code: entry_code,
         interphone: interphone,
-        house: "",
+        house: house,
       })
       .then((doc) => {
         firebase.db
@@ -149,6 +158,8 @@ const CreatePartyProvider = (props) => {
         canContinue,
         setPartyName,
         setPartyDescription,
+        setGuests_id,
+        guests_id,
         partyDescription,
         severalDays,
         setSeveralDays,
@@ -159,8 +170,10 @@ const CreatePartyProvider = (props) => {
         setPartyEnds,
         entry_code,
         interphone,
+        house,
         setEntry_code,
         setInterphone,
+        setHouse,
         createParty,
       }}
     >

@@ -8,8 +8,9 @@ import { CreatePartyProvider } from "./CreatePartyContext";
 import { PartyProvider } from "./PartyContext";
 import { FriendsProvider } from "./FriendsContext";
 import { PushNotificationsProvider } from "./PushNotificationsContext";
+import { GuestsProvider } from "./GuestsContext";
 
-const AllContextsProvider = props => {
+const AllContextsProvider = (props) => {
   return (
     <AppProvider>
       <UserProvider>
@@ -18,7 +19,9 @@ const AllContextsProvider = props => {
             <FriendsProvider>
               <PartyProvider>
                 <CreatePartyProvider>
-                  <FeedProvider>{props.children}</FeedProvider>
+                  <GuestsProvider>
+                    <FeedProvider>{props.children}</FeedProvider>
+                  </GuestsProvider>
                 </CreatePartyProvider>
               </PartyProvider>
             </FriendsProvider>
