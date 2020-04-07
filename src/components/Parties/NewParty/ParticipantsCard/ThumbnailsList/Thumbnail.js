@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { UserContext } from "../../contexts/UserContext";
-import { TouchableOpacity } from "react-native";
-import { Image } from "./styles";
+import { TouchableOpacity, Text } from "react-native";
+import { Image } from "../../../../Thumbnail/styles";
+import { UserContext } from "../../../../../contexts/UserContext";
 
 export const Thumbnail = (props) => {
   const { currentUserId } = useContext(UserContext);
@@ -9,16 +9,16 @@ export const Thumbnail = (props) => {
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={() =>
-        props.user.user_id === currentUserId
+        props.guest.user_id === currentUserId
           ? props.navigation.navigate("Account")
           : props.navigation.navigate("UserView", {
-              user: props.user,
+              user: props.guest,
             })
       }
     >
       <Image
         source={{
-          uri: props.user.avatar,
+          uri: props.guest.avatar,
         }}
       />
     </TouchableOpacity>
