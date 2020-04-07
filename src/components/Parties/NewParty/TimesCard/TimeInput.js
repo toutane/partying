@@ -7,7 +7,7 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 
 const moment = require("moment");
 
-export const TimeInput = props => {
+export const TimeInput = (props) => {
   const { theme } = useContext(ThemeContext);
   const { partyStarts, setPartyStarts, partyEnds, setPartyEnds } = useContext(
     CreatePartyContext
@@ -15,12 +15,12 @@ export const TimeInput = props => {
   const [pickerMode, setPickerMode] = useState("");
   const [show, setShow] = useState(false);
 
-  const handleConfirm = selectedDate => {
+  const handleConfirm = (selectedDate) => {
     let newdate = new Date(selectedDate);
     pickerMode == "starts"
       ? setPartyStarts({
           date: partyStarts.date,
-          time: selectedDate
+          time: selectedDate,
         })
       : // setPartyEnds(prvState => ({
         //   date: partyStarts.date,
@@ -35,15 +35,15 @@ export const TimeInput = props => {
   return (
     <View
       style={{
-        height: 85
+        height: 85,
       }}
     >
       <Text
         style={{
           fontFamily: "sf-text-medium",
-          fontSize: 17,
+          fontSize: 15,
           color: props.theme.fontColor,
-          marginBottom: 15
+          marginBottom: 15,
         }}
       >
         Time :
@@ -52,7 +52,7 @@ export const TimeInput = props => {
         style={{
           flexDirection: "row",
           alignItems: "center",
-          height: 40
+          height: 40,
         }}
       >
         <Icon
@@ -68,7 +68,7 @@ export const TimeInput = props => {
                 fontFamily: "sf-text-medium",
                 fontSize: 15,
                 color: props.theme.gray4,
-                marginBottom: 10
+                marginBottom: 10,
               }}
             >
               from
@@ -77,7 +77,7 @@ export const TimeInput = props => {
               style={{
                 fontFamily: "sf-text-medium",
                 fontSize: 15,
-                color: props.theme.gray4
+                color: props.theme.gray4,
               }}
             >
               to
@@ -88,7 +88,7 @@ export const TimeInput = props => {
           >
             <TouchableOpacity
               onPress={() => {
-                setShow(prvState => !prvState), setPickerMode("starts");
+                setShow((prvState) => !prvState), setPickerMode("starts");
               }}
             >
               <Text
@@ -96,7 +96,7 @@ export const TimeInput = props => {
                   fontFamily: "sf-text-semibold",
                   fontSize: 17,
                   color: props.theme.fontColor,
-                  marginBottom: 10
+                  marginBottom: 10,
                 }}
                 numberOfLines={2}
               >
@@ -105,14 +105,14 @@ export const TimeInput = props => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                setShow(prvState => !prvState), setPickerMode("ends");
+                setShow((prvState) => !prvState), setPickerMode("ends");
               }}
             >
               <Text
                 style={{
                   fontFamily: "sf-text-semibold",
                   fontSize: 17,
-                  color: props.theme.fontColor
+                  color: props.theme.fontColor,
                 }}
                 numberOfLines={2}
               >
@@ -135,7 +135,7 @@ export const TimeInput = props => {
               : partyEnds.time
             : new Date()
         }
-        onConfirm={date => handleConfirm(date)}
+        onConfirm={(date) => handleConfirm(date)}
         onCancel={() => setShow(false)}
         confirmButtonStyles={{ text: { color: "red" } }}
       />

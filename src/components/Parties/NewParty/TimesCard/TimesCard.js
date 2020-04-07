@@ -8,7 +8,7 @@ import { DateInput } from "./DateInput";
 import { TimeInput } from "./TimeInput";
 import { SeveralDays } from "./SeveralDays";
 
-export const TimesCard = props => {
+export const TimesCard = (props) => {
   const { severalDays, dateDiff } = useContext(CreatePartyContext);
   return (
     <View style={{ paddingHorizontal: 25 }}>
@@ -18,14 +18,14 @@ export const TimesCard = props => {
             flexDirection: "row",
             marginBottom: 15,
             justifyContent: "space-between",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <Text
             style={{
               fontFamily: "sf-text-semibold",
               fontSize: 17,
-              color: props.theme.fontColor
+              color: props.theme.fontColor,
             }}
           >
             Set the times
@@ -34,7 +34,7 @@ export const TimesCard = props => {
             style={{
               fontFamily: "sf-text-regular",
               fontSize: 15,
-              color: props.theme.gray4
+              color: props.theme.gray4,
             }}
           >
             {severalDays ? `( ${dateDiff} days )` : null}

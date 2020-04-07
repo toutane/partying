@@ -5,22 +5,22 @@ import { CreatePartyContext } from "../../../../contexts/CreatePartyContext";
 import { SevralDaysDateInputs } from "./SeveralDaysDateInputs";
 import { OneDayDateInput } from "./OneDayDateInput";
 
-export const DateInput = props => {
+export const DateInput = (props) => {
   const { severalDays } = useContext(CreatePartyContext);
 
   return (
     <View
       style={{
         // marginBottom: severalDays ? 0 : 7
-        height: 100
+        height: 100,
       }}
     >
       <Text
         style={{
           fontFamily: "sf-text-medium",
-          fontSize: 17,
+          fontSize: 15,
           color: props.theme.fontColor,
-          marginBottom: 15
+          marginBottom: 15,
         }}
       >
         Date :
@@ -30,7 +30,7 @@ export const DateInput = props => {
           flexDirection: "row",
           alignItems: "center",
           // marginTop: severalDays ? 0 : 8
-          height: 40
+          height: 40,
         }}
       >
         <Icon
