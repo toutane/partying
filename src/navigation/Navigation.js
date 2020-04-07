@@ -7,6 +7,7 @@ import { Feather } from "@expo/vector-icons";
 import BottomTabBar from "./BottomTabBar/BottomTabBar";
 import AuthStack from "./stacks/AuthStack";
 import PartyViewStack from "./stacks/PartyViewStack";
+import NewPartyStack from "./stacks/NewPartyStack";
 import UserViewStack from "./stacks/UserViewStack";
 import AccountStack from "./stacks/AccountStack";
 import SettingsStack from "./stacks/SettingsStack";
@@ -21,7 +22,7 @@ const TabBarNavigator = createBottomTabNavigator(
     Notifications: { screen: Notifications },
     Feed: { screen: Feed },
     Account: { screen: Account },
-    NewParty: { screen: NewPartyView }
+    NewParty: { screen: NewPartyView },
   },
 
   {
@@ -44,16 +45,16 @@ const TabBarNavigator = createBottomTabNavigator(
             style={{ marginTop: 10 }}
           />
         );
-      }
+      },
     }),
     initialRouteName: "NewParty",
-    tabBarComponent: props => (
+    tabBarComponent: (props) => (
       <BottomTabBar
         {...props}
         activeTintColor="rgb(52, 199, 89)"
         inactiveTintColor="rgb(142, 142, 147)"
       />
-    )
+    ),
   }
 );
 
@@ -62,15 +63,16 @@ const AppNavigator = createStackNavigator(
     TabBarNavigator: TabBarNavigator,
     AuthStack: AuthStack,
     PartyViewStack: PartyViewStack,
+    NewPartyStack: NewPartyStack,
     UserViewStack: UserViewStack,
     AccountStack: AccountStack,
-    SettingsStack: SettingsStack
+    SettingsStack: SettingsStack,
   },
   {
     headerMode: "none",
     navigationOptions: {
-      headerVisible: false
-    }
+      headerVisible: false,
+    },
   }
 );
 
