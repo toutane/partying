@@ -41,12 +41,11 @@ export const LocationCard = (props) => {
           </Text>
         </TouchableOpacity>
         <Hr {...props} style={{ marginLeft: 25, marginRight: 25 }} />
-        <OptionsInputs {...props} />
-        <Hr {...props} style={{ marginLeft: 25, marginRight: 25 }} />
         <LocationSearchView {...props} />
         <Hr {...props} />
         <Map />
         <Hr {...props} />
+        <OptionsInputs {...props} />
       </Card>
     </View>
   );
