@@ -18,8 +18,10 @@ export default GuestsListView = (props) => {
     retrieveData,
     retrieveMore,
   } = useContext(FriendsContext);
-  const { guests_id, setGuests_id } = useContext(CreatePartyContext);
-  const { loadGuest_data, setGuests_data } = useContext(GuestsContext);
+  const { guests_id } = useContext(CreatePartyContext);
+  const { handleTouchUnselected, handleTouchSelected } = useContext(
+    GuestsContext
+  );
 
   const [scrollY, setScrollY] = useState(new Animated.Value(100));
   const [user, setUser] = useState(props.navigation.getParam("user"));
@@ -36,18 +38,6 @@ export default GuestsListView = (props) => {
   const searchedFriends = friends.filter((user) =>
     user.username.toLowerCase().includes(search.toLowerCase())
   );
-
-  const handleTouchSelected = (user_id) => {
-    setGuests_id((prvState) => prvState.concat(user_id));
-    loadGuest_data(user_id);
-  };
-
-  const handleTouchUnselected = (user_id) => {
-    setGuests_id((prvState) => prvState.filter((id) => id !== user_id));
-    setGuests_data((prvState) =>
-      prvState.filter((obj) => obj.user_id !== user_id)
-    );
-  };
 
   return (
     <View style={{ backgroundColor: theme.backgroundColor }}>

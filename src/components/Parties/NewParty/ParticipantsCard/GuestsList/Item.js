@@ -9,8 +9,8 @@ export const Item = (props) => {
       activeOpacity={0.7}
       onPress={() =>
         props.selected
-          ? props.handleTouchUnselected(props.friend.user_id)
-          : props.handleTouchSelected(props.friend.user_id)
+          ? props.handleTouchUnselected(props.friend)
+          : props.handleTouchSelected(props.friend)
       }
       style={{
         flexDirection: "row",

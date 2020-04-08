@@ -16,6 +16,29 @@ export const ThumbnailsList = (props) => {
             <Thumbnail guest={guest} {...props} />
           </View>
         ))}
+      {guests_data.length > 4 ? (
+        <View
+          style={{
+            borderRadius: 13,
+            backgroundColor: "#F9F0DB",
+            marginLeft: 10,
+            width: 50,
+            height: 50,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{
+              color: "#fead01",
+              fontWeight: "bold",
+              fontSize: 16,
+            }}
+          >
+            +{guests_data.length - 3}
+          </Text>
+        </View>
+      ) : null}
     </View>
   );
 };
