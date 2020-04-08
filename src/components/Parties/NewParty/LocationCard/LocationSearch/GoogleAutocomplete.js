@@ -22,6 +22,7 @@ export const GoogleAutocomplete = (props) => {
   return (
     <View stysle={{ flex: 1, flexDirection: "row" }}>
       <GooglePlacesAutocomplete
+        text={props.location.description}
         location={props.location}
         isRowScrollable={false}
         listUnderlayColor={props.theme.gray5}

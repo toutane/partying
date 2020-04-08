@@ -60,10 +60,10 @@ const CreatePartyProvider = (props) => {
   const [entry_code, setEntry_code] = useState("");
   const [house, setHouse] = useState("");
 
-  // useEffect(() => {
-  // setLocation(sentLocation);
-  //   console.log(sentLocation);
-  // }, [sentLocation]);
+  useEffect(() => {
+    setLocation(sentLocation);
+    // console.log(sentLocation);
+  }, [sentLocation]);
 
   useEffect(() => {
     setDateDiff(

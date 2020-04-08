@@ -61,6 +61,7 @@ const LocationProvider = (props) => {
     let description = { description: address[0].name };
     details !== undefined
       ? (setLocation({ ...location, ...address[0] }),
+        setSearchingLocation({ ...location, ...address[0], ...description }),
         setSentLocation({ ...location, ...address[0], ...description }))
       : null;
   }
