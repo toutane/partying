@@ -5,7 +5,7 @@ import { screenHeight, screenWidth } from "../../../../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
 
 export const FriendsFlatList = (props) => {
-  const margin = 96 + useSafeArea().top;
+  const margin = 136 + useSafeArea().top;
   return (
     <FlatList
       style={{

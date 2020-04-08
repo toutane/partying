@@ -25,7 +25,7 @@ export default FriendsListView = (props) => {
     try {
       search === "" ? retrieveData(user.user_id) : null;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }, [search]);
 
@@ -47,7 +47,9 @@ export default FriendsListView = (props) => {
       <SearchBarHeader
         {...props}
         scrollY={scrollY}
-        title={`${user.friends_id.length} Friends`}
+        title={`${user.friends_id.length} friend${
+          user.friends_id.length > 1 ? "s" : ""
+        }`}
         search={search}
         setSearch={setSearch}
       />

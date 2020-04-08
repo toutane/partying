@@ -3,11 +3,13 @@ import { View, ScrollView, Animated, Button } from "react-native";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { FriendsContext } from "../../contexts/FriendsContext";
+import { AllUsersContext } from "../../contexts/AllUsersContext";
 import { CreatePartyContext } from "../../contexts/CreatePartyContext";
 import { GuestsContext } from "../../contexts/GuestsContext";
 
-import SearchBarHeader from "../Headers/SearchBarHeader";
+import GuestsListHeader from "../Parties/NewParty/ParticipantsCard/GuestsList/GuestsListHeader";
 import { FriendsFlatList } from "../Parties/NewParty/ParticipantsCard/GuestsList/FriendsFlatList";
+import { AllUsersFlatList } from "../Parties/NewParty/ParticipantsCard/GuestsList/AllUsersFlatList";
 
 export default GuestsListView = (props) => {
   const { theme } = useContext(ThemeContext);
@@ -18,6 +20,14 @@ export default GuestsListView = (props) => {
     retrieveData,
     retrieveMore,
   } = useContext(FriendsContext);
+  // const {
+  //   users,
+  //   setSearchValue,
+  //   loadingState,
+  //   refreshingState,
+  //   retrieveUsersMore,
+  // } = useContext(AllUsersContext);
+
   const { guests_id } = useContext(CreatePartyContext);
   const { handleTouchUnselected, handleTouchSelected } = useContext(
     GuestsContext
@@ -26,14 +36,19 @@ export default GuestsListView = (props) => {
   const [scrollY, setScrollY] = useState(new Animated.Value(100));
   const [user, setUser] = useState(props.navigation.getParam("user"));
   const [search, setSearch] = useState("");
+  const [filterBy, setFilterBy] = useState(0);
 
   useEffect(() => {
     try {
       search === "" ? retrieveData(user.user_id) : null;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }, [search]);
+
+  // useEffect(() => {
+  //   setSearchValue(search);
+  // }, [search]);
 
   const searchedFriends = friends.filter((user) =>
     user.username.toLowerCase().includes(search.toLowerCase())
@@ -41,22 +56,38 @@ export default GuestsListView = (props) => {
 
   return (
     <View style={{ backgroundColor: theme.backgroundColor }}>
-      <FriendsFlatList
-        theme={theme}
-        user={user}
-        guests_id={guests_id}
-        handleTouchUnselected={handleTouchUnselected}
-        handleTouchSelected={handleTouchSelected}
-        friends={searchedFriends}
-        retrieveMore={retrieveMore}
-        refreshing={refreshing}
-        loading={loading}
+      {!filterBy ? (
+        <FriendsFlatList
+          theme={theme}
+          user={user}
+          guests_id={guests_id}
+          handleTouchUnselected={handleTouchUnselected}
+          handleTouchSelected={handleTouchSelected}
+          friends={searchedFriends}
+          retrieveMore={retrieveMore}
+          refreshing={refreshing}
+          loading={loading}
+          {...props}
+        />
+      ) : // <AllUsersFlatList
+      //   theme={theme}
+      //   user={user}
+      //   guests_id={guests_id}
+      //   handleTouchUnselected={handleTouchUnselected}
+      //   handleTouchSelected={handleTouchSelected}
+      //   users={users}
+      //   retrieveMore={retrieveUsersMore}
+      //   refreshing={refreshingState}
+      //   loading={loadingState}
+      //   {...props}
+      // />
+      null}
+      <GuestsListHeader
         {...props}
-      />
-      <SearchBarHeader
-        {...props}
+        filterBy={filterBy}
+        setFilterBy={setFilterBy}
         scrollY={scrollY}
-        title={`${guests_id.length} Guests`}
+        title={`${guests_id.length} guest${guests_id.length > 1 ? "s" : ""}`}
         search={search}
         setSearch={setSearch}
       />

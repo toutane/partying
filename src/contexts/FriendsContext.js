@@ -5,17 +5,18 @@ import firebase from "../firebase/Firebase";
 const FriendsContext = React.createContext();
 const { Provider } = FriendsContext;
 
-const FriendsProvider = props => {
+const FriendsProvider = (props) => {
   const [friends, setFriends] = useState([]);
   const [limit, setLimit] = useState(13);
   const [lastVisibleState, setLastVisible] = useState(null);
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
-  retrieveData = async user_id => {
+
+  retrieveData = async (user_id) => {
     try {
       // Set State: Loading
       setLoading(true);
-      console.log("Retrieving Data");
+      // console.log("Retrieving Data");
       // Cloud Firestore: Query
       let initialQuery = await firebase.db
         .collection("users")
@@ -27,7 +28,7 @@ const FriendsProvider = props => {
       // Cloud Firestore: Query Snapshot
       let documentSnapshots = await initialQuery.get();
       // Cloud Firestore: Document Data
-      let documentData = documentSnapshots.docs.map(document =>
+      let documentData = documentSnapshots.docs.map((document) =>
         document.data()
       );
       // Cloud Firestore: Last Visible Document (Document ID To Start From For Proceeding Queries)
@@ -37,16 +38,16 @@ const FriendsProvider = props => {
       setLastVisible(lastVisible);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
   // Retrieve More
-  retrieveMore = async user_id => {
+  retrieveMore = async (user_id) => {
     try {
       // Set State: Refreshing
       setRefreshing(true);
-      console.log("Retrieving additional Data");
+      // console.log("Retrieving additional Data");
       // Cloud Firestore: Query (Additional Query)
       let additionalQuery = await firebase.db
         .collection("users")
@@ -59,7 +60,7 @@ const FriendsProvider = props => {
       // Cloud Firestore: Query Snapshot
       let documentSnapshots = await additionalQuery.get();
       // Cloud Firestore: Document Data
-      let documentData = documentSnapshots.docs.map(document =>
+      let documentData = documentSnapshots.docs.map((document) =>
         document.data()
       );
       // Cloud Firestore: Last Visible Document (Document ID To Start From For Proceeding Queries)
@@ -70,7 +71,7 @@ const FriendsProvider = props => {
       setRefreshing(false);
       //
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -81,7 +82,7 @@ const FriendsProvider = props => {
         loading,
         refreshing,
         retrieveData,
-        retrieveMore
+        retrieveMore,
       }}
     >
       {props.children}
