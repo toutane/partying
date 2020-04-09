@@ -14,9 +14,9 @@ export const LocationSearchView = (props) => {
       <Text
         style={{
           marginLeft: 25,
-          marginBottom: 15,
+          marginBottom: 10,
           fontFamily: "sf-text-medium",
-          fontSize: 17,
+          fontSize: 15,
           color: props.theme.fontColor,
         }}
       >
