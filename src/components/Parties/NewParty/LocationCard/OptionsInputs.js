@@ -11,7 +11,7 @@ export const OptionsInputs = (props) => {
       <Text
         style={{
           fontFamily: "sf-text-medium",
-          fontSize: 17,
+          fontSize: 15,
           color: props.theme.fontColor,
           marginBottom: 15,
         }}
