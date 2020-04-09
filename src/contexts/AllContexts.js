@@ -9,6 +9,7 @@ import { PartyProvider } from "./PartyContext";
 import { FriendsProvider } from "./FriendsContext";
 import { PushNotificationsProvider } from "./PushNotificationsContext";
 import { GuestsProvider } from "./GuestsContext";
+import { AllUsersProvider } from "./AllUsersContext";
 
 const AllContextsProvider = (props) => {
   return (
@@ -17,13 +18,15 @@ const AllContextsProvider = (props) => {
         <LocationProvider>
           <PushNotificationsProvider>
             <FriendsProvider>
-              <PartyProvider>
-                <CreatePartyProvider>
-                  <GuestsProvider>
-                    <FeedProvider>{props.children}</FeedProvider>
-                  </GuestsProvider>
-                </CreatePartyProvider>
-              </PartyProvider>
+              <AllUsersProvider>
+                <PartyProvider>
+                  <CreatePartyProvider>
+                    <GuestsProvider>
+                      <FeedProvider>{props.children}</FeedProvider>
+                    </GuestsProvider>
+                  </CreatePartyProvider>
+                </PartyProvider>
+              </AllUsersProvider>
             </FriendsProvider>
           </PushNotificationsProvider>
         </LocationProvider>
