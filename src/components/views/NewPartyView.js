@@ -37,14 +37,17 @@ export default NewPartyView = (props) => {
         style={{
           zIndex: 1,
           height: screenHeight,
-          backgroundColor: theme.backgroundColor,
+          backgroundColor: theme.theme === "light" ? "white" : theme.gray6,
+          // backgroundColor: theme.backgroundColor,
         }}
         onScroll={Animated.event([
           { nativeEvent: { contentOffset: { y: scrollY } } },
         ])}
-        contentContainerStyle={{
-          marginTop: 46 + useSafeArea().top,
-        }}
+        contentContainerStyle={
+          {
+            // marginTop: 46 + useSafeArea().top,
+          }
+        }
         scrollEventThrottle={16}
         snapToAlignment={"start"}
         snapToInterval={40}
