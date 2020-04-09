@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import { View, Text } from "react-native";
+import React, { useContext, useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 import { GuestsContext } from "../../../../../contexts/GuestsContext";
 import { Thumbnail } from "./Thumbnail";
 
 export const ThumbnailsList = (props) => {
   const { guests_data } = useContext(GuestsContext);
-
+  const [slice, setSlice] = useState(10);
   // useEffect(() => console.log(guests_data), [guests_data]);
   return (
     <View style={{ flexDirection: "row", flexWrap: "wrap", margin: -5 }}>
@@ -13,13 +13,15 @@ export const ThumbnailsList = (props) => {
         <Thumbnail guest={props.user} {...props} />
       </View>
       {guests_data.length > 0 &&
-        guests_data.slice(0, 10).map((guest, i) => (
+        guests_data.slice(0, slice).map((guest, i) => (
           <View style={{ margin: 5 }} key={i}>
             <Thumbnail guest={guest} {...props} />
           </View>
         ))}
-      {guests_data.length > 10 ? (
-        <View
+      {guests_data.length > 10 && (
+        <TouchableOpacity
+          onPress={() => setSlice((prvState) => (prvState === 10 ? 50 : 10))}
+          activeOpacity={0.5}
           style={{
             borderRadius: 13,
             backgroundColor: "#F9F0DB",
@@ -37,10 +39,10 @@ export const ThumbnailsList = (props) => {
               fontSize: 17,
             }}
           >
-            +{guests_data.length - 10}
+            {slice !== 50 ? `+ ${guests_data.length - slice}` : `< 0`}
           </Text>
-        </View>
-      ) : null}
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
