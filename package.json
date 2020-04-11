@@ -13,11 +13,12 @@
     "expo-blur": "~8.0.0",
     "expo-constants": "~8.0.0",
     "expo-font": "~8.0.0",
+    "expo-haptics": "~8.0.0",
     "expo-linear-gradient": "~8.0.0",
     "expo-localization": "~8.0.0",
     "expo-location": "~8.0.0",
     "expo-permissions": "~8.0.0",
-    "firebase": "^7.6.1",
+    "firebase": "7.6.1",
     "klaw": "^3.0.0",
     "moment": "^2.24.0",
     "react": "~16.9.0",
@@ -33,6 +34,7 @@
     "react-native-modal-datetime-picker": "^8.5.1",
     "react-native-reanimated": "^1.4.0",
     "react-native-safe-area-context": "0.6.0",
+    "react-native-screens": "2.0.0-alpha.12",
     "react-native-web": "~0.11.7",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^1.10.3",
@@ -41,8 +43,8 @@
     "uuid": "3.3.3"
   },
   "devDependencies": {
-    "babel-preset-expo": "~8.0.0",
-    "@babel/core": "^7.0.0"
+    "@babel/core": "^7.0.0",
+    "babel-preset-expo": "~8.0.0"
   },
   "private": true
 }
