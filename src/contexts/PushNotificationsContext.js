@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AsyncStorage } from "react-native";
 import * as Permissions from "expo-permissions";
+import { Notifications } from "expo";
 import { AppContext } from "./AppContext";
 
 const PushNotificationsContext = React.createContext();
 const { Provider } = PushNotificationsContext;
 
-const PushNotificationsProvider = props => {
+const PushNotificationsProvider = (props) => {
   const { appState } = useContext(AppContext);
 
   const [isPushNotifActive, setIsPushNotifActive] = useState(false);
@@ -23,7 +24,11 @@ const PushNotificationsProvider = props => {
       : (setIsPushNotifActive(false), setIsDirectMentionsActive(false));
   }
 
-  const _storeData = async isDirectMentionsActive => {
+  async function registerForPushNotificationsAsync() {
+    return (token = await Notifications.getExpoPushTokenAsync());
+  }
+
+  const _storeData = async (isDirectMentionsActive) => {
     try {
       await AsyncStorage.setItem(
         "isDirectMentionsActive",
@@ -59,7 +64,8 @@ const PushNotificationsProvider = props => {
         isPushNotifActive,
         setIsPushNotifActive,
         isDirectMentionsActive,
-        setIsDirectMentionsActive
+        setIsDirectMentionsActive,
+        registerForPushNotificationsAsync,
       }}
     >
       {props.children}
