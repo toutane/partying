@@ -21,9 +21,9 @@ export default function FirebaseInitialized(props) {
   );
 
   useEffect(() => {
-    firebase.isInitialized().then(val => {
+    firebase.isInitialized().then((val) => {
       setFirebaseInitialized(val);
-      firebase.auth.onAuthStateChanged(user => {
+      firebase.auth.onAuthStateChanged((user) => {
         user
           ? (setLoading(false), setAuthenticated(true))
           : (setLoading(false), setAuthenticated(false));
