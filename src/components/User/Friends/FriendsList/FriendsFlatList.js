@@ -27,7 +27,9 @@ export const FriendsFlatList = (props) => {
               height: 130 + useSafeArea().top,
             }}
           >
-            {props.loading && <ActivityIndicator />}
+            {props.loading && props.user.friends_id.length > 0 ? (
+              <ActivityIndicator />
+            ) : null}
             <AddFriendsCard />
           </View>
         }
