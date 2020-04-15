@@ -31,7 +31,7 @@ export const AddFriendsCard = (props) => {
             fontFamily: "sf-text-regular",
           }}
         >
-          Add friends
+          Add friends (because Partying is better with friends)
         </Text>
         <Feather
           color={theme.green}
