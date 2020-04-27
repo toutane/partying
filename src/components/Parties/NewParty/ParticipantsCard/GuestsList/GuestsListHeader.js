@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   SegmentedControlIOS,
+  ActivityIndicator,
 } from "react-native";
 import { BlurView } from "expo-blur";
 import { ThemeContext } from "../../../../../contexts/ThemeContext";
@@ -119,13 +120,14 @@ export default GuestsListHeader = (props) => {
           </TouchableOpacity>
           <TextInput
             style={{
-              flex: 1,
+              // flex: 1,
               flexWrap: "wrap",
               marginLeft: 15,
               backgroundColor: theme.gray5,
               borderRadius: 10,
               paddingHorizontal: 10,
               fontSize: 18,
+              width: screenWidth - 90,
             }}
             selectionColor={"#1DC161"}
             autoCapitalize="none"
@@ -138,6 +140,9 @@ export default GuestsListHeader = (props) => {
             value={props.search}
             onChangeText={(search) => props.setSearch(search)}
           />
+          {props.loading && props.hasFriends ? (
+            <ActivityIndicator size={40} style={{ right: 40 }} />
+          ) : null}
         </View>
         <SegmentedControlIOS
           values={["Friends", "All users"]}
@@ -147,7 +152,12 @@ export default GuestsListHeader = (props) => {
             props.setFilterBy(e.nativeEvent.selectedSegmentIndex),
               Haptics.selectionAsync();
           }}
-          style={{ width: screenWidth - 40, height: 30, marginTop: 12.5 }}
+          style={{
+            width: screenWidth - 40,
+            height: 30,
+            marginTop: 12.5,
+            right: props.hasFriends && 20,
+          }}
         />
       </View>
     </View>

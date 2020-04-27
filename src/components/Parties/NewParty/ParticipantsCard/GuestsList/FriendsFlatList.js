@@ -3,6 +3,7 @@ import { ActivityIndicator, FlatList, View } from "react-native";
 import { Item } from "./Item";
 import { screenHeight, screenWidth } from "../../../../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
+import { AddFriendsCard } from "../../../../User/Friends/AddFriends/AddFriendsCard";
 
 export const FriendsFlatList = (props) => {
   const margin = 136 + useSafeArea().top;
@@ -30,7 +31,11 @@ export const FriendsFlatList = (props) => {
             height: 130 + useSafeArea().top,
           }}
         >
-          {props.loading && <ActivityIndicator />}
+          {!props.hasFriends && (
+            <View style={{ paddingHorizontal: 10 }}>
+              <AddFriendsCard />
+            </View>
+          )}
         </View>
       }
       keyExtractor={(item, index) => index.toString()}
