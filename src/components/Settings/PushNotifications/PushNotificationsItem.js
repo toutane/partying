@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { PushNotificationsContext } from "../../../contexts/PushNotificationsContext";
 
-export const PushNotificationsItem = props => {
+export const PushNotificationsItem = (props) => {
   const { isPushNotifActive } = useContext(PushNotificationsContext);
 
   return (
@@ -15,7 +15,7 @@ export const PushNotificationsItem = props => {
         borderBottomLeftRadius: 13,
         borderBottomRightRadius: 13,
         backgroundColor:
-          props.theme.theme !== "light" ? props.theme.gray6 : "white"
+          props.theme.theme !== "light" ? props.theme.gray6 : "white",
       }}
     >
       <View>
@@ -23,7 +23,7 @@ export const PushNotificationsItem = props => {
           style={{
             borderColor: props.theme.gray5,
             borderWidth: 0.4,
-            marginLeft: 20
+            marginLeft: 20,
           }}
         />
         <View
@@ -31,24 +31,24 @@ export const PushNotificationsItem = props => {
             paddingVertical: 17.5,
             paddingHorizontal: 20,
             justifyContent: "space-between",
-            flexDirection: "row"
+            flexDirection: "row",
           }}
         >
           <Text
             style={{
               color: props.theme.fontColor,
               fontSize: 17,
-              fontFamily: "sf-text-regular"
+              fontFamily: "sf-text-regular",
             }}
           >
-            Push notifications
+            Push Notifications
           </Text>
           <View style={{ flexDirection: "row" }}>
             <Text
               style={{
                 color: props.theme.gray4,
                 fontSize: 17,
-                fontFamily: "sf-text-regular"
+                fontFamily: "sf-text-regular",
               }}
             >
               {isPushNotifActive ? "Direct Mentions" : "Disabled"}

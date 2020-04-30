@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text } from "react-native";
 
 import { AuthContext } from "../../../contexts/AuthContext";
 
-export const SignOutButton = (props) => {
+export const FeedbackButton = (props) => {
   const { logout } = useContext(AuthContext);
   return (
     <View style={{ marginTop: 30 }}>
@@ -20,12 +20,12 @@ export const SignOutButton = (props) => {
       >
         <Text
           style={{
-            color: props.theme.red,
+            color: props.theme.fontColor,
             fontSize: 17,
             fontFamily: "sf-text-regular",
           }}
         >
-          Sign Out
+          Share Feedback
         </Text>
       </TouchableOpacity>
     </View>
