@@ -34,6 +34,7 @@ const AuthProvider = (props) => {
         register_date: moment().format(),
         expoPushToken: token,
       });
+      
     return firebase.auth.currentUser.updateProfile({
       displayName: username,
     });

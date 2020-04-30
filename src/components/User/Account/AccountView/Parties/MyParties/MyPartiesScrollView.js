@@ -4,7 +4,7 @@ import { View, ScrollView, Text } from "react-native";
 import PartyCard from "../../../../../Parties/PartyCard/PartyCard";
 import { screenWidth } from "../../../../../../utils/dimensions";
 
-export const MyPartiesScrollView = props => {
+export const MyPartiesScrollView = (props) => {
   return (
     <View>
       <Text
@@ -13,7 +13,7 @@ export const MyPartiesScrollView = props => {
           marginBottom: 5,
           color: props.theme.fontColor,
           fontSize: 17,
-          fontFamily: "sf-text-bold"
+          fontFamily: "sf-text-bold",
         }}
       >
         Your parties
@@ -26,7 +26,9 @@ export const MyPartiesScrollView = props => {
         snapToInterval={screenWidth}
       >
         {props.parties.map((e, i) => (
-          <PartyCard key={i} party={e} {...props} />
+          <View style={{ marginRight: props.parties.length === i + 1 && 25 }}>
+            <PartyCard key={i} party={e} {...props} isAccountScroll={true} />
+          </View>
         ))}
       </ScrollView>
     </View>

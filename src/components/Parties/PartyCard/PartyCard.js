@@ -16,7 +16,12 @@ export default function PartyCard(props) {
         props.navigation.navigate("PartyView", { party: props.party })
       }
     >
-      <Card {...props} style={{ width: screenWidth - 50 }}>
+      <Card
+        {...props}
+        style={{
+          width: props.isAccountScroll ? screenWidth - 100 : screenWidth - 50,
+        }}
+      >
         <CardHeader {...props} />
         <CardContent {...props} />
         <Hr {...props} />

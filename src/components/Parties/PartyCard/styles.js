@@ -10,7 +10,7 @@ const Card = styled.View`
   padding-bottom: 10px;
   padding-horizontal: 25px;
   margin-left: 25px;
-  margin-right: 25px;
+  margin-right: ${({ isAccountScroll }) => (isAccountScroll ? "0px" : "25px")}
   margin-top: 12.5px;
   margin-bottom: 12.5px;
   border-radius: 17px;

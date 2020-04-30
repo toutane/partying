@@ -67,6 +67,7 @@ export default GuestsListView = (props) => {
           retrieveMore={retrieveMore}
           refreshing={refreshing}
           loading={loading}
+          hasFriends={user.friends_id.length !== 0}
           {...props}
         />
       ) : // <AllUsersFlatList
@@ -90,6 +91,8 @@ export default GuestsListView = (props) => {
         title={`${guests_id.length} guest${guests_id.length > 1 ? "s" : ""}`}
         search={search}
         setSearch={setSearch}
+        loading={loading}
+        hasFriends={user.friends_id.length !== 0}
       />
     </View>
   );

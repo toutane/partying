@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
 
-export const Item = props => {
+export const Item = (props) => {
   return (
     <TouchableOpacity
       onPress={() =>
@@ -9,21 +9,21 @@ export const Item = props => {
         props.navigation.navigate("FriendsList", { user: props.user })
       }
     >
-      <Text
+      {/* <Text
         style={{
           color: props.theme.gray,
           fontSize: 13,
-          fontFamily: "sf-text-medium"
+          fontFamily: "sf-text-medium",
         }}
       >
         {props.intro}
-      </Text>
+      </Text> */}
       <View style={{ flexDirection: "row", alignItems: "baseline" }}>
         <Text
           style={{
             color: props.theme.fontColor,
-            fontSize: 22,
-            fontFamily: "sf-text-bold"
+            fontSize: 24,
+            fontFamily: "sf-text-bold",
           }}
         >
           {props.data}
@@ -31,8 +31,8 @@ export const Item = props => {
         <Text
           style={{
             color: props.theme.gray,
-            fontSize: 13,
-            fontFamily: "sf-text-medium"
+            fontSize: 15,
+            fontFamily: "sf-text-medium",
           }}
         >
           {" "}

@@ -4,6 +4,7 @@ import { Item } from "./Item";
 import { screenHeight, screenWidth } from "../../../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
 import { AddFriendsCard } from "../AddFriends/AddFriendsCard";
+import { EmptyStreetSvg } from "../AddFriends/EmptyStreetSvg";
 
 export const FriendsFlatList = (props) => {
   // useEffect(() => console.log(props.friends), [props.friends]);
@@ -31,6 +32,7 @@ export const FriendsFlatList = (props) => {
               <ActivityIndicator />
             ) : null}
             <AddFriendsCard />
+            {/* <EmptyStreetSvg /> */}
           </View>
         }
         keyExtractor={(item, index) => index.toString()}

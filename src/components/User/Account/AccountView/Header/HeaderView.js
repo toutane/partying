@@ -5,13 +5,13 @@ import { OptionsBar } from "./OptionsBar/OptionsBar";
 import { NumbersBar } from "./NumbersBar/NumbersBar";
 import { TopViewCard } from "./styles";
 
-export const HeaderView = props => {
+export const HeaderView = (props) => {
   return (
     <TopViewCard {...props}>
       <Animated.View
         style={{
           flexDirection: "row",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <Avatar uri={props.user.avatar} />
@@ -22,7 +22,7 @@ export const HeaderView = props => {
             style={{
               fontSize: 24,
               fontFamily: "sf-display-bold",
-              color: props.theme.fontColor
+              color: props.theme.fontColor,
             }}
             numberOfLines={1}
           >
@@ -30,11 +30,12 @@ export const HeaderView = props => {
           </Text>
           <Text
             style={{
+              marginTop: 5,
               marginRight: 15,
               fontSize: 15,
-              fontFamily: "sf-text-medium",
+              fontFamily: "sf-text-regular",
               color: props.theme.gray,
-              textAlign: "justify"
+              textAlign: "justify",
             }}
             numberOfLines={3}
           >
