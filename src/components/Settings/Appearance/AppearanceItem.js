@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-export const AppearanceItem = props => {
+export const AppearanceItem = (props) => {
   return (
     <TouchableOpacity
       onPress={() => props.navigation.navigate("Appearance")}
@@ -13,20 +13,20 @@ export const AppearanceItem = props => {
         backgroundColor:
           props.theme.theme !== "light" ? props.theme.gray6 : "white",
         paddingHorizontal: 20,
-        paddingVertical: 17.5
+        paddingVertical: 17.5,
       }}
     >
       <View
         style={{
           justifyContent: "space-between",
-          flexDirection: "row"
+          flexDirection: "row",
         }}
       >
         <Text
           style={{
             color: props.theme.fontColor,
             fontSize: 17,
-            fontFamily: "sf-text-regular"
+            fontFamily: "sf-text-regular",
           }}
         >
           Appearance
@@ -36,7 +36,7 @@ export const AppearanceItem = props => {
             style={{
               color: props.theme.gray4,
               fontSize: 17,
-              fontFamily: "sf-text-regular"
+              fontFamily: "sf-text-regular",
             }}
           >
             {props.themeState.charAt(0).toUpperCase() +

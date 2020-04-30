@@ -26,8 +26,11 @@ export const MyPartiesScrollView = (props) => {
         snapToInterval={screenWidth}
       >
         {props.parties.map((e, i) => (
-          <View style={{ marginRight: props.parties.length === i + 1 && 25 }}>
-            <PartyCard key={i} party={e} {...props} isAccountScroll={true} />
+          <View
+            key={i}
+            style={{ marginRight: props.parties.length === i + 1 && 25 }}
+          >
+            <PartyCard party={e} {...props} isAccountScroll={true} />
           </View>
         ))}
       </ScrollView>

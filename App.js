@@ -3,6 +3,7 @@ import * as Font from "expo-font";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { AppProvider } from "./src/contexts/AppContext";
+import { DeviceProvider } from "./src/contexts/DeviceContext";
 import { PushNotificationsProvider } from "./src/contexts/PushNotificationsContext";
 import { AuthProvider } from "./src/contexts/AuthContext";
 import { ThemeProvider } from "./src/contexts/ThemeContext";
@@ -31,15 +32,17 @@ export default function App() {
   return (
     fontLoaded && (
       <AppProvider>
-        <PushNotificationsProvider>
-          <AuthProvider>
-            <ThemeProvider>
-              <SafeAreaProvider>
-                <FirebaseInitialization />
-              </SafeAreaProvider>
-            </ThemeProvider>
-          </AuthProvider>
-        </PushNotificationsProvider>
+        <DeviceProvider>
+          <PushNotificationsProvider>
+            <AuthProvider>
+              <ThemeProvider>
+                <SafeAreaProvider>
+                  <FirebaseInitialization />
+                </SafeAreaProvider>
+              </ThemeProvider>
+            </AuthProvider>
+          </PushNotificationsProvider>
+        </DeviceProvider>
       </AppProvider>
     )
   );
