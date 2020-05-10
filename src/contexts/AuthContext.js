@@ -32,7 +32,7 @@ const AuthProvider = (props) => {
           "https://www.polygongroup.com/UI/build/img/recruiter2.jpg",
         friends_id: [],
         parties_id: [],
-        bio: "It's cool to be here !",
+        bio: "I'm using Partying !",
         register_date: moment().format(),
         expoPushToken: token,
       });
