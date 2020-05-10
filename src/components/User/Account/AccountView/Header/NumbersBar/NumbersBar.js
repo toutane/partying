@@ -30,9 +30,7 @@ export const NumbersBar = (props) => {
             text={`friend${props.user.friends_id.length > 1 ? "s" : ""}`}
           />
         ) : (
-          <View>
-            <ActivityIndicator />
-          </View>
+          <ActivityIndicator />
         )}
       </View>
       <View
@@ -67,15 +65,17 @@ export const NumbersBar = (props) => {
           alignItems: "center",
         }}
       >
-        <Item
-          {...props}
-          intro="You created"
-          data={
-            props.user.parties_id !== undefined && props.user.parties_id.length
-          }
-          type="organized"
-          text="organized"
-        />
+        {props.user.parties_id !== undefined ? (
+          <Item
+            {...props}
+            intro="You created"
+            data={props.user.parties_id.length}
+            type="organized"
+            text="organized"
+          />
+        ) : (
+          <ActivityIndicator />
+        )}
       </View>
     </View>
   );
