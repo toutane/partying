@@ -13,78 +13,28 @@ export const AddFriendsCard = (props) => {
         // onPress={() => Linking.openURL("app-settings:")}
         activeOpacity={0.5}
         style={{
-          borderRadius: 13,
-          backgroundColor: theme.theme !== "light" ? theme.gray5 : "white",
           paddingHorizontal: 20,
           paddingVertical: 20,
         }}
       >
-        <Text
+        <TouchableOpacity
           style={{
-            color: theme.gray3,
-            fontSize: 17,
-            fontFamily: "sf-display-semibold",
+            paddingVertical: 7.5,
+            backgroundColor: theme.green,
+            alignItems: "center",
+            borderRadius: 8,
           }}
         >
-          This place seems a little empty...
-        </Text>
-        <Text
-          style={{
-            marginTop: 15,
-            fontSize: 21,
-            color: theme.fontColor,
-            fontFamily: "sf-display-semibold",
-          }}
-        >
-          Invite a friend to join Partying or add one already registered :
-        </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginTop: 20,
-          }}
-        >
-          <TouchableOpacity
+          <Text
             style={{
-              width: (screenWidth - 110) / 2,
-              paddingVertical: 5,
-              backgroundColor: theme.green,
-              alignItems: "center",
-              borderRadius: 8,
+              color: theme.backgroundColor,
+              fontFamily: "sf-display-medium",
+              fontSize: 17,
             }}
           >
-            <Text
-              style={{
-                color: theme.backgroundColor,
-                fontFamily: "sf-display-semibold",
-                fontSize: 17,
-              }}
-            >
-              Invite a friend
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              width: (screenWidth - 110) / 2,
-              paddingHorizontal: 20,
-              paddingVertical: 5,
-              backgroundColor: theme.green,
-              alignItems: "center",
-              borderRadius: 8,
-            }}
-          >
-            <Text
-              style={{
-                color: theme.backgroundColor,
-                fontFamily: "sf-display-semibold",
-                fontSize: 17,
-              }}
-            >
-              Add a friend
-            </Text>
-          </TouchableOpacity>
-        </View>
+            Discover People
+          </Text>
+        </TouchableOpacity>
       </TouchableOpacity>
     </View>
   );

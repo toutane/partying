@@ -18,7 +18,7 @@ export const Item = (props) => {
       >
         {props.intro}
       </Text> */}
-      <View style={{ flexDirection: "row", alignItems: "baseline" }}>
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Text
           style={{
             color: props.theme.fontColor,
@@ -32,11 +32,11 @@ export const Item = (props) => {
           style={{
             color: props.theme.gray,
             fontSize: 15,
-            fontFamily: "sf-text-medium",
+            fontFamily: "sf-text-regular",
           }}
         >
           {" "}
-          {props.type}
+          {props.text}
         </Text>
       </View>
     </TouchableOpacity>

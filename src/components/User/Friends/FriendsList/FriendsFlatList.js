@@ -25,7 +25,7 @@ export const FriendsFlatList = (props) => {
         ListFooterComponent={
           <View
             style={{
-              height: 130 + useSafeArea().top,
+              height: 200 + useSafeArea().top,
             }}
           >
             {props.loading && props.user.friends_id.length > 0 ? (

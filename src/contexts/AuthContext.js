@@ -27,14 +27,16 @@ const AuthProvider = (props) => {
         name: username,
         email: email,
         avatar:
-          "https://cdn0.iconfinder.com/data/icons/user-pictures/100/male-512.png",
+          // "https://cdn0.iconfinder.com/data/icons/user-pictures/100/male-512.png"
+          // "https://www.consulib.com/assets/images/empty_avatar.png",
+          "https://www.polygongroup.com/UI/build/img/recruiter2.jpg",
         friends_id: [],
         parties_id: [],
         bio: "It's cool to be here !",
         register_date: moment().format(),
         expoPushToken: token,
       });
-      
+
     return firebase.auth.currentUser.updateProfile({
       displayName: username,
     });

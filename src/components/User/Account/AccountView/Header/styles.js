@@ -11,7 +11,7 @@ const TopViewCard = styled.View`
   shadow-color: ${({ theme }) =>
     theme.theme === "light" ? theme.fontColor : "black"};
   shadow-offset: 0px 10px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 `;
 
 export { TopViewCard };

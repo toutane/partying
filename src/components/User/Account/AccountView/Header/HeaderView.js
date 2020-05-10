@@ -20,7 +20,7 @@ export const HeaderView = (props) => {
         >
           <Text
             style={{
-              fontSize: 24,
+              fontSize: 26,
               fontFamily: "sf-display-bold",
               color: props.theme.fontColor,
             }}

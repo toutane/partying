@@ -17,7 +17,7 @@ export default RegisterView = (props) => {
     <View
       style={{
         flex: 1,
-        justifyContent: "center",
+        // justifyContent: "center",
         alignItems: "center",
         backgroundColor: theme.backgroundColor,
       }}
@@ -32,83 +32,85 @@ export default RegisterView = (props) => {
           color: theme.fontColor,
         }}
       >
-        Register!
+        Register
       </Text>
-      <TextInput
-        style={{
-          borderRadius: 13,
-          height: 40,
-          width: 200,
-          borderWidth: 2,
-          fontFamily: "sf-text-regular",
-          fontSize: 20,
-          borderColor: theme.green,
-          paddingHorizontal: 15,
-        }}
-        autoCapitalize="none"
-        autoFocus={true}
-        placeholder="username"
-        keyboardType="email-address"
-        returnKeyType="next"
-        onSubmitEditing={() => emailInput.focus()}
-        onChangeText={setUsername}
-        selectionColor={"#1DC161"}
-      />
-      <TextInput
-        style={{
-          borderRadius: 13,
-          height: 40,
-          width: 200,
-          borderWidth: 2,
-          fontFamily: "sf-text-regular",
-          fontSize: 20,
-          borderColor: theme.green,
-          paddingHorizontal: 15,
-          marginTop: 20,
-        }}
-        autoCapitalize="none"
-        placeholder="email"
-        returnKeyType="next"
-        ref={(input) => (emailInput = input)}
-        onSubmitEditing={() => passwordInput.focus()}
-        onChangeText={setEmail}
-        selectionColor={"#1DC161"}
-      />
-      <TextInput
-        style={{
-          borderRadius: 13,
-          height: 40,
-          width: 200,
-          borderWidth: 2,
-          fontFamily: "sf-text-regular",
-          fontSize: 20,
-          borderColor: theme.green,
-          paddingHorizontal: 15,
-          marginTop: 20,
-          // marginBottom: 15,
-        }}
-        autoCapitalize="none"
-        placeholder="password"
-        secureTextEntry
-        returnKeyType="go"
-        ref={(input) => (passwordInput = input)}
-        onChangeText={setPassword}
-        selectionColor={"#1DC161"}
-        onSubmitEditing={() =>
-          register(username, email, password).catch((error) =>
-            console.log(error)
-          )
-        }
-      />
-      <Button
-        title="Register"
-        color={theme.green}
-        onPress={() =>
-          register(username, email, password).catch((error) =>
-            console.log(error)
-          )
-        }
-      />
+      <View style={{ top: 250 }}>
+        <TextInput
+          style={{
+            borderRadius: 13,
+            height: 50,
+            width: 300,
+            borderWidth: 2,
+            fontFamily: "sf-text-regular",
+            fontSize: 20,
+            borderColor: theme.green,
+            paddingHorizontal: 15,
+          }}
+          autoCapitalize="none"
+          autoFocus={true}
+          placeholder="username"
+          keyboardType="email-address"
+          returnKeyType="next"
+          onSubmitEditing={() => emailInput.focus()}
+          onChangeText={setUsername}
+          selectionColor={"#1DC161"}
+        />
+        <TextInput
+          style={{
+            borderRadius: 13,
+            height: 50,
+            width: 300,
+            borderWidth: 2,
+            fontFamily: "sf-text-regular",
+            fontSize: 20,
+            borderColor: theme.green,
+            paddingHorizontal: 15,
+            marginTop: 30,
+          }}
+          autoCapitalize="none"
+          placeholder="email"
+          returnKeyType="next"
+          ref={(input) => (emailInput = input)}
+          onSubmitEditing={() => passwordInput.focus()}
+          onChangeText={setEmail}
+          selectionColor={"#1DC161"}
+        />
+        <TextInput
+          style={{
+            borderRadius: 13,
+            height: 50,
+            width: 300,
+            borderWidth: 2,
+            fontFamily: "sf-text-regular",
+            fontSize: 20,
+            borderColor: theme.green,
+            paddingHorizontal: 15,
+            marginTop: 30,
+            marginBottom: 30,
+          }}
+          autoCapitalize="none"
+          placeholder="password"
+          secureTextEntry
+          returnKeyType="go"
+          ref={(input) => (passwordInput = input)}
+          onChangeText={setPassword}
+          selectionColor={"#1DC161"}
+          onSubmitEditing={() =>
+            register(username, email, password).catch((error) =>
+              console.log(error)
+            )
+          }
+        />
+        <Button
+          title="Register"
+          color={theme.green}
+          onPress={() =>
+            register(username, email, password).catch((error) =>
+              console.log(error)
+            )
+          }
+        />
+      </View>
     </View>
   );
 };

@@ -156,7 +156,7 @@ export default GuestsListHeader = (props) => {
             width: screenWidth - 40,
             height: 30,
             marginTop: 12.5,
-            right: !props.hasFriends && 20,
+            right: !props.hasFriends ? 0 : 20,
           }}
         />
       </View>
