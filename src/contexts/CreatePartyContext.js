@@ -116,9 +116,7 @@ const CreatePartyProvider = (props) => {
           time: moment(partyStarts.time).format(),
         },
         end: {
-          date: severalDays
-            ? moment(partyEnds.date).format()
-            : moment(partyStarts.date).format(),
+          date: moment(partyEnds.date).format(),
           time: severalDays
             ? moment(partyEnds.time).format()
             : moment(partyStarts.time).format(),
