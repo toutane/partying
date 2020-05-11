@@ -14,6 +14,7 @@ export const EntryInputs = (props) => {
         icon="key"
         data={entry_code}
         onChange={setEntry_code}
+        keyboardType="default"
         {...props}
       />
       <Item
@@ -21,6 +22,7 @@ export const EntryInputs = (props) => {
         icon="phone"
         data={interphone}
         onChange={setInterphone}
+        keyboardType="default"
         {...props}
       />
     </View>

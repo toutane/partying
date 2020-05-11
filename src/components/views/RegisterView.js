@@ -45,15 +45,18 @@ export default RegisterView = (props) => {
             fontSize: 20,
             borderColor: theme.green,
             paddingHorizontal: 15,
+            color: theme.fontColor,
           }}
           autoCapitalize="none"
           autoFocus={true}
           placeholder="username"
-          keyboardType="email-address"
           returnKeyType="next"
           onSubmitEditing={() => emailInput.focus()}
           onChangeText={setUsername}
           selectionColor={"#1DC161"}
+          placeholderTextColor={
+            theme.theme === "light" ? theme.gray2 : theme.gray3
+          }
         />
         <TextInput
           style={{
@@ -66,14 +69,19 @@ export default RegisterView = (props) => {
             borderColor: theme.green,
             paddingHorizontal: 15,
             marginTop: 30,
+            color: theme.fontColor,
           }}
           autoCapitalize="none"
           placeholder="email"
+          keyboardType="email-address"
           returnKeyType="next"
           ref={(input) => (emailInput = input)}
           onSubmitEditing={() => passwordInput.focus()}
           onChangeText={setEmail}
           selectionColor={"#1DC161"}
+          placeholderTextColor={
+            theme.theme === "light" ? theme.gray2 : theme.gray3
+          }
         />
         <TextInput
           style={{
@@ -87,6 +95,7 @@ export default RegisterView = (props) => {
             paddingHorizontal: 15,
             marginTop: 30,
             marginBottom: 30,
+            color: theme.fontColor,
           }}
           autoCapitalize="none"
           placeholder="password"
@@ -95,6 +104,9 @@ export default RegisterView = (props) => {
           ref={(input) => (passwordInput = input)}
           onChangeText={setPassword}
           selectionColor={"#1DC161"}
+          placeholderTextColor={
+            theme.theme === "light" ? theme.gray2 : theme.gray3
+          }
           onSubmitEditing={() =>
             register(username, email, password).catch((error) =>
               console.log(error)

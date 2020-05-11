@@ -45,10 +45,15 @@ export default LoginView = (props) => {
             borderColor: theme.green,
             paddingHorizontal: 15,
             marginTop: 20,
+            color: theme.fontColor,
           }}
+          placeholderTextColor={
+            theme.theme === "light" ? theme.gray2 : theme.gray3
+          }
           autoCapitalize="none"
           placeholder="email"
           returnKeyType="next"
+          keyboardType="email-address"
           ref={(input) => (emailInput = input)}
           onSubmitEditing={() => passwordInput.focus()}
           onChangeText={setEmail}
@@ -65,8 +70,11 @@ export default LoginView = (props) => {
             borderColor: theme.green,
             paddingHorizontal: 15,
             marginTop: 30,
-            // marginBottom: 15,
+            color: theme.fontColor,
           }}
+          placeholderTextColor={
+            theme.theme === "light" ? theme.gray2 : theme.gray3
+          }
           autoCapitalize="none"
           placeholder="password"
           secureTextEntry

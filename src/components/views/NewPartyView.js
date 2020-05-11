@@ -25,7 +25,7 @@ export default NewPartyView = (props) => {
         viewIsInsideTabBar={true}
         enableAutomaticScroll={true}
         keyboardOpeningTime={50}
-        extraScrollHeight={60}
+        extraScrollHeight={50}
         enableResetScrollToCoords={true}
         resetScrollToCoords={{
           x: 0,
@@ -40,7 +40,7 @@ export default NewPartyView = (props) => {
         onScroll={handleScroll}
         scrollEventThrottle={16}
         snapToAlignment={"start"}
-        snapToInterval={40}
+        // snapToInterval={40}
       >
         <NewPartyScreen {...props} theme={theme} user={currentUserData} />
       </KeyboardAwareScrollView>

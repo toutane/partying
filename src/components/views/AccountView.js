@@ -12,7 +12,7 @@ import AccountScreen from "../User/Account/AccountView/AccoutScreen";
 import { HeaderView } from "../User/Account/AccountView/Header/HeaderView";
 import { TopHeader } from "../User/Account/AccountView/TopHeader/TopHeader";
 
-export default AccountView = props => {
+export default AccountView = (props) => {
   const { currentUserData } = useContext(UserContext);
   const { login, logout } = useContext(AuthContext);
   const { theme, switchTheme } = useContext(ThemeContext);
@@ -22,21 +22,21 @@ export default AccountView = props => {
   return (
     <View
       style={{
-        backgroundColor: theme.theme === "light" ? "white" : theme.gray6
+        backgroundColor: theme.theme === "light" ? "white" : theme.gray6,
       }}
     >
       <TopHeader theme={theme} {...props} />
       <ScrollView
         style={{
           zIndex: 1,
-          height: screenHeight
+          height: screenHeight,
           // backgroundColor: theme.backgroundColor
         }}
         onScroll={Animated.event([
-          { nativeEvent: { contentOffset: { y: scrollY } } }
+          { nativeEvent: { contentOffset: { y: scrollY } } },
         ])}
         contentContainerStyle={{
-          marginTop: 46 + useSafeArea().top
+          marginTop: 46 + useSafeArea().top,
         }}
         scrollEventThrottle={16}
         snapToAlignment={"start"}
@@ -44,19 +44,19 @@ export default AccountView = props => {
       >
         <View
           style={{
-            backgroundColor: theme.backgroundColor
+            backgroundColor: theme.backgroundColor,
           }}
         >
           <HeaderView {...props} theme={theme} user={currentUserData} />
-          {/* <Button title="Switch theme" onPress={() => switchTheme()} /> */}
           <AccountScreen {...props} theme={theme} user={currentUserData} />
         </View>
-        {/*<Button title="Logout" onPress={() => logout()} /> */}
       </ScrollView>
       <DefaultHeader
         {...props}
         scrollY={scrollY}
-        title={currentUserData.username}
+        title={
+          currentUserData.username !== undefined ? currentUserData.username : ""
+        }
         isWhiteBackground={true}
       />
     </View>

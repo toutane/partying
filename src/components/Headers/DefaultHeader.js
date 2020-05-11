@@ -5,14 +5,14 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import { screenWidth } from "../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
 
-export default DefaultHeader = props => {
+export default DefaultHeader = (props) => {
   const { theme } = useContext(ThemeContext);
   _getHeaderOpacity = () => {
     return props.scrollY.interpolate({
       inputRange: [0, 30, 60, 90],
       outputRange: [0, 0, 1, 1],
       extrapolate: "clamp",
-      useNativeDriver: true
+      useNativeDriver: true,
     });
   };
   _getHeaderBlackOpacity = () => {
@@ -20,7 +20,7 @@ export default DefaultHeader = props => {
       inputRange: [0, 35, 50, 90],
       outputRange: [1, 1, 0, 0],
       extrapolate: "clamp",
-      useNativeDriver: true
+      useNativeDriver: true,
     });
   };
   _getHeaderTitleOpacity = () => {
@@ -28,10 +28,9 @@ export default DefaultHeader = props => {
       inputRange: [0, 30, 35, 70],
       outputRange: [0, 0, 1, 1],
       extrapolate: "clamp",
-      useNativeDriver: true
+      useNativeDriver: true,
     });
   };
-  const headerOpacity = _getHeaderOpacity();
   const headerBlackOpacity = _getHeaderBlackOpacity();
   const headerTitleOpacity = _getHeaderTitleOpacity();
   return (
@@ -40,7 +39,7 @@ export default DefaultHeader = props => {
         style={{
           zIndex: 2,
           position: "absolute",
-          top: 0
+          top: 0,
         }}
       >
         <BlurView
@@ -49,7 +48,7 @@ export default DefaultHeader = props => {
           style={{
             zIndex: 2,
             height: 46 + useSafeArea().top,
-            width: screenWidth
+            width: screenWidth,
           }}
         />
       </Animated.View>
@@ -66,7 +65,7 @@ export default DefaultHeader = props => {
               : theme.backgroundColor,
           position: "absolute",
           top: 0,
-          opacity: headerBlackOpacity
+          opacity: headerBlackOpacity,
         }}
       />
       <View
@@ -78,7 +77,7 @@ export default DefaultHeader = props => {
           justifyContent: "center",
           top: (useSafeArea().top - 4) / 2,
           flexDirection: "row",
-          paddingHorizontal: 25
+          paddingHorizontal: 25,
         }}
       >
         <Animated.Text
@@ -86,7 +85,7 @@ export default DefaultHeader = props => {
             fontSize: 17,
             fontFamily: "sf-text-semibold",
             color: theme.fontColor,
-            opacity: headerTitleOpacity
+            opacity: headerTitleOpacity,
           }}
           numberOfLines={1}
         >

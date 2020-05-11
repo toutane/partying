@@ -33,6 +33,7 @@ export const Item = (props) => {
           {props.title}
         </Text>
         <TextInput
+          keyboardType={props.keyboardType}
           ref={focus}
           keyboardAppearance={props.theme.theme}
           multiline={false}

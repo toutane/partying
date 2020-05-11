@@ -25,7 +25,7 @@ export const LocationSearchView = (props) => {
       <GoogleAutocomplete
         {...props}
         location={searchingLocation}
-        // setLocation={setSearchingLocation}
+        setLocation={setSearchingLocation}
         _getCoordsAsync={_getCoordsAsync}
       />
     </View>

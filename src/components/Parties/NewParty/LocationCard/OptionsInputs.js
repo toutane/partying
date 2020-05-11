@@ -26,6 +26,7 @@ export const OptionsInputs = (props) => {
           title="About the place :"
           icon="home"
           isFullWidth={true}
+          keyboardType="default"
           {...props}
         />
       </View>
