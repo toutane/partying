@@ -4,6 +4,7 @@ import { Avatar } from "./Avatar";
 import { OptionsBar } from "./OptionsBar/OptionsBar";
 import { NumbersBar } from "./NumbersBar/NumbersBar";
 import { TopViewCard } from "./styles";
+import HeaderLoader from "./HeaderLoader";
 
 export const HeaderView = (props) => {
   return (
@@ -45,7 +46,8 @@ export const HeaderView = (props) => {
           </View>
         </View>
       ) : (
-        <ActivityIndicator style={{ height: 65 }} />
+        // <ActivityIndicator style={{ height: 65 }} />
+        <HeaderLoader theme={props.theme} />
       )}
       <NumbersBar {...props} />
       {/* <OptionsBar {...props} /> */}
