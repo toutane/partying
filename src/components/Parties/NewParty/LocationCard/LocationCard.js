@@ -9,7 +9,7 @@ import { OptionsInputs } from "./OptionsInputs";
 export const LocationCard = (props) => {
   const [showInfo, setShowInfo] = useState(false);
   return (
-    <View style={{ marginTop: 30, marginBottom: 210, paddingHorizontal: 25 }}>
+    <View style={{ marginTop: 30, marginBottom: 50, paddingHorizontal: 25 }}>
       <Card isFullWidth={true} {...props}>
         <TouchableOpacity
           style={{ paddingHorizontal: 20 }}
