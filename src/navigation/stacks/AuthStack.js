@@ -8,14 +8,14 @@ import Register from "../../components/views/RegisterView";
 const AuthStack = createStackNavigator(
   {
     Login: { screen: Login },
-    Register: { screen: Register }
+    Register: { screen: Register },
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "Register",
     headerMode: "none",
     navigationOptions: {
-      headerVisible: false
-    }
+      headerVisible: false,
+    },
   }
 );
 
