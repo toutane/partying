@@ -5,6 +5,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
+  Button,
 } from "react-native";
 import { screenWidth } from "../../../utils/dimensions";
 

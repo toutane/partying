@@ -1,5 +1,5 @@
-import React, { useState, useContext, useRef } from "react";
-import { View, Keyboard, TouchableOpacity, ScrollView } from "react-native";
+import React, { useState, useContext } from "react";
+import { Keyboard, TouchableOpacity } from "react-native";
 import { SvgXml } from "react-native-svg";
 
 import { AuthContext } from "../../contexts/AuthContext";
@@ -8,7 +8,7 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import Title from "../OnBoarding/CreateAccount/Title";
 import SignUpCard from "../OnBoarding/CreateAccount/SignUpCard";
 
-import { undraw_festivities } from "../../../assets/svg/undraw_festivities";
+import { fireworks_city_party_light } from "../../../assets/svg/fireworks_city_party_light";
 import { fireworks_city_party_dark } from "../../../assets/svg/fireworks_city_party_dark";
 
 export default RegisterView = (props) => {
@@ -33,9 +33,9 @@ export default RegisterView = (props) => {
           : alert(error.code)
       );
     }
-    email === "" ? setError("You must complete all field !") : null;
-    username === "" ? setError("You must complete all field !") : null;
-    password === "" ? setError("You must complete all field !") : null;
+    email === "" ? setError("Please complete all fields.") : null;
+    username === "" ? setError("Please complete all fields.") : null;
+    password === "" ? setError("Please complete all fields.") : null;
   }
   return (
     <TouchableOpacity
@@ -50,7 +50,7 @@ export default RegisterView = (props) => {
       <Title {...props} theme={theme} />
       {theme.theme === "light" ? (
         <SvgXml
-          xml={undraw_festivities}
+          xml={fireworks_city_party_light}
           width="230%"
           height="120%"
           style={{ position: "absolute", left: -200 }}

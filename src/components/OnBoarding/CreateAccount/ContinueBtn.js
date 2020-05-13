@@ -22,7 +22,9 @@ export default function ContinueBtn(props) {
             fontSize: 15,
             fontFamily: "sf-text-bold",
             color:
-              props.theme === "light" ? "white" : props.theme.backgroundColor,
+              props.theme.theme === "light"
+                ? "white"
+                : props.theme.backgroundColor,
           }}
         >
           CREATE MY ACCOUNT
