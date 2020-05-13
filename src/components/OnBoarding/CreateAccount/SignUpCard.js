@@ -10,6 +10,7 @@ import { screenWidth } from "../../../utils/dimensions";
 
 import Inputs from "./Inputs";
 import ContinueBtn from "./ContinueBtn";
+import HelpBtn from "./HelpBtn";
 
 export default function SignUpCard(props) {
   return (
@@ -36,7 +37,7 @@ export default function SignUpCard(props) {
             borderRadius: 23,
           }}
         >
-          <View style={{ marginBottom: 20, alignItems: "center" }}>
+          <View style={{ marginBottom: 12.5, alignItems: "center" }}>
             <Text
               style={{
                 fontSize: 24,
@@ -47,8 +48,18 @@ export default function SignUpCard(props) {
               Create your account
             </Text>
           </View>
+          <Text
+            style={{
+              fontSize: 13,
+              fontFamily: "sf-text-regular",
+              color: props.error !== "null" ? "red" : "rgba(0, 0, 0, 0)",
+            }}
+          >
+            {props.error}
+          </Text>
           <Inputs {...props} />
           <ContinueBtn {...props} />
+          <HelpBtn {...props} />
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

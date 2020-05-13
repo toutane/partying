@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { View, Text, TextInput } from "react-native";
 
 export default function Inputs(props) {
-  const [username, setUsername] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("azerty");
-  const [secureTextEntry, setSecureTextEntry] = useState(false);
-
   return (
     <View>
       <TextInput
@@ -19,16 +14,19 @@ export default function Inputs(props) {
               : props.theme.gray6,
           color: props.theme.fontColor,
           borderRadius: 13,
-          marginTop: 20,
+          marginTop: 12.5,
           paddingHorizontal: 15,
           fontFamily: "sf-text-regular",
           fontSize: 18,
         }}
-        placeholder="Phone number"
+        placeholder="Email address"
         returnKeyType="next"
-        keyboardType="phone-pad"
+        keyboardType="email-address"
+        autoCapitalize="none"
         onSubmitEditing={() => usernameInput.focus()}
-        onChangeText={setPhoneNumber}
+        onChangeText={(e) => {
+          props.setEmail(e), props.setError("null");
+        }}
         selectionColor={"#1DC161"}
         placeholderTextColor={
           props.theme.theme === "light" ? props.theme.gray2 : props.theme.gray3
@@ -53,7 +51,9 @@ export default function Inputs(props) {
         returnKeyType="next"
         ref={(input) => (usernameInput = input)}
         onSubmitEditing={() => passwordInput.focus()}
-        onChangeText={setUsername}
+        onChangeText={(e) => {
+          props.setUsername(e), props.setError("null");
+        }}
         selectionColor={"#1DC161"}
         placeholderTextColor={
           props.theme.theme === "light" ? props.theme.gray2 : props.theme.gray3
@@ -76,19 +76,17 @@ export default function Inputs(props) {
         }}
         placeholder="Password"
         returnKeyType="join"
-        onChangeText={setPassword}
+        keyboardType="ascii-capable"
+        onChangeText={(e) => {
+          props.setPassword(e), e.length >= 6 ? props.setError("null") : null;
+        }}
         selectionColor={"#1DC161"}
-        secureTextEntry
+        // secureTextEntry={true}
         ref={(input) => (passwordInput = input)}
         placeholderTextColor={
           props.theme.theme === "light" ? props.theme.gray2 : props.theme.gray3
         }
-        onSubmitEditing={
-          () => null
-          // register(username, email, password).catch((error) =>
-          //   console.log(error)
-          // )
-        }
+        onSubmitEditing={props.register}
       />
     </View>
   );

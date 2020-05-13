@@ -1,3 +1,4 @@
+// import * as firebase from "firebase";
 import app from "firebase/app";
 import "firebase/auth";
 import "firebase/firebase-firestore";
@@ -10,7 +11,7 @@ const firebaseConfig = {
   storageBucket: "partying-9083a.appspot.com",
   messagingSenderId: "603164020847",
   appId: "1:603164020847:web:0dcbdc3bb4f2d212eefd9a",
-  measurementId: "G-XCE68R536W"
+  measurementId: "G-XCE68R536W",
 };
 
 class Firebase {
@@ -27,7 +28,7 @@ class Firebase {
     return this.auth.currentUser && this.auth.currentUser.displayName;
   }
   isInitialized() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.auth.onAuthStateChanged(resolve);
     });
   }

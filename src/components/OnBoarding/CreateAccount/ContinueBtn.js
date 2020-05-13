@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 export default function ContinueBtn(props) {
   return (
-    <TouchableOpacity activeOpacity={0.8}>
+    <TouchableOpacity activeOpacity={0.8} onPress={props.register}>
       <LinearGradient
         colors={["rgb(52, 199, 89)", "rgb(52, 180, 69)"]}
         start={[0, 1]}
@@ -21,10 +21,11 @@ export default function ContinueBtn(props) {
             backgroundColor: "transparent",
             fontSize: 15,
             fontFamily: "sf-text-bold",
-            color: props.theme.backgroundColor,
+            color:
+              props.theme === "light" ? "white" : props.theme.backgroundColor,
           }}
         >
-          CREATE MY ACCOUNT{" "}
+          CREATE MY ACCOUNT
         </Text>
       </LinearGradient>
     </TouchableOpacity>
