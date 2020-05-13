@@ -1,107 +1,79 @@
-import React, { useContext, useState } from "react";
-import { View, Text, Button, TextInput } from "react-native";
-import { useSafeArea } from "react-native-safe-area-context";
+import React, { useState, useContext } from "react";
+import { Keyboard, TouchableOpacity } from "react-native";
+import { SvgXml } from "react-native-svg";
 
-import { ThemeContext } from "../../contexts/ThemeContext";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
+
+import Title from "../OnBoarding/CreateAccount/Title";
+import SignInCard from "../OnBoarding/SignIn/SignInCard";
+
+import { ballon_girl_light } from "../../../assets/svg/ballon_girl_light";
+import { ballon_girl_dark } from "../../../assets/svg/ballon_girl_dark";
 
 export default LoginView = (props) => {
-  const { login } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext);
+  const { login } = useContext(AuthContext);
+
+  const [error, setError] = useState("null");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  async function onLogin() {
+    if (email && password !== "") {
+      login(email, password).catch((error) =>
+        error.code === "auth/invalid-email"
+          ? setError("Email is badly formatted.")
+          : error.code === "auth/weak-password"
+          ? setError("Password should be at least 6 characters.")
+          : error.code === "auth/email-already-in-use"
+          ? setError("Email already in use, please change.")
+          : error.code === "auth/user-not-found"
+          ? setError("Sorry credentials don't match.")
+          : error.code === "auth/wrong-password"
+          ? setError("Sorry credentials don't match.")
+          : alert(error.code)
+      );
+    }
+    email === "" ? setError("Please complete all fields.") : null;
+    password === "" ? setError("Please complete all fields.") : null;
+  }
   return (
-    <View
+    <TouchableOpacity
+      activeOpacity={1}
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
         backgroundColor: theme.backgroundColor,
+        alignItems: "center",
       }}
+      onPress={Keyboard.dismiss}
     >
-      <Text
-        style={{
-          position: "absolute",
-          top: 46 + useSafeArea().top,
-          left: 25,
-          fontSize: 34,
-          fontFamily: "sf-display-bold",
-          color: theme.fontColor,
-        }}
-      >
-        Login
-      </Text>
-      <View style={{ marginBottom: 30 }}>
-        <TextInput
-          style={{
-            borderRadius: 13,
-            height: 50,
-            width: 300,
-            borderWidth: 2,
-            fontFamily: "sf-text-regular",
-            fontSize: 20,
-            borderColor: theme.green,
-            paddingHorizontal: 15,
-            marginTop: 20,
-            color: theme.fontColor,
-          }}
-          placeholderTextColor={
-            theme.theme === "light" ? theme.gray2 : theme.gray3
-          }
-          autoCapitalize="none"
-          placeholder="email"
-          returnKeyType="next"
-          keyboardType="email-address"
-          ref={(input) => (emailInput = input)}
-          onSubmitEditing={() => passwordInput.focus()}
-          onChangeText={setEmail}
-          selectionColor={"#1DC161"}
+      <Title {...props} theme={theme} />
+      {theme.theme === "light" ? (
+        <SvgXml
+          xml={ballon_girl_light}
+          width="230%"
+          height="110%"
+          style={{ position: "absolute", left: -30 }}
         />
-        <TextInput
-          style={{
-            borderRadius: 13,
-            height: 50,
-            width: 300,
-            borderWidth: 2,
-            fontFamily: "sf-text-regular",
-            fontSize: 20,
-            borderColor: theme.green,
-            paddingHorizontal: 15,
-            marginTop: 30,
-            color: theme.fontColor,
-          }}
-          placeholderTextColor={
-            theme.theme === "light" ? theme.gray2 : theme.gray3
-          }
-          autoCapitalize="none"
-          placeholder="password"
-          secureTextEntry
-          returnKeyType="go"
-          ref={(input) => (passwordInput = input)}
-          onChangeText={setPassword}
-          selectionColor={"#1DC161"}
-          onSubmitEditing={() =>
-            login(email, password).catch((error) => console.log(error))
-          }
+      ) : (
+        <SvgXml
+          xml={ballon_girl_dark}
+          width="230%"
+          height="110%"
+          style={{ position: "absolute", left: -30 }}
         />
-      </View>
-      <Button
-        title="Login"
-        onPress={
-          () => login(email, password).catch((error) => console.log(error))
-          // login("toutane@leger.email", "123456").catch((error) =>
-          //   console.log(error)
-          // )
-          // login("bob@bob.email", "123456").catch(error => console.log(error))
-          // login("elton@john.email", "123456").catch(error => console.log(error))
-        }
+      )}
+      <SignInCard
+        {...props}
+        theme={theme}
+        error={error}
+        setError={setError}
+        setEmail={setEmail}
+        setPassword={setPassword}
+        login={onLogin}
       />
-      <Button
-        title="Go to register view"
-        onPress={() => props.navigation.navigate("Register")}
-      />
-    </View>
+    </TouchableOpacity>
   );
 };
