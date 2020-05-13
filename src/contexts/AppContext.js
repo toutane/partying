@@ -4,7 +4,7 @@ import { AppState } from "react-native";
 const AppContext = React.createContext();
 const { Provider } = AppContext;
 
-const AppProvider = props => {
+const AppProvider = (props) => {
   const [appState, setAppState] = useState(AppState.currentState);
 
   // useEffect(() => console.log(appState), [appState]);
@@ -13,7 +13,7 @@ const AppProvider = props => {
     AppState.addEventListener("change", _handleAppStateChange);
   }, []);
 
-  _handleAppStateChange = nextAppState => {
+  _handleAppStateChange = (nextAppState) => {
     setAppState(nextAppState);
   };
 

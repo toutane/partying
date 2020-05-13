@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import firebase from "../firebase/Firebase";
+import { AsyncStorage } from "react-native";
 
 import { PushNotificationsContext } from "../contexts/PushNotificationsContext";
 
@@ -14,6 +15,12 @@ const AuthProvider = (props) => {
   );
 
   const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(
+    () =>
+      console.log(authenticated ? "Authenticated ✅" : "Not authenticated ❌"),
+    [authenticated]
+  );
 
   async function register(username, email, password) {
     await firebase.auth.createUserWithEmailAndPassword(email, password);
@@ -41,7 +48,7 @@ const AuthProvider = (props) => {
       displayName: username,
     });
   }
-  function login(email, password) {
+  async function login(email, password) {
     return firebase.auth.signInWithEmailAndPassword(email, password);
   }
   function logout() {
