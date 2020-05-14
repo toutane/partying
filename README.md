@@ -1,49 +1,57 @@
-# Partying
+<p align="center"><strong style="font-size:3rem">Partying</strong></p>
 
-This project is in development ⌨
+<p align="center"><strong style="font-size:1.25rem">🥳 Parties manager between friends</strong></p>
 
-[![runs with expo](https://img.shields.io/badge/Runs%20with%20Expo-000.svg?style=flat-square&logo=EXPO&labelColor=f3f3f3&logoColor=000)](https://expo.io/)
+> Create, share, and manage your events without spoiling your life.
 
-Partying is a mobile app. This app allows to easily create, share and manage events.
+## Contents
 
-This tool therefore allows faster, simpler, more accessible and less time-consuming personal event management.
+- [Screenshots](#Screenshots)
+- [Installation](#Installation)
+- [Documentation](#Documentation)
 
-Its use therefore makes Partying the ultimate application to make organizing a party more enjoyable.
+## Screenshots
 
-Partying isn't a social network but a platform where create and manage events become accessible.
+## Installation
 
-## Install
+👉 _To run the lasted Expo build on your iPhone, scan this code:_
 
-Clone this repo to your computer with the command:
+<img src="./assets/img/partying-expo-qr.png" alt="partying-expo-qr" style="zoom:50%;" />
+
+👉 _To get the in developpment app:_
+
+- Clone this repo to your computer using this command:
 
 ```shell
 git clone git@github.com:toutane/partying.git
 ```
 
-Go inside the cloning directory:
+- Go inside the cloning directory with:
 
 ```shell
 cd partying
 ```
 
-## Steps - Starting the React Native App
-
-Then install the needed modules with the command:
+- Install the needed dependencies with npm or yarn:
 
 ```shell
 npm install
 ```
 
-Don't forget to start the processus with:
+or
 
 ```shell
-npm start
+yarn install
 ```
 
-To work correctly with CRNA and Expo - follow the instructions:
+- Finally, start the app with:
 
-```js
-R => to refresh and clean cache
-a => for Androis simulation
-i => for iOS simulation
+```shell
+expo start
 ```
+
+## Documentation
+
+Learn what I think the UI/UX of a modern react-native app should be and look at Partying app UI:
+
+- [Partying UI/UX Docs](./assets/docs/partying-UI-UX-documentation)
