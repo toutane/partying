@@ -1,4 +1,8 @@
-<p align="center"><strong style="font-size:3rem">Partying</strong></p>
+<div align="center">
+  <b>
+  <h1>Partying</h1>
+  </b>
+</div>
 
 <p align="center"><strong style="font-size:1.25rem">🥳 Parties manager between friends</strong></p>
 
@@ -54,4 +58,4 @@ expo start
 
 Learn what I think the UI/UX of a modern react-native app should be and look at Partying app UI:
 
-- [Partying UI/UX Docs](./assets/docs/partying-UI-UX-documentation)
+- [Partying UI/UX Docs](./assets/docs/partying-UI-UX-documentation.md)
