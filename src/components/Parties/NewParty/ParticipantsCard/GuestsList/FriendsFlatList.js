@@ -3,7 +3,7 @@ import { ActivityIndicator, FlatList, View } from "react-native";
 import { Item } from "./Item";
 import { screenHeight, screenWidth } from "../../../../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
-import { AddFriendsCard } from "../../../../User/Friends/AddFriends/AddFriendsCard";
+// import { AddFriendsCard } from "../../../../User/Friends/FriendsCard/FriendsCard";
 
 export const FriendsFlatList = (props) => {
   const margin = 136 + useSafeArea().top;
@@ -33,7 +33,7 @@ export const FriendsFlatList = (props) => {
         >
           {!props.hasFriends && (
             <View style={{ paddingHorizontal: 10 }}>
-              <AddFriendsCard />
+              {/* <AddFriendsCard /> */}
             </View>
           )}
         </View>
