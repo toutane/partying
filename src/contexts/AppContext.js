@@ -7,7 +7,7 @@ const { Provider } = AppContext;
 const AppProvider = (props) => {
   const [appState, setAppState] = useState(AppState.currentState);
 
-  // useEffect(() => console.log(appState), [appState]);
+  useEffect(() => console.log(appState), [appState]);
 
   useEffect(() => {
     AppState.addEventListener("change", _handleAppStateChange);
