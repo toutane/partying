@@ -2,13 +2,13 @@ import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
 import { Thumbnail } from "./Thumbnail";
 
-export const Item = props => {
+export const Item = (props) => {
   return (
     <View
       style={{
         flex: 1,
         flexDirection: "row",
-        marginTop: 20
+        marginTop: 20,
       }}
     >
       <Thumbnail {...props} />
@@ -22,7 +22,7 @@ export const Item = props => {
           style={{
             color: props.theme.fontColor,
             fontSize: 17,
-            fontFamily: "sf-text-semibold"
+            fontFamily: "sf-text-semibold",
           }}
         >
           {props.friend.username}
@@ -31,10 +31,10 @@ export const Item = props => {
           style={{
             color: props.theme.gray,
             fontSize: 13,
-            fontFamily: "sf-text-medium"
+            fontFamily: "sf-text-medium",
           }}
         >
-          {props.friend.name}
+          {props.friend.bio}
         </Text>
       </TouchableOpacity>
     </View>

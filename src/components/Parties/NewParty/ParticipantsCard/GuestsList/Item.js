@@ -52,7 +52,7 @@ export const Item = (props) => {
               fontFamily: "sf-text-medium",
             }}
           >
-            {props.friend.name}
+            {props.friend.bio}
           </Text>
         </View>
       </TouchableOpacity>
