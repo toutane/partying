@@ -11,11 +11,13 @@ import DefaultHeader from "../Headers/DefaultHeader";
 import AccountScreen from "../User/Account/AccountView/AccoutScreen";
 import { HeaderView } from "../User/Account/AccountView/Header/HeaderView";
 import { TopHeader } from "../User/Account/AccountView/TopHeader/TopHeader";
+import PushNotificationsListener from "../../navigation/PushNotificationsListener";
 
 export default AccountView = (props) => {
-  const { currentUserData } = useContext(UserContext);
-  const { login, logout } = useContext(AuthContext);
-  const { theme, switchTheme } = useContext(ThemeContext);
+  const { isLoading, currentUserData, currentUserRequests } = useContext(
+    UserContext
+  );
+  const { theme } = useContext(ThemeContext);
 
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
@@ -47,18 +49,28 @@ export default AccountView = (props) => {
             backgroundColor: theme.backgroundColor,
           }}
         >
-          <HeaderView {...props} theme={theme} user={currentUserData} />
-          <AccountScreen {...props} theme={theme} user={currentUserData} />
+          <HeaderView
+            {...props}
+            theme={theme}
+            user={currentUserData}
+            isLoading={isLoading}
+          />
+          <AccountScreen
+            {...props}
+            theme={theme}
+            isLoading={isLoading}
+            user={currentUserData}
+            userRequests={currentUserRequests}
+          />
         </View>
       </ScrollView>
       <DefaultHeader
         {...props}
         scrollY={scrollY}
-        title={
-          currentUserData.username !== undefined ? currentUserData.username : ""
-        }
+        title={isLoading ? "" : currentUserData.username}
         isWhiteBackground={true}
       />
+      <PushNotificationsListener {...props} />
     </View>
   );
 };
