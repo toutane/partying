@@ -9,7 +9,7 @@ import HeaderLoader from "./HeaderLoader";
 export const HeaderView = (props) => {
   return (
     <TopViewCard {...props}>
-      {props.user.name !== undefined ? (
+      {!props.isLoading ? (
         <View
           style={{
             flexDirection: "row",
@@ -46,7 +46,6 @@ export const HeaderView = (props) => {
           </View>
         </View>
       ) : (
-        // <ActivityIndicator style={{ height: 65 }} />
         <HeaderLoader theme={props.theme} />
       )}
       <NumbersBar {...props} />
