@@ -12,8 +12,8 @@ export const MyPartiesScrollView = (props) => {
           marginLeft: 25,
           marginBottom: 5,
           color: props.theme.fontColor,
-          fontSize: 17,
-          fontFamily: "sf-text-bold",
+          fontSize: 19,
+          fontFamily: "sf-text-semibold",
         }}
       >
         Your parties
