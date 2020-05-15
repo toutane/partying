@@ -7,7 +7,7 @@ import { UserContext } from "../../contexts/UserContext";
 import FixeHeader from "../Headers/FixeHeader";
 import { SettingsScroll } from "../Settings/SettingsScroll";
 
-export default SettingsView = props => {
+export default SettingsView = (props) => {
   const { theme, themeState } = useContext(ThemeContext);
   const { currentUserData } = useContext(UserContext);
 
