@@ -3,8 +3,8 @@ import { ActivityIndicator, FlatList, View, Text } from "react-native";
 import { Item } from "./Item";
 import { screenHeight, screenWidth } from "../../../../utils/dimensions";
 import { useSafeArea } from "react-native-safe-area-context";
-import { AddFriendsCard } from "../AddFriends/AddFriendsCard";
-import { EmptyStreetSvg } from "../AddFriends/EmptyStreetSvg";
+// import { AddFriendsCard } from "../FriendsCard/FriendsCard";
+// import { EmptyStreetSvg } from "../FriendsCard/EmptyStreetSvg";
 
 export const FriendsFlatList = (props) => {
   // useEffect(() => console.log(props.friends), [props.friends]);
@@ -31,7 +31,7 @@ export const FriendsFlatList = (props) => {
             {props.loading && props.user.friends_id.length > 0 ? (
               <ActivityIndicator />
             ) : null}
-            <AddFriendsCard />
+            {/* <AddFriendsCard /> */}
             {/* <EmptyStreetSvg /> */}
           </View>
         }
