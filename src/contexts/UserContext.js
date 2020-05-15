@@ -1,15 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "./AuthContext";
+import { AppContext } from "./AppContext";
 import firebase from "../firebase/Firebase";
 
 const UserContext = React.createContext();
 const { Provider } = UserContext;
 
-const UserProvider = props => {
+const UserProvider = (props) => {
   const { authenticated } = useContext(AuthContext);
+  const { appState } = useContext(AppContext);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentUserData, setCurrentUserData] = useState({});
   const [currentUserId, setCurrentUserId] = useState("");
-  const [currentUserParties, setCurrentUserParties] = useState([]);
+  const [currentUserParties, setCurrentUserParties] = useState({});
+
+  // Array avec toutes les variables concernats de près ou de loin les requests du user
+  const [currentUserRequests, setCurrentUserRequests] = useState([]);
+  // useEffect(() => console.log(currentUserData), [currentUserData]);
 
   useEffect(() => {
     authenticated
@@ -19,10 +26,8 @@ const UserProvider = props => {
   }, [authenticated]);
 
   useEffect(() => {
-    currentUserId !== "" && userPartiesListener();
+    currentUserId !== "" ? userPartiesListener() : null;
   }, [currentUserId]);
-
-  // useEffect(() => console.log(currentUserData)), [currentUserData];
 
   function listenUserData(uid) {
     firebase.db
@@ -32,10 +37,7 @@ const UserProvider = props => {
   }
 
   async function loadUserData(uid) {
-    const user = await firebase.db
-      .collection("users")
-      .doc(uid)
-      .get();
+    const user = await firebase.db.collection("users").doc(uid).get();
     return setCurrentUserData(user.data());
   }
 
@@ -52,8 +54,8 @@ const UserProvider = props => {
       .where("organizer_id", "==", currentUserId)
       .get();
     return setCurrentUserParties(
-      parties.docs.map(doc => ({
-        ...doc.data()
+      parties.docs.map((doc) => ({
+        ...doc.data(),
       }))
     );
   }
@@ -61,9 +63,14 @@ const UserProvider = props => {
   return (
     <Provider
       value={{
+        isLoading,
+        setIsLoading,
+        loadUserData,
         currentUserId,
         currentUserData,
-        currentUserParties
+        currentUserRequests,
+        setCurrentUserRequests,
+        currentUserParties,
       }}
     >
       {props.children}

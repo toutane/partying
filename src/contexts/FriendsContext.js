@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AuthContext } from "./AuthContext";
 import firebase from "../firebase/Firebase";
 
 const FriendsContext = React.createContext();

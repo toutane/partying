@@ -38,6 +38,8 @@ const AuthProvider = (props) => {
           // "https://www.consulib.com/assets/images/empty_avatar.png",
           "https://www.polygongroup.com/UI/build/img/recruiter2.jpg",
         friends_id: [],
+        requests: [],
+        requests_sent: [],
         parties_id: [],
         bio: "I'm using Partying !",
         register_date: moment().format(),
@@ -49,10 +51,20 @@ const AuthProvider = (props) => {
     });
   }
   async function login(email, password) {
-    return firebase.auth.signInWithEmailAndPassword(email, password);
+    await firebase.auth.signInWithEmailAndPassword(email, password);
+    let token = await registerForPushNotificationsAsync();
+    return firebase.db
+      .collection("users")
+      .doc(firebase.auth.currentUser.uid)
+      .update({ expoPushToken: token });
   }
-  function logout() {
-    return firebase.auth.signOut();
+  async function logout() {
+    let user_id = firebase.auth.currentUser.uid;
+    await firebase.auth.signOut();
+    return firebase.db
+      .collection("users")
+      .doc(user_id)
+      .update({ expoPushToken: "" });
   }
 
   return (
