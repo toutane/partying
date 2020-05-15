@@ -10,6 +10,7 @@ import { FriendsProvider } from "./FriendsContext";
 // import { PushNotificationsProvider } from "./PushNotificationsContext";
 import { GuestsProvider } from "./GuestsContext";
 import { AllUsersProvider } from "./AllUsersContext";
+import { RequestsProvider } from "./RequestsContext";
 
 const AllContextsProvider = (props) => {
   return (
@@ -18,15 +19,17 @@ const AllContextsProvider = (props) => {
       <LocationProvider>
         {/* <PushNotificationsProvider> */}
         <FriendsProvider>
-          <AllUsersProvider>
-            <PartyProvider>
-              <CreatePartyProvider>
-                <GuestsProvider>
-                  <FeedProvider>{props.children}</FeedProvider>
-                </GuestsProvider>
-              </CreatePartyProvider>
-            </PartyProvider>
-          </AllUsersProvider>
+          <RequestsProvider>
+            <AllUsersProvider>
+              <PartyProvider>
+                <CreatePartyProvider>
+                  <GuestsProvider>
+                    <FeedProvider>{props.children}</FeedProvider>
+                  </GuestsProvider>
+                </CreatePartyProvider>
+              </PartyProvider>
+            </AllUsersProvider>
+          </RequestsProvider>
         </FriendsProvider>
         {/* </PushNotificationsProvider> */}
       </LocationProvider>
